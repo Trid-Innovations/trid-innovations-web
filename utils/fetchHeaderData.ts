@@ -6,7 +6,9 @@ export const fetchHeaderData = async () => {
     groq` 
   *[_type=="header"][0]{
     ...,
+    logo,
     menu[]->
+   
   }
   `,
     { next: { revalidate } }

@@ -9,7 +9,6 @@ export const config = {
   useCdn: useCdn,
 };
 
-console.log({ config });
 export const sanityClient = createClient(config);
 export const revalidate = 10;
 export const urlFor = (source: any) => {

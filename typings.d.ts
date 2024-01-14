@@ -14,10 +14,16 @@ interface Image {
 }
 export interface HeaderData extends sanityBody {
   _type: "header";
-  logo: Image;
+  logo: Logo;
   menu: AMenu[];
 }
 export interface AMenu extends sanityBody {
   _type: "menuItem";
   title: localeString;
+  name: string;
+}
+export interface Logo extends sanityBody {
+  _type: "logo";
+  desktop: Image;
+  mobile: Image;
 }

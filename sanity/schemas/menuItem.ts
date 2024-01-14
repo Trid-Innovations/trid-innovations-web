@@ -11,5 +11,11 @@ export default defineType({
       description: "The title of the menu",
       type: "localeString",
     },
+    {
+      name: "name",
+      title: "Name",
+      description: "The name of the menu item",
+      type: "string",
+    },
   ],
 });
