@@ -10,7 +10,7 @@ function Header({ data }: Props) {
   return (
     <header className="sticky text-black top-0 flex items-center justify-between max-w-7xl mx-auto z-50 xl:items-center p-5">
       <div>Logo</div>
-      {/* <Menu menu={data?.menu} /> */}
+      <Menu menu={data?.menu} />
     </header>
   );
 }

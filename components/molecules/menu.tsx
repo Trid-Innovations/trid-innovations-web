@@ -6,10 +6,11 @@ type Props = {
 };
 
 function Menu({ menu }: Props) {
+  console.log({ menu });
   return (
     <div className="flex items-center ">
       {menu?.map((item) => (
-        <MenuItem key={item.title} title={item.title} />
+        <MenuItem key={item.title} title={item.title.fr} />
       ))}
     </div>
   );

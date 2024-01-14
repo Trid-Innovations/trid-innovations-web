@@ -4,10 +4,12 @@ import { groq } from "next-sanity";
 export const fetchHeaderData = async () => {
   const headerData: HeaderData = await sanityClient.fetch(
     groq` 
-  *[_type=="header"][0]
+  *[_type=="header"][0]{
+    ...,
+    menu[]->
+  }
   `,
     { next: { revalidate } }
   );
-  console.log({ headerData });
   return headerData;
 };
