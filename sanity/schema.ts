@@ -4,9 +4,19 @@ import footer from "../sanity/schemas/footer";
 import social from "../sanity/schemas/social";
 import localeString from "../sanity/schemas/localeString";
 import logo from "../sanity/schemas/logo";
-import menu from "../sanity/schemas/menu";
-import page from "../sanity/schemas/page";
+import menuItem from "./schemas/menuItem";
+import localeText from "./schemas/localeText";
+import homePage from "./schemas/homePage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [page, footer, header, social, localeString, logo, menu],
+  types: [
+    homePage,
+    footer,
+    header,
+    social,
+    localeString,
+    logo,
+    menuItem,
+    localeText,
+  ],
 };

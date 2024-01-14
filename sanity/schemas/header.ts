@@ -15,7 +15,7 @@ export default defineType({
       name: "menu",
       title: "Menu",
       type: "array",
-      of: [{ type: "reference", to: { type: "menu" } }],
+      of: [{ type: "reference", to: { type: "menuItem" } }],
     },
   ],
 });

@@ -15,7 +15,9 @@
 
 # next.js
 /.next/
+/dist
 /out/
+sanity/node_modules
 
 # production
 /build
