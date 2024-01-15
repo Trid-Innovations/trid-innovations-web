@@ -10,7 +10,7 @@ function Menu({ menu }: Props) {
     <div className="flex items-center gap-4">
       <div className=" items-center gap-4 hidden md:flex">
         {menu?.map((item) => (
-          <MenuItem key={item.title} title={item.title.fr} name={item.name} />
+          <MenuItem key={item.title} title={item.title.en} name={item.name} />
         ))}
       </div>
       <svg

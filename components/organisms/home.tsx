@@ -3,6 +3,7 @@ import React from "react";
 import { urlFor } from "@/sanity";
 import { motion } from "framer-motion";
 import { PageInfo } from "@/typings";
+import Link from "next/link";
 type Props = {
   data: PageInfo;
 };
@@ -12,7 +13,7 @@ function Home({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center bg="
+      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
       <motion.div
         initial={{
@@ -24,7 +25,9 @@ function Home({ data }: Props) {
         viewport={{ once: true }}
         className="space-y-10 px-0 md:px-10"
       >
-        <h4 className="md:text-6xl  text-lg font-semibold">{data.title.en}</h4>
+        <h4 className="md:text-6xl tracking-[10px]  text-lg font-semibold">
+          {data.title.en}
+        </h4>
         <p className="md:text-base  text-sm text-justify">
           {data.description.en}
         </p>
@@ -40,6 +43,25 @@ function Home({ data }: Props) {
         src={urlFor(data.heroImage).url()}
         className="-mb-20 md:mb-0 flex-shrink-0   rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
       />
+      <Link
+        href="#about"
+        className="w-24 h-24 rounded-full bg-primary-trid items-center justify-center absolute bottom-0 mx-auto flex"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="w-12 h-12 text-white font-extrabold"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
+      </Link>
     </motion.div>
   );
 }

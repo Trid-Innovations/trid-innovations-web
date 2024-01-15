@@ -7,16 +7,20 @@ import logo from "../sanity/schemas/logo";
 import menuItem from "./schemas/menuItem";
 import localeText from "./schemas/localeText";
 import homePage from "./schemas/homePage";
+import about from "./schemas/about";
+import member from "./schemas/member";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     homePage,
+    about,
     footer,
     header,
     social,
     localeString,
     logo,
     menuItem,
+    member,
     localeText,
   ],
 };

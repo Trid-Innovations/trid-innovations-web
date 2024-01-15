@@ -1,5 +1,5 @@
 import { sanityClient, revalidate } from "@/sanity";
-import { HeaderData, PageInfo } from "@/typings";
+import { PageInfo } from "@/typings";
 import { groq } from "next-sanity";
 export const fetchPageInfo = async () => {
   const pageInfo: PageInfo = await sanityClient.fetch(

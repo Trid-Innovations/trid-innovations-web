@@ -34,3 +34,15 @@ export interface PageInfo extends sanityBody {
   description: localeText;
   heroImage: Image;
 }
+export interface Member extends sanityBody {
+  _type: "member";
+  picture: Image;
+  title: localeString;
+  name: string;
+}
+export interface AboutData extends sanityBody {
+  _type: "about";
+  title: localeString;
+  description: localeText;
+  members: Member[];
+}

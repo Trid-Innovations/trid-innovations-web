@@ -1,14 +1,14 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "homePage",
-  title: "HomePage",
+  name: "about",
+  title: "About",
   type: "document",
   fields: [
     {
       name: "title",
       title: "Title",
-      description: "Title of the home page",
+      description: "Title of About page",
       type: "localeString",
     },
     {
@@ -17,12 +17,10 @@ export default defineType({
       type: "localeText",
     },
     {
-      name: "heroImage",
-      title: "Image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
+      name: "members",
+      title: "Members",
+      type: "array",
+      of: [{ type: "reference", to: { type: "member" } }],
     },
   ],
 });
