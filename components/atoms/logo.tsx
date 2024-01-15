@@ -9,7 +9,8 @@ type Props = {
   logo: Logo;
 };
 function Logo({ logo }: Props) {
-  const { isMobile } = useDeviceDetect();
+  //   const { isMobile } = useDeviceDetect();
+  const isMobile = false;
   return (
     <Fragment>
       {!isMobile ? (
@@ -22,6 +23,8 @@ function Logo({ logo }: Props) {
             fill
             alt="pic"
             className="flex place-self-start"
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Link>
       ) : (
@@ -34,6 +37,8 @@ function Logo({ logo }: Props) {
             fill
             alt="pic"
             className="flex place-self-start"
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Link>
       )}

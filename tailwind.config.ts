@@ -18,7 +18,7 @@ const config: Config = {
           trid: "#005768",
         },
         secondary: {
-          trid: "#681100",
+          trid: "#D6E2E3",
         },
       },
     },

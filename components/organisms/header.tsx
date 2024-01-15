@@ -10,8 +10,8 @@ type Props = {
 
 function Header({ data }: Props) {
   return (
-    <div className="sticky w-full shadow-lg">
-      <header className=" top-0 flex items-center justify-between max-w-7xl mx-auto z-50 xl:items-center p-5 shadow-b-md">
+    <div className="sticky top-0 w-full shadow-lg  z-50">
+      <header className="flex items-center justify-between max-w-7xl mx-auto xl:items-center p-5">
         <Logo logo={data.logo} />
 
         <Menu menu={data?.menu} />

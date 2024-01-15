@@ -27,3 +27,10 @@ export interface Logo extends sanityBody {
   desktop: Image;
   mobile: Image;
 }
+
+export interface PageInfo extends sanityBody {
+  _type: "homePage";
+  title: localeString;
+  description: localeText;
+  heroImage: Image;
+}
