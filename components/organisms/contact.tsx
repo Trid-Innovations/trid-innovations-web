@@ -9,7 +9,7 @@ function Contact() {
       transition={{ duration: 1.5 }}
       className="h-[90vh] relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
-      Services
+      Contact
     </motion.div>
   );
 }

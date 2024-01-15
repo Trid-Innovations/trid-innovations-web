@@ -22,7 +22,10 @@ function About({ data }: Props) {
       </p>
       <div className="flex items-center justify-center gap-10">
         {data?.members.map((member, index) => (
-          <div key={index} className="group relative cursor-pointer flex-col">
+          <div
+            key={index}
+            className="group relative cursor-pointer flex-col items-center flex justify-center gap-2"
+          >
             <motion.img
               initial={{
                 x: -200,
