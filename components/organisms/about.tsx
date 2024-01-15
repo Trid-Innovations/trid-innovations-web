@@ -12,13 +12,14 @@ function About({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      // className="flex relative flex-col text-center md:text-left  max-w-7xl xl:px-0 min-h-screen justify-center xl:space-y-2 mx-auto"
       className="h-screen relative flex flex-col text-center md:text-left  max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
       <h3 className="absolute left-10 top-36 uppercase tracking-[20px] text-gray-500 text-2xl">
         {data.title.en}
       </h3>
-      <h4 className="text-3xl ">{data.description.en}</h4>
+      <p className="md:text-base  text-sm text-justify">
+        {data.description.en}
+      </p>
       <div className="flex items-center justify-center gap-10">
         {data?.members.map((member, index) => (
           <div key={index} className="group relative cursor-pointer flex-col">

@@ -9,8 +9,8 @@ type Props = {
   logo: Logo;
 };
 function Logo({ logo }: Props) {
-  //   const { isMobile } = useDeviceDetect();
-  const isMobile = false;
+  const { isMobile } = useDeviceDetect();
+
   return (
     <Fragment>
       {!isMobile ? (

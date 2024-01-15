@@ -17,8 +17,12 @@ async function Trid() {
       <section id="about" className="snap-center">
         <About data={aboutData} />
       </section>
-      <Services />
-      <Contact />
+      <section id="services" className="snap-center">
+        <Services />
+      </section>
+      <section id="contact" className="snap-start">
+        <Contact />
+      </section>
     </Fragment>
   );
 }

@@ -45,7 +45,7 @@ function Home({ data }: Props) {
       />
       <Link
         href="#about"
-        className="w-24 h-24 rounded-full bg-primary-trid items-center justify-center absolute bottom-0 mx-auto flex"
+        className="w-18 h-18 rounded-full bg-primary-trid items-center justify-center absolute bottom-0 mx-auto flex"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ function Home({ data }: Props) {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          className="w-12 h-12 text-white font-extrabold"
+          className="w-8 h-8 text-white font-extrabold"
         >
           <path
             stroke-linecap="round"
