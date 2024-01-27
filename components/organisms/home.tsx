@@ -4,6 +4,7 @@ import { urlFor } from "@/sanity";
 import { motion } from "framer-motion";
 import { PageInfo } from "@/typings";
 import Link from "next/link";
+import BackgroundCircles from "../atoms/BackgroundCircles";
 type Props = {
   data: PageInfo;
 };
@@ -13,7 +14,7 @@ function Home({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
+      className="h-screen z-10 relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
       <motion.div
         initial={{
@@ -25,7 +26,7 @@ function Home({ data }: Props) {
         viewport={{ once: true }}
         className="space-y-10 px-0 md:px-10"
       >
-        <h4 className="md:text-6xl tracking-[10px]  text-lg font-semibold">
+        <h4 className="lg:text-6xl tracking-[10px]  md:text-2xl text-lg font-semibold">
           {data.title.en}
         </h4>
         <p className="md:text-base  text-sm text-justify">
@@ -45,7 +46,7 @@ function Home({ data }: Props) {
       />
       <Link
         href="#about"
-        className="w-18 h-18 rounded-full bg-primary-trid items-center justify-center absolute bottom-0 mx-auto flex"
+        className="m-5 w-18 h-18 rounded-full bg-primary-trid items-center justify-center absolute bottom-0 mx-auto flex"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

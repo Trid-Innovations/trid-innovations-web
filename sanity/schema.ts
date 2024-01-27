@@ -9,6 +9,7 @@ import localeText from "./schemas/localeText";
 import homePage from "./schemas/homePage";
 import about from "./schemas/about";
 import member from "./schemas/member";
+import service from "./schemas/service";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -22,5 +23,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     menuItem,
     member,
     localeText,
+    service,
   ],
 };

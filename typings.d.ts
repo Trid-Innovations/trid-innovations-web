@@ -46,3 +46,10 @@ export interface AboutData extends sanityBody {
   description: localeText;
   members: Member[];
 }
+
+export interface Service extends SanityBody {
+  _type: "service";
+  title: localeString;
+  description: localeString;
+  image: Image;
+}
