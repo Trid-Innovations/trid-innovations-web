@@ -10,12 +10,16 @@ import homePage from "./schemas/homePage";
 import about from "./schemas/about";
 import member from "./schemas/member";
 import service from "./schemas/service";
+import footerLink from "./schemas/footerLink";
+import footerColumn from "./schemas/footerColumn";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     homePage,
     about,
     footer,
+    footerLink,
+    footerColumn,
     header,
     social,
     localeString,

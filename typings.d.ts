@@ -53,3 +53,22 @@ export interface Service extends SanityBody {
   description: localeString;
   image: Image;
 }
+
+export interface FooterColumn extends SanityBody {
+  _type: "footerColumn";
+  title: localeString;
+  links: FooterLink[];
+}
+export interface FooterLink extends SanityBody {
+  _type: "FooterLink";
+  title: localeString;
+  url: localeString;
+}
+
+export interface FooterData extends SanityBody {
+  _type: "footer";
+  copyRights: localeString;
+  TermsOfUse: localeString;
+  columns: FooterColumn[];
+  socials: social;
+}

@@ -17,5 +17,17 @@ export default defineType({
       description: "The copy rights of TRID-INNOVATIONS",
       type: "localeString",
     },
+    {
+      type: "array",
+      name: "columns",
+      title: "columns",
+      of: [{ type: "footerColumn" }],
+    },
+    {
+      type: "array",
+      name: "socials",
+      title: "Socials",
+      of: [{ type: "social" }],
+    },
   ],
 });

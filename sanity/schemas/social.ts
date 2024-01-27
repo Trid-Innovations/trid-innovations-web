@@ -3,7 +3,7 @@ import { defineField, defineType } from "sanity";
 export default defineType({
   name: "social",
   title: "Social",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "title",
@@ -15,6 +15,15 @@ export default defineType({
       name: "url",
       title: "Url",
       type: "url",
+    },
+    {
+      name: "logo",
+      title: "Logo",
+      description: "Social logo",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
     },
   ],
 });

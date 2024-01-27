@@ -12,20 +12,20 @@ async function Trid() {
   const aboutData = await fetchAboutData();
   const servicesData = await fetchServices();
   return (
-    <Fragment>
+    <div className="z-10">
       <section id="home" className="snap-center w-full  bg-secondary-trid">
         <Home data={pageInfo} />
       </section>
-      <section id="about" className="snap-center">
+      <section id="about" className="snap-center bg-white">
         <About data={aboutData} />
       </section>
-      <section id="services" className="snap-center">
+      <section id="services" className="snap-center bg-white">
         <Services data={servicesData} />
       </section>
-      <section id="contact" className="snap-start">
+      <section id="contact" className="snap-start bg-white">
         <Contact />
       </section>
-    </Fragment>
+    </div>
   );
 }
 
