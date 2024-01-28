@@ -1,5 +1,5 @@
 import { sanityClient, revalidate } from "@/sanity";
-import { Service } from "@/typings";
+import { Service } from "@/types/typings";
 import { groq } from "next-sanity";
 
 export const fetchServices = async () => {

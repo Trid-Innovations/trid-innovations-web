@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Service } from "@/typings";
+import { Service } from "@/types/typings";
 import { urlFor } from "@/sanity";
 import Image from "next/image";
 import BackgroundCircles from "../atoms/BackgroundCircles";
+import { LanguageContext } from "@/context/languageContext";
 
 type Props = {
   data: Service[];
@@ -14,6 +15,8 @@ function Services({ data }: Props) {
     const angle = (360 / total) * index;
     return `rotate(${angle}deg) translate(10rem) rotate(-${angle}deg)`;
   };
+
+  const { language } = useContext(LanguageContext);
 
   return (
     <motion.div
@@ -35,9 +38,11 @@ function Services({ data }: Props) {
         {data?.map((service, index) => (
           <div key={index} className="flex flex-col gap-2">
             <div className="text-primary-trid  tracking-[5px] text-2xl ">
-              {service.title.en}
+              {service.title[language.code]}
             </div>
-            <div className="text-xs lg:text-base">{service.description.en}</div>
+            <div className="text-xs lg:text-base">
+              {service.description[language.code]}
+            </div>
           </div>
         ))}
       </motion.div>
@@ -62,7 +67,7 @@ function Services({ data }: Props) {
               <div className="flex-col justify-start  flex h-16 w-16 object-cover  overflow-visible">
                 <Image
                   src={urlFor(service.image).url()}
-                  alt={service.title.en}
+                  alt={service.title[language.code]}
                   fill
                   className="h-6 w-6 rounded-full z-0"
                   priority
@@ -70,7 +75,7 @@ function Services({ data }: Props) {
                 />
               </div>
               <div className="font-bold text-xs z-10 absolute -top-10 w-full">
-                {service.title.en}
+                {service.title[language.code]}
               </div>
             </div>
           ))}

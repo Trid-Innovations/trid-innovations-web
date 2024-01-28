@@ -1,10 +1,11 @@
 import React from "react";
 import Menu from "../molecules/menu";
-import { HeaderData } from "@/typings";
+import { HeaderData } from "@/types/typings";
 import Logo from "../atoms/logo";
 import { urlFor } from "@/sanity";
 import useDeviceDetect from "@/hooks/useDeviceDetect";
 import { fetchHeaderData } from "@/utils/fetchHeaderData";
+import Language from "../molecules/language";
 
 async function Header() {
   const data: HeaderData = await fetchHeaderData();
@@ -13,7 +14,10 @@ async function Header() {
       <header className="flex items-center justify-between max-w-7xl mx-auto xl:items-center p-5">
         <Logo logo={data.logo} />
 
-        <Menu menu={data?.menu} />
+        <div className="flex gap-5">
+          <Language />
+          <Menu menu={data?.menu} />
+        </div>
       </header>
     </div>
   );

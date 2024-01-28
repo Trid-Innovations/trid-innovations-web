@@ -1,16 +1,23 @@
-import { AMenu } from "@/typings";
-import React from "react";
+"use client";
+import { AMenu } from "@/types/typings";
+import React, { useContext } from "react";
 import MenuItem from "../atoms/menuItem";
+import { LanguageContext } from "@/context/languageContext";
 type Props = {
   menu: AMenu[];
 };
 
 function Menu({ menu }: Props) {
+  const { language } = useContext(LanguageContext);
   return (
     <div className="flex items-center gap-4">
       <div className=" items-center gap-4 hidden md:flex">
         {menu?.map((item) => (
-          <MenuItem key={item.title} title={item.title.en} name={item.name} />
+          <MenuItem
+            key={item.title}
+            title={item.title[language.code]}
+            name={item.name}
+          />
         ))}
       </div>
       <svg

@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import { urlFor } from "@/sanity";
 import Image from "next/image";
 import useDeviceDetect from "@/hooks/useDeviceDetect";
-import { Logo } from "@/typings";
+import { Logo } from "@/types/typings";
 import Link from "next/link";
 type Props = {
   logo: Logo;

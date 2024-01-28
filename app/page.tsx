@@ -1,5 +1,5 @@
 import Header from "@/components/organisms/header";
-import { HeaderData } from "@/typings";
+import { HeaderData } from "@/types/typings";
 import { fetchHeaderData } from "@/utils/fetchHeaderData";
 import TridTemplate from "@/components/templates";
 import Footer from "@/components/organisms/footer";

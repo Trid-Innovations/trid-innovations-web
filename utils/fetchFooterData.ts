@@ -1,8 +1,8 @@
 import { sanityClient, revalidate } from "@/sanity";
-import { FooterData } from "@/typings";
+import { FooterData } from "@/types/typings";
 import { groq } from "next-sanity";
 export const fetchFooterData = async () => {
-  const aboutData: FooterData = await sanityClient.fetch(
+  const footerData: FooterData = await sanityClient.fetch(
     groq` 
     *[_type == 'footer'][0] {
         ...,
@@ -22,5 +22,5 @@ export const fetchFooterData = async () => {
       `,
     { next: { revalidate } }
   );
-  return aboutData;
+  return footerData;
 };

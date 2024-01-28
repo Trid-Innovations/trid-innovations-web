@@ -1,14 +1,16 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { urlFor } from "@/sanity";
 import { motion } from "framer-motion";
-import { PageInfo } from "@/typings";
+import { PageInfo } from "@/types/typings";
 import Link from "next/link";
 import BackgroundCircles from "../atoms/BackgroundCircles";
+import { LanguageContext } from "@/context/languageContext";
 type Props = {
   data: PageInfo;
 };
 function Home({ data }: Props) {
+  const { language } = useContext(LanguageContext);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -26,10 +28,10 @@ function Home({ data }: Props) {
         viewport={{ once: true }}
       >
         <h4 className="lg:text-6xl md:tracking-[10px] tracking-[4px]  md:text-2xl text-xs font-semibold mb-5">
-          {data.title.en}
+          {data.title[language.code]}
         </h4>
         <p className="md:text-base  text-sm text-justify">
-          {data.description.en}
+          {data.description[language.code]}
         </p>
       </motion.div>
       <motion.img

@@ -1,17 +1,17 @@
-import { FooterData } from "@/typings";
+import { FooterData } from "@/types/typings";
 import React from "react";
 import FooterColumn from "../molecules/footerColumn";
 import { fetchFooterData } from "@/utils/fetchFooterData";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity";
+import FooterBottom from "../molecules/footerBottom";
 
 async function Footer() {
   const data = await fetchFooterData();
-  console.log({ data });
-  debugger;
+
   return (
-    <div className="h-52 bg-white py-4 relative px-5">
+    <div className="h-52 bg-white py-4 relative px-5 py-5">
       <div className="h-4 w-full bg-primary-trid absolute top-0 left-0" />
       <div className="flex flex-wrap  overflow-y-scroll h-full max-w-7xl mx-auto gap-3 justify-between">
         {data.columns.map((column, index) => (
@@ -34,14 +34,8 @@ async function Footer() {
             />
           </Link>
         ))}
-        <div className="flex justify-between flex-wrap">
-          <div>{data.copyRights.en}</div>
-          <div className="flex flex-wrap uppercase gap-10">
-            <div>{data.termsOfUse.en}</div>
-            <div>{data.privacyPolicy.en}</div>
-          </div>
-          {/* <div>{data.}</div> */}
-        </div>
+
+        <FooterBottom data={data} />
       </div>
     </div>
   );
