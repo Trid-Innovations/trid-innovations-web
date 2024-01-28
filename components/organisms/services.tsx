@@ -20,7 +20,7 @@ function Services({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
+      className="h-screen relative flex flex-col  md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
       <motion.div
         initial={{
@@ -30,14 +30,14 @@ function Services({ data }: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        className="space-y-10 px-0 md:px-10 z-10"
+        className="z-10 flex flex-col gap-4"
       >
         {data?.map((service, index) => (
-          <div key={index}>
-            <div className="text-primary-trid  tracking-[5px]">
+          <div key={index} className="flex flex-col gap-2">
+            <div className="text-primary-trid  tracking-[5px] text-2xl ">
               {service.title.en}
             </div>
-            <div>{service.description.en}</div>
+            <div className="text-xs lg:text-base">{service.description.en}</div>
           </div>
         ))}
       </motion.div>
@@ -50,16 +50,16 @@ function Services({ data }: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        className="space-y-10 px-0 md:px-10 z-0"
+        className="z-0 hidden md:flex"
       >
         <div className="relative flex justify-center items-center h-96 w-96">
           {data.map((service, index) => (
             <div
               key={index}
-              className="absolute transform"
+              className="absolute transform "
               style={{ transform: calculateStyle(index, data.length) }}
             >
-              <div className="flex-col justify-start  flex h-16 w-16 object-cover">
+              <div className="flex-col justify-start  flex h-16 w-16 object-cover  overflow-visible">
                 <Image
                   src={urlFor(service.image).url()}
                   alt={service.title.en}
@@ -68,15 +68,16 @@ function Services({ data }: Props) {
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <p className="font-bold text-xs mt-2 z-10">
-                  {service.title.en}
-                </p>
+              </div>
+              <div className="font-bold text-xs z-10 absolute -top-10 w-full">
+                {service.title.en}
               </div>
             </div>
           ))}
+
           {/* <BackgroundCircles /> */}
           <div className="absolute text-center">
-            <p className="font-bold">Text Here</p>
+            <p className="font-bold">Our services</p>
           </div>
         </div>
       </motion.div>

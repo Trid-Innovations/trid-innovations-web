@@ -9,7 +9,7 @@ function MenuItem({ title, name }: Props) {
   return (
     <Link
       href={`#${name}`}
-      className="text-sm lg:text-2xl text-primary-trid/70 hover:text-primary-trid cursor-pointer font-bold"
+      className="tracking-[2px] text-xs uppercase lg:text-base  hover:text-primary-trid/80  cursor-pointer font-bold"
     >
       {title}
     </Link>

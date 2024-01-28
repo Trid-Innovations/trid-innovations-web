@@ -60,15 +60,22 @@ export interface FooterColumn extends SanityBody {
   links: FooterLink[];
 }
 export interface FooterLink extends SanityBody {
-  _type: "FooterLink";
+  _type: "footerLink";
   title: localeString;
   url: localeString;
+}
+export interface FooterSocial extends SanityBody {
+  _type: "social";
+  title: localeString;
+  url: string;
+  logo: Image;
 }
 
 export interface FooterData extends SanityBody {
   _type: "footer";
   copyRights: localeString;
-  TermsOfUse: localeString;
+  termsOfUse: localeString;
+  privacyPolicy: localeString;
   columns: FooterColumn[];
-  socials: social;
+  socials: FooterSocial[];
 }

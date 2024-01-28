@@ -14,7 +14,7 @@ function Home({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen z-10 relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
+      className="h-screen z-10 relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 py-28 justify-evenly mx-auto items-center"
     >
       <motion.div
         initial={{
@@ -24,9 +24,8 @@ function Home({ data }: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        className="space-y-10 px-0 md:px-10"
       >
-        <h4 className="lg:text-6xl tracking-[10px]  md:text-2xl text-lg font-semibold">
+        <h4 className="lg:text-6xl md:tracking-[10px] tracking-[4px]  md:text-2xl text-xs font-semibold mb-5">
           {data.title.en}
         </h4>
         <p className="md:text-base  text-sm text-justify">
@@ -52,15 +51,11 @@ function Home({ data }: Props) {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           stroke="currentColor"
           className="w-8 h-8 text-white font-extrabold"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="m19.5 8.25-7.5 7.5-7.5-7.5"
-          />
+          <path d="m19.5 8.25-7.5 7.5-7.5-7.5" />
         </svg>
       </Link>
     </motion.div>

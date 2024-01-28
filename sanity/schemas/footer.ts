@@ -12,9 +12,15 @@ export default defineType({
       type: "localeString",
     },
     {
-      name: "TermsOfUse",
+      name: "termsOfUse",
       title: "TermsOfUse",
-      description: "The copy rights of TRID-INNOVATIONS",
+      description: "Terms of use of TRID-INNOVATIONS",
+      type: "localeString",
+    },
+    {
+      name: "privacyPolicy",
+      title: "PrivacyPolicy",
+      description: "Privacy policy of TRID-INNOVATIONS",
       type: "localeString",
     },
     {

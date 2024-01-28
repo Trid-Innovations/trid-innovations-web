@@ -16,7 +16,7 @@ function Logo({ logo }: Props) {
       {!isMobile ? (
         <Link
           href={"/"}
-          className="relative justify-start  flex h-16 w-52 lg:h-20 lg:w-60 object-cover"
+          className="relative justify-start  flex h-16 w-52 lg:h-16 lg:w-54 object-cover"
         >
           <Image
             src={urlFor(logo.desktop).url()}
