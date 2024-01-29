@@ -21,6 +21,7 @@ async function Footer() {
       <div className="flex flex-col max-w-7xl mx-auto">
         {data.socials.map((social, index) => (
           <Link
+            key={index}
             href={social.url}
             className="relative justify-start  flex h-12 w-12  object-cover"
           >
