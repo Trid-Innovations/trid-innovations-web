@@ -12,6 +12,7 @@ import member from "./schemas/member";
 import service from "./schemas/service";
 import footerLink from "./schemas/footerLink";
 import footerColumn from "./schemas/footerColumn";
+import company from "./schemas/company";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -28,5 +29,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     member,
     localeText,
     service,
+    company,
   ],
 };

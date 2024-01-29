@@ -6,26 +6,32 @@ import Home from "../organisms/home";
 import { fetchPageInfo } from "@/utils/homepageInfo";
 import { fetchAboutData } from "@/utils/fetchAboutData";
 import { fetchServices } from "@/utils/fetchServices";
+import Company from "../organisms/company";
+import { fetchCompanyData } from "@/utils/fetchCompanyData";
 
 async function Trid() {
   const pageInfo = await fetchPageInfo();
   const aboutData = await fetchAboutData();
   const servicesData = await fetchServices();
+  const companyData = await fetchCompanyData();
   return (
-    <div className="z-10">
+    <Fragment>
       <section id="home" className="snap-center w-full  bg-secondary-trid">
         <Home data={pageInfo} />
       </section>
-      <section id="about" className="snap-center bg-white">
+      <section id="about" className="snap-end bg-white">
         <About data={aboutData} />
       </section>
-      <section id="services" className="snap-center bg-white">
+      <section id="about" className="snap-center bg-white">
+        <Company data={companyData} />
+      </section>
+      <section id="services" className="snap-end bg-white">
         <Services data={servicesData} />
       </section>
       <section id="contact" className="snap-start bg-white">
         <Contact />
       </section>
-    </div>
+    </Fragment>
   );
 }
 

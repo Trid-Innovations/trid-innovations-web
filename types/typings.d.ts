@@ -79,3 +79,9 @@ export interface FooterData extends SanityBody {
   columns: FooterColumn[];
   socials: FooterSocial[];
 }
+
+export interface CompanyData extends SanityBody {
+  _type: "company";
+  description: localeString;
+  image: Image;
+}
