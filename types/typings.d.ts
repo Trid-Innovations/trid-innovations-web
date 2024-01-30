@@ -40,11 +40,31 @@ export interface Member extends sanityBody {
   title: localeString;
   name: string;
 }
+export interface Input extends sanityBody {
+  _type: "inputField";
+  label: localeString;
+  name: string;
+  validations: inputValidation;
+}
 export interface AboutData extends sanityBody {
   _type: "about";
   title: localeString;
   description: localeText;
   members: Member[];
+}
+export interface Input extends sanityBody {
+  _type: "inputField";
+  label: localeString;
+  name: string;
+  validations: inputValidation;
+}
+export interface ContactData extends sanityBody {
+  _type: "contact";
+  title: localeString;
+  buttonLabel: localeString;
+  emailLabel: localeString;
+  description: localeText;
+  inputs: Input[];
 }
 
 export interface Service extends SanityBody {

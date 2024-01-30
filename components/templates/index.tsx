@@ -8,12 +8,14 @@ import { fetchAboutData } from "@/utils/fetchAboutData";
 import { fetchServices } from "@/utils/fetchServices";
 import Company from "../organisms/company";
 import { fetchCompanyData } from "@/utils/fetchCompanyData";
+import { fetchContactData } from "@/utils/fetchContactData";
 
 async function Trid() {
   const pageInfo = await fetchPageInfo();
   const aboutData = await fetchAboutData();
   const servicesData = await fetchServices();
   const companyData = await fetchCompanyData();
+  const contactData = await fetchContactData();
   return (
     <Fragment>
       <section id="home" className="snap-center w-full  bg-secondary-trid">
@@ -29,7 +31,7 @@ async function Trid() {
         <Services data={servicesData} />
       </section>
       <section id="contact" className="snap-start bg-white">
-        <Contact />
+        <Contact data={contactData} />
       </section>
     </Fragment>
   );

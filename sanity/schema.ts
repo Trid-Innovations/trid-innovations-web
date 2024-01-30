@@ -12,7 +12,10 @@ import member from "./schemas/member";
 import service from "./schemas/service";
 import footerLink from "./schemas/footerLink";
 import footerColumn from "./schemas/footerColumn";
+import inputField from "./schemas/inputField";
+import inputValidation from "./schemas/inputValidation";
 import company from "./schemas/company";
+import contact from "./schemas/contact";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -30,5 +33,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     localeText,
     service,
     company,
+    inputField,
+    inputValidation,
+    contact,
   ],
 };

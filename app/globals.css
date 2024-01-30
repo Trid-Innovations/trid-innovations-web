@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .gds__button {
+    @apply bg-primary-trid text-white py-2.5 px-4 rounded border-primary-trid;
+  }
+  .trid__button--ghost {
+    @apply trid__button bg-transparent border-0 text-primary-trid;
+  }
+  .trid__button--outline {
+    @apply trid__button bg-transparent border border-primary-trid text-primary-trid hover:bg-primary-trid hover:text-white;
+  }
+
+  .trid__input {
+    @apply border rounded-sm py-2.5 pr-3 pl-4 outline-none box-border hover:border-primary-trid hover:border-2 h-[44px] focus:border-primary-trid focus:border disabled:opacity-30;
+  }
+  .trid__input--error {
+    @apply border-tertiary-mars rounded-sm outline-none py-2.5 pr-3 pl-4 border-2 h-[44px] box-border;
+  }
+}

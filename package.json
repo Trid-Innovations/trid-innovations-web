@@ -17,6 +17,7 @@
     "next-sanity": "^5.5.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.3",
     "sanity": "^3.24.1",
     "styled-components": "~5.2.3"
   },
