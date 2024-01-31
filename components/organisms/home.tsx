@@ -16,7 +16,7 @@ function Home({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 py-28 justify-evenly mx-auto items-center"
+      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl py-28 p-5 justify-evenly mx-auto items-center"
     >
       <motion.div
         initial={{

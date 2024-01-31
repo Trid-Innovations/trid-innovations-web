@@ -23,7 +23,7 @@ function Services({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex flex-col  md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
+      className="h-screen relative flex flex-col  md:flex-row max-w-7xl p-5 justify-evenly mx-auto items-center"
     >
       <motion.div
         initial={{

@@ -37,46 +37,53 @@ function ContactForm({ data }: Props) {
     console.log("here");
   };
 
+  console.log({ data });
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="pt-20 h-screen relative md:flex flex-col  text-center md:text-left max-w-7xl px-10 justify-between space-y-20 mx-auto items-center gap-5"
+      className="h-[70vh] flex items-center  flex-wrap text-center md:text-left max-w-7xl gap-10 m-auto p-5 justify-between"
     >
-      <div className="flex flex-col text-justify w-full gap-4">
-        <p className="text-xs md:text-xl lg:text-2xl leading-8">
+      <div className="hidden w-full md:w-1/2 lg:w-[500px] md:flex flex-col text-left leading-10 gap-4">
+        <p className="text-xs md:text-xl lg:text-xl">
           {data.description[language.code]}
         </p>
         <p className="text-xs font-bold md:text-lg">{`${
           data.emailLabel[language.code]
         } : contact@tridinnovations.com`}</p>
       </div>
-      <form className="flex  w-full gap-4">
-        <div className="w-full">
-          <label className="place-self-end">{data.title[language.code]}</label>
+      <div className="md:w-1/2 w-full md:place-self-center place-self-end py-5">
+        <form className="flex gap-4">
+          <div className="flex flex-col  w-full gap-4">
+            <label className="text-right m-4 text-xl uppercase text-primary-trid font-extrabold">
+              {data.title[language.code]}
+            </label>
 
-          {data.inputs.map((input) => (
-            <Input
-              key={input.name}
-              name="voucherNumber"
-              control={control}
-              label={input.name}
-              rules={{ ...input.validations }}
-            />
-          ))}
+            <div className="flex flex-col gap-2 md:gap-5">
+              {data.inputs.map((input) => (
+                <Input
+                  key={input.name}
+                  name={input.name}
+                  control={control}
+                  label={input.label[language.code]}
+                  rules={{ ...input.validations }}
+                />
+              ))}
+            </div>
 
-          <div className="place-self-end">
-            <button
-              disabled={!isValid}
-              onClick={handleSubmit(apply)}
-              className="gds_button--outline gds_text--rainier font-normal w-32"
-            >
-              {data.buttonLabel[language.code]}
-            </button>
+            <div className="place-self-end items-center justify-end">
+              <button
+                disabled={!isValid}
+                onClick={handleSubmit(apply)}
+                className="trid__button trid_text--rainier font-normal w-32"
+              >
+                {data.buttonLabel[language.code]}
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </motion.div>
   );
 }

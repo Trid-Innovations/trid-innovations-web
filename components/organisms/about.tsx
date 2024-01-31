@@ -14,7 +14,7 @@ function About({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="pt-20 h-screen relative flex flex-col text-center md:text-left  max-w-7xl px-10 justify-center space-y-20 mx-auto items-center"
+      className="pt-20 h-screen relative flex flex-col text-center md:text-left  max-w-7xl p-5 justify-center space-y-20 mx-auto items-center"
     >
       <h3 className=" uppercase tracking-[10px] text-gray-500 text-lg md:text-xl lg:text-2xl">
         {data.title[language.code]}

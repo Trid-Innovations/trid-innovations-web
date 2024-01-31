@@ -52,11 +52,16 @@ export interface AboutData extends sanityBody {
   description: localeText;
   members: Member[];
 }
+export interface Validation extends sanityBody {
+  _type: "inputValidation";
+  label: localeString;
+  key: string;
+}
 export interface Input extends sanityBody {
   _type: "inputField";
   label: localeString;
   name: string;
-  validations: inputValidation;
+  validations: Validation[];
 }
 export interface ContactData extends sanityBody {
   _type: "contact";

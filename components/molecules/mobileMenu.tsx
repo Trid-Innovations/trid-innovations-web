@@ -49,9 +49,9 @@ function MobileMenu({ menu }: Props) {
           X
         </div>
         <div className="items-center gap-10 flex-col flex ">
-          {menu?.map((item) => (
+          {menu?.map((item, index) => (
             <MenuItem
-              key={item.title}
+              key={index}
               title={item.title[language.code]}
               name={item.name}
               onClick={() => setShowMobileMenu(false)}

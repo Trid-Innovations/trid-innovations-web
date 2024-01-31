@@ -13,9 +13,9 @@ function Menu({ menu }: Props) {
   return (
     <div className="items-center gap-4 relative hidden md:flex">
       <div className="flex items-center gap-4 ">
-        {menu?.map((item) => (
+        {menu?.map((item, index) => (
           <MenuItem
-            key={item.title}
+            key={index}
             title={item.title[language.code]}
             name={item.name}
           />

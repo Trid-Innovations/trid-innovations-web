@@ -28,19 +28,16 @@ const Input = ({
         fieldState: { error },
       }) => (
         <div className="flex w-full flex-col gap-1 relative">
-          <label className={`${error ? "text-tertiary-mars" : ""}`}>
-            {label}
-          </label>
           <input
             style={{ borderColor: error ? "red" : "" }}
-            className={`trid__input leading-6 ${
+            className={`w-full trid__input leading-6 ${
               error ? "border !border-tertiary-mars" : ""
             } m-0`}
             type="text"
             value={value?.trim()}
             onChange={onChange}
             onBlur={onBlur}
-            placeholder={name}
+            placeholder={label.toUpperCase()}
           />
 
           {!!error && (

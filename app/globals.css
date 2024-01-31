@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .gds__button {
+  .trid__button {
     @apply bg-primary-trid text-white py-2.5 px-4 rounded border-primary-trid;
   }
   .trid__button--ghost {
