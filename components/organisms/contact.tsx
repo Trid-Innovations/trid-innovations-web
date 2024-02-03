@@ -56,7 +56,7 @@ function ContactForm({ data }: Props) {
       <div className="md:w-1/2 w-full md:place-self-center place-self-end py-5">
         <form className="flex gap-4">
           <div className="flex flex-col  w-full gap-4">
-            <label className="text-right m-4 text-xl uppercase text-primary-trid font-extrabold">
+            <label className="md:text-right  text-center m-4 text-xl uppercase text-primary-trid font-extrabold">
               {data.title[language.code]}
             </label>
 

@@ -11,8 +11,8 @@ async function Footer() {
   const data = await fetchFooterData();
 
   return (
-    <div className="h-52 bg-white relative px-5 py-4">
-      <div className="h-4 w-full bg-primary-trid absolute top-0 left-0" />
+    <div className="h-52 bg-white relative px-5 py-4 overflow-y-scroll">
+      <div className="h-2 w-full bg-primary-trid absolute top-0 left-0" />
       <div className="flex flex-wrap  overflow-y-scroll h-full max-w-7xl mx-auto md:gap-3 justify-between">
         {data.columns.map((column, index) => (
           <FooterColumn key={index} column={{ ...column }} />
