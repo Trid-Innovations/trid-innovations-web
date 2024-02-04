@@ -9,7 +9,8 @@ export const fetchContactData = async () => {
     inputs[]->
    
   }`,
-    { next: { revalidate } }
+    { next: { revalidate } },
+    { cache: "no-store" }
   );
   return contactData;
 };

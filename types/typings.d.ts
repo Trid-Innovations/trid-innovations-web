@@ -32,6 +32,7 @@ export interface PageInfo extends sanityBody {
   _type: "homePage";
   title: localeString;
   description: localeText;
+  introduction: localeText;
   heroImage: Image;
 }
 export interface Member extends sanityBody {

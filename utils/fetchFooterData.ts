@@ -20,7 +20,8 @@ export const fetchFooterData = async () => {
         }
       }
       `,
-    { next: { revalidate } }
+    { next: { revalidate } },
+    { cache: "no-store" }
   );
   return footerData;
 };

@@ -11,7 +11,8 @@ export const fetchHeaderData = async () => {
    
   }
   `,
-    { next: { revalidate } }
+    { next: { revalidate } },
+    { cache: "no-store" }
   );
   return headerData;
 };

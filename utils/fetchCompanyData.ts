@@ -7,7 +7,8 @@ export const fetchCompanyData = async () => {
     groq`
   *[_type=="company"][0]
   `,
-    { next: { revalidate } }
+    { next: { revalidate } },
+    { cache: "no-store" }
   );
   return companyData;
 };

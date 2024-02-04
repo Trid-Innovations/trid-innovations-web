@@ -7,7 +7,9 @@ export const fetchServices = async () => {
     groq`
   *[_type=="service"]
   `,
-    { next: { revalidate } }
+    { next: { revalidate } },
+
+    { cache: "no-store" }
   );
   return services;
 };

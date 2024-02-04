@@ -11,7 +11,7 @@ function FooterColumn({ column }: Props) {
   const { language } = useContext(LanguageContext);
   return (
     <div className="flex flex-col md:gap-3">
-      <div className="text-lg lg:text-xl xl:text-2xl font-bold tracking-wider">
+      <div className="text-lg lg:text-xl xl:text-2xl font-bold tracking-wider underline">
         {column.title[language.code]}
       </div>
       <div className="flex flex-col">

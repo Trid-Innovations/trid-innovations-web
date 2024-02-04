@@ -5,7 +5,8 @@ export const fetchPageInfo = async () => {
   const pageInfo: PageInfo = await sanityClient.fetch(
     groq` 
   *[_type=="homePage"][0]`,
-    { next: { revalidate } }
+    { next: { revalidate } },
+    { cache: "no-store" }
   );
   return pageInfo;
 };
