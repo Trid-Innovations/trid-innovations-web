@@ -27,7 +27,7 @@ function Home({ data }: Props) {
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
       >
-        <h4 className="lg:text-6xl md:tracking-[10px] tracking-[4px]  md:text-2xl text-xs font-semibold mb-5">
+        <h4 className="lg:text-6xl md:tracking-[10px] tracking-[4px]  md:text-2xl text-xs font-semibold mb-5 text-left">
           {data.title[language.code]}
         </h4>
         <p className="md:text-base  text-sm text-justify">

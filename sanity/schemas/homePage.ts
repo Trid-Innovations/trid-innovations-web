@@ -17,6 +17,16 @@ export default defineType({
       type: "localeText",
     },
     {
+      name: "introduction",
+      title: "Introduction",
+      type: "localeText",
+    },
+    {
+      name: "heroButtonLabel",
+      title: "Hero Button Label",
+      type: "localeString",
+    },
+    {
       name: "heroImage",
       title: "Image",
       type: "image",

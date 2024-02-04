@@ -17,16 +17,13 @@ function FooterColumn({ column }: Props) {
       <div className="flex flex-col">
         {column.links.map((link, index) =>
           !link.url ? (
-            <div
-              className="text-xs lg:text-md xl:text-lg font-bold"
-              key={index}
-            >
+            <div className="text-xs lg:text-md xl:text-lg" key={index}>
               {link.title[language.code]}
             </div>
           ) : (
             <Link
               href={`/${link.url}`}
-              className="text-xs lg:text-md xl:text-lg font-bold hover:text-primary-trid"
+              className="text-xs lg:text-md xl:text-lg hover:text-primary-trid"
               key={index}
             >
               {link.title[language.code]}

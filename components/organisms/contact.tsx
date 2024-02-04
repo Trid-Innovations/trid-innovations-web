@@ -43,7 +43,7 @@ function ContactForm({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-[70vh] flex items-center  flex-wrap text-center md:text-left max-w-7xl gap-10 m-auto p-5 justify-between"
+      className="h-screen flex items-center  flex-wrap text-center md:text-left max-w-7xl gap-10 m-auto p-5 justify-between"
     >
       <div className="hidden w-full md:w-1/2 lg:w-[500px] md:flex flex-col text-left leading-10 gap-4">
         <p className="text-xs md:text-xl lg:text-xl">
