@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Controller } from "react-hook-form";
 
 interface IInput {
@@ -8,6 +8,7 @@ interface IInput {
   rules?: any;
   defaultValue?: string;
   label: string;
+  renderer?: any;
 }
 const Input = ({
   control,
@@ -16,6 +17,7 @@ const Input = ({
   rules,
   defaultValue,
   label,
+  renderer,
 }: IInput) => {
   return (
     <Controller
@@ -28,18 +30,23 @@ const Input = ({
         fieldState: { error },
       }) => (
         <div className="flex w-full flex-col gap-1 relative">
-          <input
-            style={{ borderColor: error ? "red" : "" }}
-            className={`w-full trid__input leading-6 ${
-              error ? "border !border-tertiary-mars" : ""
-            } m-0`}
-            type="text"
-            value={value?.trim()}
-            onChange={onChange}
-            onBlur={onBlur}
-            placeholder={label.toUpperCase()}
-          />
-
+          <label>{label}</label>
+          <Fragment>
+            {renderer ? (
+              renderer(onChange, value)
+            ) : (
+              <input
+                style={{ borderColor: error ? "red" : "" }}
+                className={`w-full trid__input leading-6 ${
+                  error ? "border !border-tertiary-mars" : ""
+                } m-0`}
+                type="text"
+                value={value?.trim()}
+                onChange={onChange}
+                onBlur={onBlur}
+              />
+            )}
+          </Fragment>
           {!!error && (
             <p
               className="text-tertiary-mars absolute -bottom-4"
