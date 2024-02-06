@@ -1,3 +1,4 @@
+"use client";
 import nodemailer from "nodemailer";
 import Imap from "imap";
 import { simpleParser } from "mailparser";
@@ -18,7 +19,7 @@ const smtpPort: number = 587;
 const imapServer: string = "imap.titan.email";
 const imapPort: number = 993;
 
-async function sendEmailAndAppend({
+export async function sendEmailAndAppend({
   senderEmail,
   senderPassword,
   recipientEmail,

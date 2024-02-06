@@ -6,7 +6,13 @@ export const fetchContactData = async () => {
     groq` 
   *[_type=="contact"][0] {
     ...,
-    inputs[]->
+    inputs[]->{
+      ...,
+        validations[]->{
+          ...,
+          
+        }
+    }
    
   }`,
     { next: { revalidate } },

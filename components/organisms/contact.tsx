@@ -2,9 +2,10 @@
 import { useContext, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../atoms/input";
-import { ContactData } from "@/types/typings";
+import { ContactData, Validation } from "@/types/typings";
 import { LanguageContext } from "@/context/languageContext";
 import { motion } from "framer-motion";
+import { mailSenderPayload, sendEmailAndAppend } from "@/utils/sendEmail";
 type Props = {
   data: ContactData;
 };
@@ -34,7 +35,16 @@ function ContactForm({ data }: Props) {
   // const nameFilled = watch("name");
   // const nameFilled = watch("name");
   const apply: SubmitHandler<ContactInput> = async (data) => {
-    console.log("here");
+    console.log("here", data);
+    const payload: mailSenderPayload = {
+      senderEmail: "patrice.diouf@tridinnovations.com",
+      senderPassword: "j4JAT3j*yXzrK2!s",
+      recipientEmail: "trispa88@gmail.com",
+      subject: "Subject test",
+      body: "test message",
+    };
+    // await sendEmailAndAppend(payload);
+    console.log({ data });
   };
 
   console.log({ data });
@@ -67,7 +77,9 @@ function ContactForm({ data }: Props) {
                     name={input.name}
                     control={control}
                     label={input.label[language.code]}
-                    rules={{ ...input.validations }}
+                    rules={{
+                      required: "test",
+                    }}
                   />
                 ) : (
                   <Input
@@ -92,7 +104,7 @@ function ContactForm({ data }: Props) {
             <div className="place-self-end items-center justify-end p-1">
               <button
                 disabled={!isValid}
-                onClick={handleSubmit(apply)}
+                onClick={() => handleSubmit(apply)}
                 className="trid__button trid_text--rainier font-normal w-32"
               >
                 {data.buttonLabel[language.code]}
