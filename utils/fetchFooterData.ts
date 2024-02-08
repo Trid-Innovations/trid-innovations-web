@@ -19,9 +19,7 @@ export const fetchFooterData = async () => {
           }
         }
       }
-      `,
-    { next: { revalidate } },
-    { cache: "no-store" }
+      `
   );
   return footerData;
 };

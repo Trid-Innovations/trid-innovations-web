@@ -10,9 +10,7 @@ export const fetchHeaderData = async () => {
     menu[]->
    
   }
-  `,
-    { next: { revalidate } },
-    { cache: "no-store" }
+  `
   );
   return headerData;
 };

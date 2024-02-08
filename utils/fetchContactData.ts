@@ -14,9 +14,7 @@ export const fetchContactData = async () => {
         }
     }
    
-  }`,
-    { next: { revalidate } },
-    { cache: "no-store" }
+  }`
   );
   return contactData;
 };
