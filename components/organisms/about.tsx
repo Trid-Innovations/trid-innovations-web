@@ -19,8 +19,8 @@ function About({ data }: Props) {
         {data.title[language.code]}
       </h3>
       <div className="flex flex-col gap-5">
-        {data.items.map((item) => (
-          <div className=" flex gap-2">
+        {data.items.map((item, index) => (
+          <div key={index} className=" flex gap-2">
             <div className="flex flex-col gap-4 ">
               <div className="font-bold text-primary-trid text-2xl">
                 {item.title[language.code]}
