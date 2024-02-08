@@ -42,6 +42,12 @@ export interface Member extends sanityBody {
   title: localeString;
   name: string;
 }
+export interface AboutItem extends sanityBody {
+  _type: "aboutItem";
+  picture: Image;
+  title: localeString;
+  description: localeText;
+}
 export interface Input extends sanityBody {
   _type: "inputField";
   label: localeString;
@@ -53,6 +59,7 @@ export interface AboutData extends sanityBody {
   title: localeString;
   description: localeText;
   members: Member[];
+  items: AboutItem[];
 }
 export interface Validation extends sanityBody {
   _type: "inputValidation";
@@ -109,6 +116,7 @@ export interface FooterData extends SanityBody {
 
 export interface CompanyData extends SanityBody {
   _type: "company";
-  description: localeString;
+  description: localeText;
+  title: localeString;
   image: Image;
 }

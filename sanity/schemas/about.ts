@@ -22,5 +22,11 @@ export default defineType({
       type: "array",
       of: [{ type: "reference", to: { type: "member" } }],
     },
+    {
+      name: "items",
+      title: "items",
+      type: "array",
+      of: [{ type: "aboutItem" }],
+    },
   ],
 });

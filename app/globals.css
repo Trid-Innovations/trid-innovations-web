@@ -12,11 +12,16 @@
   .trid__button--outline {
     @apply trid__button bg-transparent border border-primary-trid text-primary-trid hover:bg-primary-trid hover:text-white;
   }
-
   .trid__input {
     @apply border rounded-sm py-2.5 pr-3 pl-4 outline-none box-border hover:border-primary-trid hover:border-2 h-[44px] focus:border-primary-trid focus:border disabled:opacity-30;
   }
   .trid__input--error {
     @apply border-tertiary-mars rounded-sm outline-none py-2.5 pr-3 pl-4 border-2 h-[44px] box-border;
+  }
+  .trid__page--section {
+    @apply pt-20 lg:h-screen relative flex flex-col text-center md:text-left  max-w-7xl p-5 justify-center space-y-20 mx-auto items-center;
+  }
+  .trid__centering {
+    @apply flex items-center justify-center;
   }
 }

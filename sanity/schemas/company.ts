@@ -11,6 +11,11 @@ export default defineType({
       type: "localeText",
     },
     {
+      name: "title",
+      title: "Title",
+      type: "localeString",
+    },
+    {
       name: "image",
       title: "Image",
       description: "Company image",

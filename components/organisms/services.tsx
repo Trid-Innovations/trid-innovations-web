@@ -23,8 +23,11 @@ function Services({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex flex-col  md:flex-row max-w-7xl p-5 justify-evenly mx-auto items-center"
+      className="trid__page--section"
     >
+      <h3 className=" uppercase tracking-[10px] text-gray-500 text-lg md:text-xl lg:text-2xl">
+        Services
+      </h3>
       <motion.div
         initial={{
           x: -200,
@@ -37,10 +40,10 @@ function Services({ data }: Props) {
       >
         {data?.map((service, index) => (
           <div key={index} className="flex flex-col gap-2">
-            <div className="text-primary-trid  tracking-[5px] text-2xl ">
+            <div className="font-bold text-primary-trid text-2xl ">
               {service.title[language.code]}
             </div>
-            <div className="text-xs lg:text-base">
+            <div className="text-xs md:text-base">
               {service.description[language.code]}
             </div>
           </div>
@@ -56,36 +59,7 @@ function Services({ data }: Props) {
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         className="z-0 hidden md:flex"
-      >
-        <div className="relative flex justify-center items-center h-96 w-96">
-          {data.map((service, index) => (
-            <div
-              key={index}
-              className="absolute transform "
-              style={{ transform: calculateStyle(index, data.length) }}
-            >
-              <div className="flex-col justify-start  flex h-16 w-16 object-cover  overflow-visible">
-                <Image
-                  src={urlFor(service.image).url()}
-                  alt={service.title[language.code]}
-                  fill
-                  className="h-6 w-6 rounded-full z-0"
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="font-bold text-xs z-10 absolute -top-10 w-full">
-                {service.title[language.code]}
-              </div>
-            </div>
-          ))}
-
-          {/* <BackgroundCircles /> */}
-          <div className="absolute text-center">
-            <p className="font-bold">Our services</p>
-          </div>
-        </div>
-      </motion.div>
+      ></motion.div>
     </motion.div>
   );
 }

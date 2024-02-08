@@ -11,14 +11,14 @@ async function Footer() {
   const data = await fetchFooterData();
 
   return (
-    <div className="h-48 bg-white relative px-5 pt-4 ">
+    <div className="bg-white relative px-5 pt-4  ">
       <div className="h-2 w-full bg-primary-trid absolute top-0 left-0" />
-      <div className="flex flex-wrap  overflow-y-scroll h-full max-w-7xl mx-auto md:gap-3 justify-between">
+      <div className="flex flex-wrap  overflow-y-scroll h-full max-w-7xl mx-auto gap-3  sm:justify-center md:justify-between">
         {data.columns.map((column, index) => (
           <FooterColumn key={index} column={{ ...column }} />
         ))}
       </div>
-      <div className="flex flex-col max-w-7xl mx-auto mb-10">
+      <div className="flex flex-col max-w-7xl mx-auto mt-10">
         {data.socials.map((social, index) => (
           <Link
             key={index}

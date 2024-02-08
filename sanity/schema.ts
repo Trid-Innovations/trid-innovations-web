@@ -16,6 +16,7 @@ import inputField from "./schemas/inputField";
 import inputValidation from "./schemas/inputValidation";
 import company from "./schemas/company";
 import contact from "./schemas/contact";
+import aboutItem from "./schemas/aboutItem";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -36,5 +37,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     inputField,
     inputValidation,
     contact,
+    aboutItem,
   ],
 };

@@ -10,6 +10,7 @@ import Company from "../organisms/company";
 import { fetchCompanyData } from "@/utils/fetchCompanyData";
 import { fetchContactData } from "@/utils/fetchContactData";
 import Footer from "../organisms/footer";
+import Hero from "../organisms/hero";
 
 async function Trid() {
   const pageInfo = await fetchPageInfo();
@@ -19,22 +20,23 @@ async function Trid() {
   const contactData = await fetchContactData();
   return (
     <Fragment>
-      <section id="home" className="snap-center w-full  bg-secondary-trid">
+      <section id="home" className="lg:snap-center w-full  bg-secondary-trid">
         <Home data={pageInfo} />
       </section>
-      <section id="about" className="snap-end bg-white">
+      <section id="hero" className="lg:snap-end bg-white">
+        <Hero data={pageInfo} />
+      </section>
+      <section id="about" className="lg:snap-end bg-secondary-trid">
         <About data={aboutData} />
       </section>
-      <section id="about" className="snap-center bg-white">
-        <Company data={companyData} />
-      </section>
-      <section id="services" className="snap-end bg-white">
+
+      <section id="services" className="lg:snap-end bg-white">
         <Services data={servicesData} />
       </section>
-      <section id="contact" className="snap-start  bg-primary-trid/10">
+      <section id="contact" className="lg:snap-start  bg-primary-trid/10">
         <Contact data={contactData} />
       </section>
-      <section id="footer" className="snap-center ">
+      <section id="footer" className="lg:snap-end ">
         <Footer />
       </section>
     </Fragment>
