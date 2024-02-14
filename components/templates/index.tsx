@@ -6,8 +6,6 @@ import Home from "../organisms/home";
 import { fetchPageInfo } from "@/client/homepageInfo";
 import { fetchAboutData } from "@/client/fetchAboutData";
 import { fetchServices } from "@/client/fetchServices";
-import Company from "../organisms/company";
-import { fetchCompanyData } from "@/client/fetchCompanyData";
 import { fetchContactData } from "@/client/fetchContactData";
 import Footer from "../organisms/footer";
 import Hero from "../organisms/hero";
@@ -16,7 +14,6 @@ async function Trid() {
   const pageInfo = await fetchPageInfo();
   const aboutData = await fetchAboutData();
   const servicesData = await fetchServices();
-  const companyData = await fetchCompanyData();
   const contactData = await fetchContactData();
   return (
     <Fragment>
