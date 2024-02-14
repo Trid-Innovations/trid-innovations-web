@@ -1,8 +1,8 @@
 /* eslint no-use-before-define: 0 */
 import { envs } from "../utils/config";
 
-import functions = require("firebase-functions");
-import nodemailer = require("nodemailer");
+import * as functions from "firebase-functions";
+import * as nodemailer from "nodemailer";
 
 exports.sendEmail = functions.https.onCall(async (data: ContactInput) => {
   const { CONTACT_EMAIL_AUTH, CONTACT_EMAIL, CONTACT_JAAFU_AUTH_TRID } = envs;
