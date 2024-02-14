@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import ContactOptions, { Option } from "../molecules/contactOptions";
 
 import { getFunctions, httpsCallable } from "firebase/functions";
+import { functions } from "@/firebase";
 
 type Props = {
   data: ContactData;
@@ -34,11 +35,10 @@ function ContactForm({ data }: Props) {
   } = useForm<ContactInput>({
     values: initialState,
   });
-
   const apply: SubmitHandler<ContactInput> = async (data) => {
-    const functions = getFunctions();
+    console.log({ data });
     const sendEmail = httpsCallable(functions, "sendEmail");
-
+    debugger;
     try {
       sendEmail({ ...data }).then((result) => {
         const data = result.data;
@@ -140,7 +140,10 @@ function ContactForm({ data }: Props) {
           </p>
         </div>
         <div className="w-full py-5 bg-white p-5 rounded-lg ">
-          <form className="flex gap-2 flex-col  w-full">
+          <form
+            className="flex gap-2 flex-col  w-full"
+            onSubmit={handleSubmit(apply)}
+          >
             <div className="flex flex-col gap-2 md:gap-5">
               {data.inputs.map((input) =>
                 input.name !== "message" ? (
@@ -176,8 +179,8 @@ function ContactForm({ data }: Props) {
 
             <div className="place-self-end items-center justify-end p-1">
               <button
+                type="submit"
                 disabled={!isValid}
-                onClick={() => handleSubmit(apply)}
                 className="trid__button trid_text--rainier font-normal w-32"
               >
                 {data.buttonLabel[language.code]}
