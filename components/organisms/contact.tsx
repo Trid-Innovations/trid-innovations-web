@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 import ContactOptions, { Option } from "../molecules/contactOptions";
 
-import { getFunctions, httpsCallable } from "firebase/functions";
+import { httpsCallable } from "firebase/functions";
 import { functions } from "@/firebase";
 
 type Props = {
@@ -37,16 +37,20 @@ function ContactForm({ data }: Props) {
   });
   const apply: SubmitHandler<ContactInput> = async (data) => {
     console.log({ data });
-    const sendEmail = httpsCallable(functions, "sendEmail");
-    debugger;
-    try {
-      sendEmail({ ...data }).then((result) => {
-        const data = result.data;
-        console.log({ data });
+    fetch("https://us-central1-trid-innovations.cloudfunctions.net/sendEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...data }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error sending message:", error);
       });
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
   };
 
   const contactOptions: Option[] = [
