@@ -17,7 +17,7 @@ function MobileMenu({ menu }: Props) {
     closed: { height: 0 },
   };
   return (
-    <div className="flex md:hidden flex-col">
+    <div className="flex md:hidden flex-col bg-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

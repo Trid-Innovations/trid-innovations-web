@@ -16,7 +16,7 @@ function Home({ data }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl lg:py-28 p-5 lg:justify-evenly mx-auto items-center"
+      className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl  p-5 lg:justify-evenly mx-auto items-center"
     >
       <motion.div
         initial={{
@@ -67,21 +67,7 @@ function Home({ data }: Props) {
         src={urlFor(data.heroImage).url()}
         className="-mb-20 md:mb-0 flex-shrink-0 w-48 h-auto object-cover md:w-96 md:h-auto xl:w-[500px] xl:h-[600px]"
       />
-      <Link
-        href="#hero"
-        className="hidden lg:flex m-5 w-18 h-18 rounded-full bg-primary-trid items-center justify-center absolute bottom-0 mx-auto"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-8 h-8 text-white font-extrabold"
-        >
-          <path d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
-      </Link>
+
       <Link
         href={"#contact"}
         className="gap-4 md:hidden w-[90%] my-2 absolute bottom-20  flex  items-center bg-gradient-to-r capitalize font-bold from-primary-trid to-[#CFD02B] p-3 text-center  rounded-lg text-white"

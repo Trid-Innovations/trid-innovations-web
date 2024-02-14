@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 function FooterBottom({ data }: { data: FooterData }) {
   const { language } = useContext(LanguageContext);
   return (
-    <div className="flex md:justify-between flex-wrap text-xs  mb-10 gap-3">
+    <div className="flex md:justify-between flex-wrap text-xs  mb-5 gap-3">
       <div>{data.copyRights[language.code]}</div>
       <div className="flex flex-wrap uppercase gap-2">
         <div>{data.termsOfUse[language.code]}</div>

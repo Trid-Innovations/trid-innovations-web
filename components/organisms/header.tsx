@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "../molecules/menu";
 import { HeaderData } from "@/types/typings";
 import Logo from "../atoms/logo";
-import { fetchHeaderData } from "@/utils/fetchHeaderData";
+import { fetchHeaderData } from "@/client/fetchHeaderData";
 import MobileMenu from "../molecules/mobileMenu";
 
 async function Header() {

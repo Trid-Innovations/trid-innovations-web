@@ -1,3 +1,4 @@
+"use client";
 import React, { Fragment } from "react";
 import { Controller } from "react-hook-form";
 
@@ -8,16 +9,17 @@ interface IInput {
   rules?: any;
   defaultValue?: string;
   label: string;
+  required?: boolean;
   renderer?: any;
 }
 const Input = ({
   control,
   name,
-  placeholder,
   rules,
   defaultValue,
   label,
   renderer,
+  required,
 }: IInput) => {
   return (
     <Controller
@@ -30,7 +32,7 @@ const Input = ({
         fieldState: { error },
       }) => (
         <div className="flex w-full flex-col gap-1 relative">
-          <label>{label}</label>
+          <label>{required ? `${label}*` : label}</label>
           <Fragment>
             {renderer ? (
               renderer(onChange, value)
