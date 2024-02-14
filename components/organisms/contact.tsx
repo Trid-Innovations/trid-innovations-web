@@ -37,10 +37,10 @@ function ContactForm({ data }: Props) {
 
   const apply: SubmitHandler<ContactInput> = async (data) => {
     const functions = getFunctions();
-    const addMessage = httpsCallable(functions, "addMessage");
+    const sendEmail = httpsCallable(functions, "sendEmail");
 
     try {
-      addMessage({ ...data }).then((result) => {
+      sendEmail({ ...data }).then((result) => {
         const data = result.data;
         console.log({ data });
       });
