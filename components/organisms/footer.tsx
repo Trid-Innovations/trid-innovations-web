@@ -18,7 +18,7 @@ async function Footer() {
           <FooterColumn key={index} column={{ ...column }} />
         ))}
       </div> */}
-      <div className="flex flex-col max-w-7xl mt-2 mx-auto ">
+      <div className="flex flex-col max-w-7xl mt-2 mx-auto px-10">
         {data.socials.map((social, index) => (
           <Link
             key={index}

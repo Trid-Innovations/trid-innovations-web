@@ -6,6 +6,9 @@
   .trid__button {
     @apply bg-primary-trid text-white py-2.5 px-4 rounded border-primary-trid;
   }
+  .trid__button:disabled {
+    @apply opacity-30;
+  }
   .trid__button--ghost {
     @apply trid__button bg-transparent border-0 text-primary-trid;
   }

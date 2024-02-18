@@ -43,7 +43,7 @@ const Input = ({
                   error ? "border !border-tertiary-mars" : ""
                 } m-0`}
                 type="text"
-                value={value?.trim()}
+                value={value}
                 onChange={onChange}
                 onBlur={onBlur}
               />
