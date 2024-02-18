@@ -2,11 +2,12 @@
 import { LanguageContext } from "@/context/languageContext";
 import { FooterData } from "@/types/typings";
 import React, { useContext } from "react";
-
+import { version } from "../../package.json";
 function FooterBottom({ data }: { data: FooterData }) {
   const { language } = useContext(LanguageContext);
   return (
-    <div className="flex md:justify-between flex-wrap text-xs  mb-5 gap-3">
+    <div className="flex items-center  md:justify-between flex-wrap text-xs  mb-5 gap-3">
+      <div>{version}</div>
       <div>{data.copyRights[language.code]}</div>
       <div className="flex flex-wrap uppercase gap-2">
         <div>{data.termsOfUse[language.code]}</div>
