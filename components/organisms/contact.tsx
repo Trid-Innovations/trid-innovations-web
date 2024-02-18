@@ -28,7 +28,7 @@ const initialState: ContactInput = {
 function ContactForm({ data }: Props) {
   const { language } = useContext(LanguageContext);
   const { CONTACT_EMAIL_URL } = envs;
-  console.log({ CONTACT_EMAIL_URL });
+  console.log({ CONTACT_EMAIL_URL, data });
   const {
     control,
     handleSubmit,
