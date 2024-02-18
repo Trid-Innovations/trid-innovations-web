@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "release:patch": "npm version patch && git push origin main && git push origin --tags",
+    "release:minor": "npm version minor && git push origin main && git push origin --tags",
+    "release:major": "npm version major && git push origin main && git push origin --tags"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.11",
