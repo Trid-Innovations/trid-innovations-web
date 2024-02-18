@@ -37,10 +37,8 @@ function ContactForm({ data }: Props) {
     values: initialState,
   });
   const apply: SubmitHandler<ContactInput> = async (data) => {
-    const toastId = new Date().getTime(); // Unique ID using current timestamp
-    toast["error"]("Thank you for contacting us", {
-      toastId,
-    });
+    const toastId = new Date().getTime();
+
     const url: any = CONTACT_EMAIL_URL;
     fetch(url, {
       method: "POST",
