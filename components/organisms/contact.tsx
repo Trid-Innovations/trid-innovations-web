@@ -9,6 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ContactOptions, { Option } from "../molecules/contactOptions";
 import { envs } from "@/functions/utils/config";
+import Loader from "../atoms/loader";
 
 type Props = {
   data: ContactData;
@@ -25,10 +26,10 @@ const initialState: ContactInput = {
   phoneNumber: "",
   message: "",
 };
+const { CONTACT_EMAIL_URL, AUTH_DOMAIN } = envs;
 function ContactForm({ data }: Props) {
   const { language } = useContext(LanguageContext);
-  const { CONTACT_EMAIL_URL } = envs;
-  console.log({ CONTACT_EMAIL_URL, data });
+  const [loader, setLoader] = useState<boolean>(false);
   const {
     control,
     handleSubmit,
@@ -39,7 +40,9 @@ function ContactForm({ data }: Props) {
   const apply: SubmitHandler<ContactInput> = async (data) => {
     const toastId = new Date().getTime();
 
+    console.log({ CONTACT_EMAIL_URL, data });
     const url: any = CONTACT_EMAIL_URL;
+    setLoader(true);
     fetch(url, {
       method: "POST",
       headers: {
@@ -49,7 +52,6 @@ function ContactForm({ data }: Props) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         toast["success"](
           language.code === "en"
             ? "Email sent, thank you for contacting us"
@@ -58,6 +60,7 @@ function ContactForm({ data }: Props) {
             toastId,
           }
         );
+        setLoader(false);
       })
       .catch((error) => {
         toast["error"](
@@ -70,6 +73,7 @@ function ContactForm({ data }: Props) {
         );
 
         console.error("Error sending message:", error);
+        setLoader(false);
       });
   };
 
@@ -176,7 +180,8 @@ function ContactForm({ data }: Props) {
               {data.description[language.code]}
             </p>
           </div>
-          <div className="w-full py-5 bg-white p-5 rounded-lg ">
+          <div className="w-full py-5 bg-white p-5 rounded-lg relative ">
+            {loader && <Loader />}
             <form
               className="flex gap-2 flex-col  w-full"
               onSubmit={handleSubmit(apply)}

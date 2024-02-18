@@ -23,7 +23,7 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
     }
     html = `${html}<br> Message: ${message}`;
     const mailOptions = {
-      from: `"From" <${CONTACT_EMAIL}>`,
+      from: `"TRID" <${CONTACT_EMAIL}>`,
       to: CONTACT_EMAIL,
       sender: CONTACT_EMAIL_AUTH,
       replyTo: CONTACT_EMAIL_AUTH,
