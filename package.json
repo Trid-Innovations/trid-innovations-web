@@ -9,7 +9,8 @@
     "lint": "next lint",
     "release:patch": "npm version patch && git push origin main && git push origin --tags",
     "release:minor": "npm version minor && git push origin main && git push origin --tags",
-    "release:major": "npm version major && git push origin main && git push origin --tags"
+    "release:major": "npm version major && git push origin main && git push origin --tags",
+    "deploy_functions": "cd functions &&  pnpm deploy_function"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.11",
