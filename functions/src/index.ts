@@ -21,7 +21,7 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
     if (number) {
       html = `${html}<br> Phone number: ${number}`;
     }
-    html = `${html}<br> Message: ${message}`;
+    html = `${html}<br> Message: <br> ${message}`;
 
     let signature = `<br> <a href="www.tridinnovations.com">TRID Innovations Team</a>`;
     signature = `${signature}<br><br><img src="https://travelwithziggy.com/wp-content/uploads/2022/10/T.W.Z-logotype-1-150x150-1.png"/>`;
