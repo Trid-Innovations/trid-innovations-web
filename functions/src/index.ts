@@ -21,12 +21,16 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
     if (number) {
       html = `${html}<br> Phone number: ${number}`;
     }
-    html = `${html}<br> Message: ${message}`;
+    html = `${html}<br> Message: <br> ${message}`;
+
+    let signature = `<br> <a href="www.tridinnovations.com">TRID Innovations Team</a>`;
+    signature = `${signature}<br><br><img src="https://www.tridinnovations.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fkxlke1zm%2Fproduction%2F23beb074f2f233ccfa7ae9580fe0547ac73130db-498x188.png&w=1200&q=75"/>`;
+    html = `${html}<br><br><br>  ${signature}`;
     const mailOptions = {
-      from: `"From" <${CONTACT_EMAIL}>`,
+      from: `"TRID" <${CONTACT_EMAIL}>`,
       to: CONTACT_EMAIL,
       sender: CONTACT_EMAIL_AUTH,
-      replyTo: CONTACT_EMAIL_AUTH,
+      replyTo: email,
       subject: "Contact from TRID Website",
       html,
     };

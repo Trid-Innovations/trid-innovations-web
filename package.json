@@ -1,6 +1,6 @@
 {
   "name": "trid-innovations-web",
-  "version": "0.2.0",
+  "version": "0.2.6",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,8 @@
     "lint": "next lint",
     "release:patch": "npm version patch && git push origin main && git push origin --tags",
     "release:minor": "npm version minor && git push origin main && git push origin --tags",
-    "release:major": "npm version major && git push origin main && git push origin --tags"
+    "release:major": "npm version major && git push origin main && git push origin --tags",
+    "deploy_functions": "cd functions &&  pnpm deploy_function"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.11",
@@ -31,6 +32,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
+    "react-loader-spinner": "^6.1.6",
     "react-toastify": "^10.0.4",
     "sanity": "^3.28.0",
     "styled-components": "~5.2.3"
