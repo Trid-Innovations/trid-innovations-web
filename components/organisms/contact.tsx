@@ -2,7 +2,7 @@
 import { Fragment, useContext, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../atoms/input";
-import { ContactData } from "@/types/typings";
+import { ContactData, Validation } from "@/types/typings";
 import { LanguageContext } from "@/context/languageContext";
 import { motion } from "framer-motion";
 import { toast, ToastContainer } from "react-toastify";
@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ContactOptions, { Option } from "../molecules/contactOptions";
 import { envs } from "@/functions/utils/config";
 import Loader from "../atoms/loader";
+import { convertValidationsToRules } from "@/functions/utils";
 
 type Props = {
   data: ContactData;
@@ -26,7 +27,7 @@ const initialState: ContactInput = {
   phoneNumber: "",
   message: "",
 };
-const { CONTACT_EMAIL_URL, AUTH_DOMAIN } = envs;
+const { CONTACT_EMAIL_URL } = envs;
 function ContactForm({ data }: Props) {
   const { language } = useContext(LanguageContext);
   const [loader, setLoader] = useState<boolean>(false);
@@ -77,75 +78,6 @@ function ContactForm({ data }: Props) {
       });
   };
 
-  const contactOptions: Option[] = [
-    {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="sm:w-6 sm:h-6 w-4 h-4 text-[#E5B25A]"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-          />
-        </svg>
-      ),
-      label: "Mail",
-      value: "contact@tridinnovations.com",
-    },
-    {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="sm:w-6 sm:h-6 w-4 h-4 text-[#CFD02B]"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-          />
-        </svg>
-      ),
-      label: language.code === "en" ? "Phone Number" : "Téléphone",
-      value: "+1 (581) 980 9150",
-    },
-    {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="sm:w-6 sm:h-6 w-4 h-4 text-[#5DAD78]"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-          />
-        </svg>
-      ),
-      label: "Trid innovations Québec",
-      value: `${
-        language.code === "fr" ? "Ville de Quebec, Quebec" : "Quebec, QC"
-      }`,
-    },
-  ];
   return (
     <Fragment>
       <ToastContainer
@@ -175,7 +107,7 @@ function ContactForm({ data }: Props) {
             <label className="text-primary-trid font-bold">
               TRID Innovations
             </label>
-            <ContactOptions options={contactOptions} />
+            <ContactOptions />
             <p className="text-xs md:text-base text-justify my-10">
               {data.description[language.code]}
             </p>
@@ -194,9 +126,10 @@ function ContactForm({ data }: Props) {
                       name={input.name}
                       control={control}
                       label={input.label[language.code]}
-                      rules={{
-                        required: "test",
-                      }}
+                      rules={convertValidationsToRules(
+                        input.validations,
+                        language.code
+                      )}
                     />
                   ) : (
                     <Input
@@ -204,7 +137,10 @@ function ContactForm({ data }: Props) {
                       name={input.name}
                       control={control}
                       label={input.label[language.code]}
-                      rules={{ ...input.validations }}
+                      rules={convertValidationsToRules(
+                        input.validations,
+                        language.code
+                      )}
                       renderer={(onChange: any, value: string) => (
                         <textarea
                           value={value}
@@ -222,7 +158,6 @@ function ContactForm({ data }: Props) {
               <div className="place-self-end items-center justify-end p-1">
                 <button
                   type="submit"
-                  disabled={!isValid}
                   className="trid__button trid_text--rainier font-normal w-32 "
                 >
                   {data.buttonLabel[language.code]}
