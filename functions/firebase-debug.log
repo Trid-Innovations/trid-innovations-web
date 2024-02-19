@@ -1,0 +1,25 @@
+[debug] [2024-02-19T02:14:37.054Z] ----------------------------------------------------------------------
+[debug] [2024-02-19T02:14:37.055Z] Command:       /usr/local/bin/firebase /Users/patricediouf/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy --only functions
+[debug] [2024-02-19T02:14:37.056Z] CLI Version:   12.4.0
+[debug] [2024-02-19T02:14:37.056Z] Platform:      darwin
+[debug] [2024-02-19T02:14:37.056Z] Node Version:  v16.16.0
+[debug] [2024-02-19T02:14:37.058Z] Time:          Sun Feb 18 2024 21:14:37 GMT-0500 (Eastern Standard Time)
+[debug] [2024-02-19T02:14:37.058Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-02-19T02:14:37.169Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-02-19T02:14:37.171Z] > authorizing via signed-in user (tridinnovations@gmail.com)
+[debug] [2024-02-19T02:14:37.172Z] [iam] checking project trid-innovations for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-02-19T02:14:37.174Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/trid-innovations:testIamPermissions [none]
+[debug] [2024-02-19T02:14:37.175Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/trid-innovations:testIamPermissions x-goog-quota-user=projects/trid-innovations
+[debug] [2024-02-19T02:14:37.176Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/trid-innovations:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-02-19T02:14:38.500Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/trid-innovations:testIamPermissions 200
+[debug] [2024-02-19T02:14:38.503Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/trid-innovations:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-02-19T02:14:38.503Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/trid-innovations/serviceAccounts/trid-innovations@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-02-19T02:14:38.504Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/trid-innovations/serviceAccounts/trid-innovations@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-02-19T02:14:38.683Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/trid-innovations/serviceAccounts/trid-innovations@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-02-19T02:14:38.684Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/trid-innovations/serviceAccounts/trid-innovations@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'trid-innovations'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint

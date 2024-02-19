@@ -31,11 +31,7 @@ const { CONTACT_EMAIL_URL } = envs;
 function ContactForm({ data }: Props) {
   const { language } = useContext(LanguageContext);
   const [loader, setLoader] = useState<boolean>(false);
-  const {
-    control,
-    handleSubmit,
-    formState: { isValid },
-  } = useForm<ContactInput>({
+  const { control, handleSubmit, reset } = useForm<ContactInput>({
     values: initialState,
   });
   const apply: SubmitHandler<ContactInput> = async (data) => {
@@ -62,6 +58,7 @@ function ContactForm({ data }: Props) {
           }
         );
         setLoader(false);
+        reset();
       })
       .catch((error) => {
         toast["error"](
