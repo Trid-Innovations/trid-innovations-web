@@ -30,7 +30,7 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
       from: `"TRID" <${CONTACT_EMAIL}>`,
       to: CONTACT_EMAIL,
       sender: CONTACT_EMAIL_AUTH,
-      replyTo: CONTACT_EMAIL_AUTH,
+      replyTo: CONTACT_EMAIL,
       subject: "Contact from TRID Website",
       html,
     };
