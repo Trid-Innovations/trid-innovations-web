@@ -26,7 +26,6 @@ async function Trid() {
       <section id="about" className=" bg-secondary-trid">
         <About data={aboutData} />
       </section>
-
       <section id="services" className=" bg-white">
         <Services data={servicesData} />
       </section>
