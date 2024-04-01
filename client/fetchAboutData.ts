@@ -8,7 +8,9 @@ export const fetchAboutData = async () => {
     ...,
     members[]->
    
-  }`
+  }`,
+
+    { revalidate: revalidate }
   );
   return aboutData;
 };

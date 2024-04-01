@@ -5,8 +5,10 @@ import { groq } from "next-sanity";
 export const fetchCompanyData = async () => {
   const companyData: CompanyData = await sanityClient.fetch(
     groq`
-  *[_type=="company"][0]
-  `
+  *[_type=="company"][0],
+  
+  `,
+    { revalidate: revalidate }
   );
   return companyData;
 };
