@@ -10,7 +10,9 @@ export const fetchHeaderData = async () => {
     menu[]->
    
   }
-  `
+  `,
+
+    { revalidate: revalidate }
   );
   return headerData;
 };

@@ -19,7 +19,9 @@ export const fetchFooterData = async () => {
           }
         }
       }
-      `
+      `,
+
+    { revalidate: revalidate }
   );
   return footerData;
 };
