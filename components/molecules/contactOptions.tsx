@@ -71,7 +71,7 @@ function ContactOptions() {
           />
         </svg>
       ),
-      label: "Trid innovations Québec",
+      label: "TRID Innovations Québec",
       value: `${
         language.code === "fr" ? "Ville de Quebec, Quebec" : "Quebec, QC"
       }`,
