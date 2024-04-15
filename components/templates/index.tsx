@@ -9,12 +9,14 @@ import { fetchServices } from "@/client/fetchServices";
 import { fetchContactData } from "@/client/fetchContactData";
 import Footer from "../organisms/footer";
 import Hero from "../organisms/hero";
+import Team from "../organisms/team";
 
 async function Trid() {
   const pageInfo = await fetchPageInfo();
   const aboutData = await fetchAboutData();
   const servicesData = await fetchServices();
   const contactData = await fetchContactData();
+
   return (
     <Fragment>
       <section id="home" className=" w-full  bg-secondary-trid">
@@ -23,9 +25,13 @@ async function Trid() {
       <section id="hero" className=" bg-white">
         <Hero data={pageInfo} />
       </section>
+      <section id="team" className=" bg-white">
+        <Team data={aboutData.members} />
+      </section>
       <section id="about" className=" bg-secondary-trid">
         <About data={aboutData} />
       </section>
+
       <section id="services" className=" bg-white">
         <Services data={servicesData} />
       </section>

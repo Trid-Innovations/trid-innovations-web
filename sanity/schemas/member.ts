@@ -23,5 +23,11 @@ export default defineType({
       description: "The picture of the member",
       type: "image",
     },
+    {
+      type: "array",
+      name: "socials",
+      title: "Socials",
+      of: [{ type: "social" }],
+    },
   ],
 });
