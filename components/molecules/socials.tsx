@@ -8,10 +8,11 @@ type Props = {
 function Socials({ socials }: Props) {
   return (
     <div className="flex gap-2 ">
-      {socials.map((social) => {
+      {socials.map((social, index) => {
         if (social.title === "linkedin") {
           return (
             <Link
+              key={index}
               target="_blank"
               href={social.url}
               className="cursor-pointer hover:text-primary-trid"

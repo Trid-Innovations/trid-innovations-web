@@ -21,8 +21,8 @@ function Team({ data }: Props) {
         {language.code === "en" ? "The team" : "L'équipe"}
       </h3>
       <div className="flex gap-5 flex-wrap trid__centering">
-        {data.map((member) => (
-          <TeamMember member={member} />
+        {data.map((member, index) => (
+          <TeamMember key={index} member={member} />
         ))}
       </div>
     </motion.div>
