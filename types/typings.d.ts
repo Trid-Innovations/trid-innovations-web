@@ -41,6 +41,7 @@ export interface Member extends sanityBody {
   picture: Image;
   title: localeString;
   name: string;
+  socials: Social[];
 }
 export interface AboutItem extends sanityBody {
   _type: "aboutItem";
@@ -98,11 +99,11 @@ export interface FooterLink extends SanityBody {
   title: localeString;
   url: localeString;
 }
-export interface FooterSocial extends SanityBody {
+export interface Social extends SanityBody {
   _type: "social";
   title: localeString;
   url: string;
-  logo: Image;
+  logo?: Image;
 }
 
 export interface FooterData extends SanityBody {
@@ -111,7 +112,7 @@ export interface FooterData extends SanityBody {
   termsOfUse: localeString;
   privacyPolicy: localeString;
   columns: FooterColumn[];
-  socials: FooterSocial[];
+  socials: Social[];
 }
 
 export interface CompanyData extends SanityBody {
