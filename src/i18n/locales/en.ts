@@ -1,12 +1,14 @@
 export default {
   hero: {
     title: "Technology at the service of business. Not the other way around.",
-    subtitle: "We support the companies the tech industry has often overlooked — the ones for whom technology is not an end in itself, but a lever for making their operations more efficient.",
+    subtitle:
+      "We support the companies the tech industry has often overlooked — the ones for whom technology is not an end in itself, but a lever for making their operations more efficient.",
     cta: "Let's talk about your project",
   },
   services: {
     title: "What we do",
-    subtitle: "We provide comprehensive technology solutions tailored to your business needs, ensuring efficiency and growth.",
+    subtitle:
+      "We provide comprehensive technology solutions tailored to your business needs, ensuring efficiency and growth.",
     learnMore: "Learn More",
     technical: {
       title: "Technical Support & Guidance",
@@ -53,31 +55,37 @@ export default {
     },
     mission: {
       title: "Our Mission",
-      content: "To deliver useful and accessible tech solutions to non-tech businesses — helping them improve their operations, automate what can be automated, and leverage their data for long-term, sustainable growth.",
+      content:
+        "To deliver useful and accessible tech solutions to non-tech businesses — helping them improve their operations, automate what can be automated, and leverage their data for long-term, sustainable growth.",
     },
     vision: {
       title: "Our Vision",
-      content: "To be the trusted technical partner of the businesses that the tech world has too often left behind — by putting technology at the service of their efficiency, not the latest trend.",
+      content:
+        "To be the trusted technical partner of the businesses that the tech world has too often left behind — by putting technology at the service of their efficiency, not the latest trend.",
     },
     approach: {
       title: "Our Approach",
-      content: "We combine industry expertise with cutting-edge technology to deliver solutions that drive real business value. Our methodology ensures transparent communication and measurable results.",
-    }
+      content:
+        "We combine industry expertise with cutting-edge technology to deliver solutions that drive real business value. Our methodology ensures transparent communication and measurable results.",
+    },
   },
   team: {
     title: "Our Team Values",
     values: {
       collaboration: {
         title: "Collaboration",
-        description: "We believe in the power of working together, sharing knowledge, and building strong partnerships with our clients.",
+        description:
+          "We believe in the power of working together, sharing knowledge, and building strong partnerships with our clients.",
       },
       innovation: {
         title: "Innovation",
-        description: "We stay at the forefront of technology while focusing on practical solutions that deliver real value.",
+        description:
+          "We stay at the forefront of technology while focusing on practical solutions that deliver real value.",
       },
       excellence: {
         title: "Technical Excellence",
-        description: "We maintain high standards in our work, ensuring reliable, efficient, and maintainable solutions.",
+        description:
+          "We maintain high standards in our work, ensuring reliable, efficient, and maintainable solutions.",
       },
     },
   },
@@ -92,11 +100,17 @@ export default {
       subject: "Subject",
       message: "Your Message",
       submit: "Send Message",
+      sending: "Sending...",
+    },
+    toast: {
+      success: "Email sent, thank you for contacting us",
+      error: "An error occurred while sending the email.",
     },
   },
   articles: {
     title: "Latest Insights",
-    subtitle: "Discover our latest thoughts on technology, business, and innovation",
+    subtitle:
+      "Discover our latest thoughts on technology, business, and innovation",
     allArticles: "All Articles",
     searchPlaceholder: "Search articles...",
     viewAll: "View All Articles",
@@ -114,41 +128,43 @@ export default {
       newArticle: "New Article",
       editArticle: "Edit Article",
       french: "French",
-      english: "English"
-    }
+      english: "English",
+    },
   },
   nav: {
     home: "Home",
     services: "Services",
     about: "About",
     articles: "Articles",
-    contact: "Contact"
+    contact: "Contact",
   },
   footer: {
-    description: "We deliver useful and accessible tech solutions to non-tech businesses, helping them improve their operations and leverage their data for sustainable growth.",
+    description:
+      "We deliver useful and accessible tech solutions to non-tech businesses, helping them improve their operations and leverage their data for sustainable growth.",
     services: {
       title: "Services",
       technical: "Technical Support",
       integration: "Integration Solutions",
-      custom: "Custom Development"
+      custom: "Custom Development",
     },
     company: {
       title: "Company",
       about: "About Us",
       team: "Our Team",
-      contact: "Contact"
+      contact: "Contact",
     },
     legal: {
       title: "Legal",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
-      cookies: "Cookie Policy"
+      cookies: "Cookie Policy",
     },
-    rights: "All rights reserved."
+    rights: "All rights reserved.",
   },
   cookies: {
     title: "Cookie Preferences",
-    description: "We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.",
+    description:
+      'We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.',
     acceptAll: "Accept All",
     rejectAll: "Reject All",
     customize: "Customize",
@@ -157,15 +173,18 @@ export default {
     cancel: "Cancel",
     necessary: {
       title: "Necessary Cookies",
-      description: "These cookies are required for the website to function and cannot be disabled."
+      description:
+        "These cookies are required for the website to function and cannot be disabled.",
     },
     analytics: {
       title: "Analytics Cookies",
-      description: "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously."
+      description:
+        "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.",
     },
     marketing: {
       title: "Marketing Cookies",
-      description: "These cookies are used to track visitors across websites to display relevant advertisements."
-    }
-  }
+      description:
+        "These cookies are used to track visitors across websites to display relevant advertisements.",
+    },
+  },
 };

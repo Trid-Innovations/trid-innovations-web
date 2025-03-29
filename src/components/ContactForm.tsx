@@ -25,7 +25,7 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ inView }: ContactFormProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [loader, setLoader] = useState<boolean>(false);
   const { control, handleSubmit, reset } = useForm<ContactInput>({
     values: initialState,
@@ -52,26 +52,16 @@ export default function ContactForm({ inView }: ContactFormProps) {
         return text ? JSON.parse(text) : {};
       })
       .then((_data) => {
-        toast["success"](
-          i18n.language === "en"
-            ? "Email sent, thank you for contacting us"
-            : "Email envoyé merci de nous avoir contacté",
-          {
-            toastId,
-          }
-        );
+        toast["success"](t("contact.toast.success"), {
+          toastId,
+        });
         setLoader(false);
         reset();
       })
       .catch((error) => {
-        toast["error"](
-          i18n.language === "en"
-            ? "Error while sending email, please try again latter"
-            : "Une erreur d'est produite veuillez reessayer plutard",
-          {
-            toastId,
-          }
-        );
+        toast["error"](t("contact.toast.error"), {
+          toastId,
+        });
 
         console.error("Error sending message:", error);
         setLoader(false);
@@ -118,9 +108,9 @@ export default function ContactForm({ inView }: ContactFormProps) {
         renderer={(onChange: any, value: string) => (
           <textarea
             value={value}
-            className={`mb-12 flex h-40 rounded-lg border-solid p-4 outline-none outline-0 w-full trid__input leading-6 ${
+            className={`border-trid-gray-light border-2 mb-12 flex h-40 rounded-lg border-solid p-4 outline-none outline-0 w-full trid__input leading-6 ${
               false ? "border !border-tertiary-mars" : ""
-            } m-0`}
+            } m-0 bg-trid-gray-light`}
             onChange={onChange}
           />
         )}
@@ -135,7 +125,7 @@ export default function ContactForm({ inView }: ContactFormProps) {
         {loader ? (
           <div className="flex items-center justify-center">
             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-            {i18n.language === "en" ? "Sending..." : "Envoi en cours..."}
+            {t("contact.form.sending")}
           </div>
         ) : (
           t("contact.form.submit")

@@ -1,12 +1,14 @@
 export default {
   hero: {
     title: "La technologie au service de l'entreprise. Pas l'inverse.",
-    subtitle: "Nous accompagnons les entreprises que l'industrie technologique a souvent négligées : celles pour qui la technologie n'est pas une finalité, mais un levier d'efficacité au service de leurs opérations.",
+    subtitle:
+      "Nous accompagnons les entreprises que l'industrie technologique a souvent négligées : celles pour qui la technologie n'est pas une finalité, mais un levier d'efficacité au service de leurs opérations.",
     cta: "Parlons de votre projet",
   },
   services: {
     title: "Ce que nous faisons",
-    subtitle: "Nous fournissons des solutions technologiques complètes adaptées aux besoins de votre entreprise, garantissant efficacité et croissance.",
+    subtitle:
+      "Nous fournissons des solutions technologiques complètes adaptées aux besoins de votre entreprise, garantissant efficacité et croissance.",
     learnMore: "En savoir plus",
     technical: {
       title: "Soutien technique & accompagnement",
@@ -52,31 +54,37 @@ export default {
     },
     mission: {
       title: "Notre mission",
-      content: "Offrir des solutions technologiques utiles et accessibles aux entreprises non-tech, pour améliorer leurs opérations, automatiser ce qui peut l'être, et valoriser leurs données dans une logique de croissance durable.",
+      content:
+        "Offrir des solutions technologiques utiles et accessibles aux entreprises non-tech, pour améliorer leurs opérations, automatiser ce qui peut l'être, et valoriser leurs données dans une logique de croissance durable.",
     },
     vision: {
       title: "Notre vision",
-      content: "Être le partenaire technique de confiance des entreprises que la tech a trop souvent laissées de côté — en mettant la technologie au service de leur efficacité, pas de la mode.",
+      content:
+        "Être le partenaire technique de confiance des entreprises que la tech a trop souvent laissées de côté — en mettant la technologie au service de leur efficacité, pas de la mode.",
     },
     approach: {
       title: "Notre Approche",
-      content: "Nous combinons expertise sectorielle et technologie de pointe pour fournir des solutions qui génèrent une réelle valeur commerciale. Notre méthodologie assure une communication transparente et des résultats mesurables.",
-    }
+      content:
+        "Nous combinons expertise sectorielle et technologie de pointe pour fournir des solutions qui génèrent une réelle valeur commerciale. Notre méthodologie assure une communication transparente et des résultats mesurables.",
+    },
   },
   team: {
     title: "Nos Valeurs",
     values: {
       collaboration: {
         title: "Collaboration",
-        description: "Nous croyons en la force du travail d'équipe, du partage des connaissances et de la construction de partenariats solides avec nos clients.",
+        description:
+          "Nous croyons en la force du travail d'équipe, du partage des connaissances et de la construction de partenariats solides avec nos clients.",
       },
       innovation: {
         title: "Innovation",
-        description: "Nous restons à la pointe de la technologie tout en nous concentrant sur des solutions pratiques qui apportent une réelle valeur.",
+        description:
+          "Nous restons à la pointe de la technologie tout en nous concentrant sur des solutions pratiques qui apportent une réelle valeur.",
       },
       excellence: {
         title: "Excellence Technique",
-        description: "Nous maintenons des standards élevés dans notre travail, garantissant des solutions fiables, efficaces et maintenables.",
+        description:
+          "Nous maintenons des standards élevés dans notre travail, garantissant des solutions fiables, efficaces et maintenables.",
       },
     },
   },
@@ -91,11 +99,17 @@ export default {
       subject: "Sujet",
       message: "Votre Message",
       submit: "Envoyer",
+      sending: "Envoi en cours...",
+    },
+    toast: {
+      success: "Email envoyé, merci pour votre contact.",
+      error: "Une erreur est survenue lors de l'envoi de l'email.",
     },
   },
   articles: {
     title: "Dernières Réflexions",
-    subtitle: "Découvrez nos dernières réflexions sur la technologie, les affaires et l'innovation",
+    subtitle:
+      "Découvrez nos dernières réflexions sur la technologie, les affaires et l'innovation",
     allArticles: "Tous les Articles",
     searchPlaceholder: "Rechercher des articles...",
     viewAll: "Voir Tous les Articles",
@@ -113,41 +127,43 @@ export default {
       newArticle: "Nouvel Article",
       editArticle: "Modifier l'Article",
       french: "Français",
-      english: "Anglais"
-    }
+      english: "Anglais",
+    },
   },
   nav: {
     home: "Accueil",
     services: "Services",
     about: "À propos",
     articles: "Articles",
-    contact: "Contact"
+    contact: "Contact",
   },
   footer: {
-    description: "Nous offrons des solutions technologiques utiles et accessibles aux entreprises non-tech, les aidant à améliorer leurs opérations et à valoriser leurs données pour une croissance durable.",
+    description:
+      "Nous offrons des solutions technologiques utiles et accessibles aux entreprises non-tech, les aidant à améliorer leurs opérations et à valoriser leurs données pour une croissance durable.",
     services: {
       title: "Services",
       technical: "Support Technique",
       integration: "Solutions d'Intégration",
-      custom: "Développement Sur Mesure"
+      custom: "Développement Sur Mesure",
     },
     company: {
       title: "Entreprise",
       about: "À Propos",
       team: "Notre Équipe",
-      contact: "Contact"
+      contact: "Contact",
     },
     legal: {
       title: "Légal",
       privacy: "Politique de Confidentialité",
       terms: "Conditions d'Utilisation",
-      cookies: "Politique des Cookies"
+      cookies: "Politique des Cookies",
     },
-    rights: "Tous droits réservés."
+    rights: "Tous droits réservés.",
   },
   cookies: {
     title: "Préférences des Cookies",
-    description: "Nous utilisons des cookies pour améliorer votre expérience de navigation, diffuser des publicités ou du contenu personnalisés et analyser notre trafic. En cliquant sur \"Tout accepter\", vous consentez à notre utilisation des cookies.",
+    description:
+      'Nous utilisons des cookies pour améliorer votre expérience de navigation, diffuser des publicités ou du contenu personnalisés et analyser notre trafic. En cliquant sur "Tout accepter", vous consentez à notre utilisation des cookies.',
     acceptAll: "Tout accepter",
     rejectAll: "Tout refuser",
     customize: "Personnaliser",
@@ -156,15 +172,18 @@ export default {
     cancel: "Annuler",
     necessary: {
       title: "Cookies Nécessaires",
-      description: "Ces cookies sont nécessaires au fonctionnement du site web et ne peuvent pas être désactivés."
+      description:
+        "Ces cookies sont nécessaires au fonctionnement du site web et ne peuvent pas être désactivés.",
     },
     analytics: {
       title: "Cookies Analytiques",
-      description: "Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site web en collectant et en rapportant des informations de manière anonyme."
+      description:
+        "Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site web en collectant et en rapportant des informations de manière anonyme.",
     },
     marketing: {
       title: "Cookies Marketing",
-      description: "Ces cookies sont utilisés pour suivre les visiteurs sur les sites web afin d'afficher des publicités pertinentes."
-    }
-  }
+      description:
+        "Ces cookies sont utilisés pour suivre les visiteurs sur les sites web afin d'afficher des publicités pertinentes.",
+    },
+  },
 };
