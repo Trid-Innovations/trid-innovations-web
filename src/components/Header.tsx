@@ -53,11 +53,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           className="flex items-center cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <img
-            src="https://www.tridinnovations.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fkxlke1zm%2Fproduction%2F23beb074f2f233ccfa7ae9580fe0547ac73130db-498x188.png&w=1080&q=75"
-            alt="TRID INNOVATIONS"
-            className="h-12"
-          />
+          <img src="/logo.png" alt="TRID INNOVATIONS" className="h-12" />
         </div>
 
         {/* Desktop Menu */}
