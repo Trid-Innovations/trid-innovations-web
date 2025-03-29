@@ -1,5 +1,4 @@
-
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { Controller } from "react-hook-form";
 
 interface IInput {
@@ -40,7 +39,6 @@ const Input = ({
             {renderer ? (
               renderer(onChange, value)
             ) : (
-          
               <input
                 className={`px-4 py-3 rounded-lg border ${
                   error ? "border-red-500" : "border-gray-300"
@@ -55,9 +53,7 @@ const Input = ({
             )}
           </Fragment>
           {!!error && (
-            <p
-              className="text-red-500 text-sm mt-1"
-            >
+            <p className="text-red-500 text-sm mt-1">
               {error.message || "Error"}
             </p>
           )}

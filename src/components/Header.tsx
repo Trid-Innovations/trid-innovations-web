@@ -1,8 +1,9 @@
-import { Globe, Menu, Home } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Language } from '../types';
-import { useTranslation } from 'react-i18next';
+import { Globe, Home, Menu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Language } from "../types";
+import { trackUserAction } from "../utils/analytics";
 
 interface HeaderProps {
   language: Language;
@@ -21,34 +22,36 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
   const handleNavigation = (item: string) => {
     setIsMenuOpen(false);
-    
-    if (location.pathname !== '/') {
-      navigate('/');
+
+    if (item === "services" || item === "contact") {
+      trackUserAction.service(item);
+    }
+
+    if (location.pathname !== "/") {
+      navigate("/");
       // Wait for navigation to complete before scrolling
       setTimeout(() => {
         const element = document.getElementById(item);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
     } else {
       const element = document.getElementById(item);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
 
-  const menuItems = ['services', 'about', 'articles', 'contact'];
+  const menuItems = ["services", "about", "articles", "contact"];
 
   return (
-    <header 
-      className="fixed w-full bg-white/90 backdrop-blur-sm z-40 top-10"
-    >
+    <header className="fixed w-full bg-white/90 backdrop-blur-sm z-40 top-10">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div
           className="flex items-center cursor-pointer"
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
         >
           <img src="/logo.svg" alt="TRID INNOVATIONS" className="h-12" />
         </div>
@@ -56,11 +59,11 @@ export default function Header({ language, setLanguage }: HeaderProps) {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
             className="text-trid-teal hover:text-trid-lime transition-colors flex items-center capitalize"
           >
             <Home className="w-5 h-5 mr-1" />
-            {t('nav.home')}
+            {t("nav.home")}
           </button>
           {menuItems.map((item) => (
             <button
@@ -72,7 +75,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </button>
           ))}
           <button
-            onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
+            onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
             className="flex items-center text-trid-teal hover:text-trid-lime transition-colors"
           >
             <Globe className="w-5 h-5 mr-1" />
@@ -96,12 +99,12 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             <button
               onClick={() => {
                 setIsMenuOpen(false);
-                navigate('/');
+                navigate("/");
               }}
               className="text-trid-teal hover:text-trid-lime transition-colors flex items-center capitalize"
             >
               <Home className="w-5 h-5 mr-1" />
-              {t('nav.home')}
+              {t("nav.home")}
             </button>
             {menuItems.map((item) => (
               <button
@@ -114,7 +117,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             ))}
             <button
               onClick={() => {
-                setLanguage(language === 'fr' ? 'en' : 'fr');
+                setLanguage(language === "fr" ? "en" : "fr");
                 setIsMenuOpen(false);
               }}
               className="flex items-center text-trid-teal hover:text-trid-lime transition-colors"

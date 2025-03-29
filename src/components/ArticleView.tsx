@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, User } from 'lucide-react';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase';
-import { Article } from '../types';
-import { useTranslation } from 'react-i18next';
-import Header from './Header';
-import Footer from './Footer';
+import { doc, getDoc } from "firebase/firestore";
+import { motion } from "framer-motion";
+import { ArrowLeft, Calendar, User } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
+import { db } from "../firebase";
+import { Article } from "../types";
+import { trackUserAction } from "../utils/analytics";
+import Footer from "./Footer";
+import Header from "./Header";
 
 export default function ArticleView() {
   const { id } = useParams();
@@ -19,11 +20,12 @@ export default function ArticleView() {
   useEffect(() => {
     const fetchArticle = async () => {
       if (id) {
-        const docRef = doc(db, 'articles', id);
+        const docRef = doc(db, "articles", id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const articleData = { ...docSnap.data(), id: docSnap.id } as Article;
           setArticle(articleData);
+          trackUserAction.article(articleData.id, articleData.title);
           i18n.changeLanguage(articleData.language);
         }
         setLoading(false);
@@ -45,9 +47,11 @@ export default function ArticleView() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Article not found</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Article not found
+          </h2>
           <button
-            onClick={() => navigate('/articles')}
+            onClick={() => navigate("/articles")}
             className="text-trid-teal hover:text-trid-teal-dark"
           >
             Return to articles
@@ -68,11 +72,11 @@ export default function ArticleView() {
             transition={{ duration: 0.6 }}
           >
             <button
-              onClick={() => navigate('/articles')}
+              onClick={() => navigate("/articles")}
               className="flex items-center text-trid-teal hover:text-trid-teal-dark mb-8"
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
-              {t('articles.allArticles')}
+              {t("articles.allArticles")}
             </button>
 
             <div className="relative h-[400px] rounded-xl overflow-hidden mb-8">
@@ -83,13 +87,15 @@ export default function ArticleView() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h1 className="text-4xl font-bold text-white mb-4">{article.title}</h1>
+                <h1 className="text-4xl font-bold text-white mb-4">
+                  {article.title}
+                </h1>
                 <div className="flex items-center text-white/80 space-x-4">
                   <div className="flex items-center">
                     <Calendar className="w-4 h-4 mr-2" />
                     <span>
                       {new Date(article.date).toLocaleDateString(
-                        article.language === 'fr' ? 'fr-FR' : 'en-US'
+                        article.language === "fr" ? "fr-FR" : "en-US"
                       )}
                     </span>
                   </div>

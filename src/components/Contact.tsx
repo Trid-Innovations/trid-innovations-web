@@ -1,12 +1,12 @@
-import { Language } from '../types';
-import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Mail, MapPin, Phone } from 'lucide-react';
-import { Fragment } from "react";
-import { useForm, SubmitHandler } from "react-hook-form"
+import { motion } from "framer-motion";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { useInView } from "react-intersection-observer";
 import { toast, ToastContainer } from "react-toastify";
+import { Language } from "../types";
+import { trackUserAction } from "../utils/analytics";
 import Input from "./atoms/Input";
 
 interface ContactProps {
@@ -16,21 +16,21 @@ interface ContactProps {
 const contactInfo = [
   {
     icon: Mail,
-    key: 'email',
-    value: 'contact@tridinnovations.com',
-    color: 'bg-trid-lime/10 text-trid-lime',
+    key: "email",
+    value: "contact@tridinnovations.com",
+    color: "bg-trid-lime/10 text-trid-lime",
   },
   {
     icon: MapPin,
-    key: 'address',
-    value: 'Québec, QC, Canada',
-    color: 'bg-trid-purple/10 text-trid-purple',
+    key: "address",
+    value: "Québec, QC, Canada",
+    color: "bg-trid-purple/10 text-trid-purple",
   },
   {
     icon: Phone,
-    key: 'phone',
-    value: '+1 (418) 555-0123',
-    color: 'bg-trid-teal/10 text-trid-teal',
+    key: "phone",
+    value: "+1 (418) 555-0123",
+    color: "bg-trid-teal/10 text-trid-teal",
   },
 ];
 export type ContactInput = {
@@ -61,7 +61,7 @@ export default function Contact({ language }: ContactProps) {
   useEffect(() => {
     i18n.changeLanguage(language);
   }, [language, i18n]);
-  
+
   const apply: SubmitHandler<ContactInput> = async (data) => {
     const toastId = new Date().getTime();
 
@@ -79,9 +79,10 @@ export default function Contact({ language }: ContactProps) {
         }
         // Try to parse JSON, but don't fail if there's no JSON response
         const text = await response.text();
+        trackUserAction.contact("form");
         return text ? JSON.parse(text) : {};
       })
-      .then((data) => {
+      .then((_data) => {
         toast["success"](
           language === "en"
             ? "Email sent, thank you for contacting us"
@@ -108,7 +109,6 @@ export default function Contact({ language }: ContactProps) {
       });
   };
 
-
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -119,7 +119,7 @@ export default function Contact({ language }: ContactProps) {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold text-trid-teal mb-16 text-center">
-            {t('contact.title')}
+            {t("contact.title")}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto">
@@ -154,55 +154,48 @@ export default function Contact({ language }: ContactProps) {
           >
             <div className="grid  gap-6">
               <Input
-                      key="name"
-                      name= "name"
-                      control={control}
-                      label={t('contact.form.name')}
-                      required={true}
-                    />
+                key="name"
+                name="name"
+                control={control}
+                label={t("contact.form.name")}
+                required={true}
+              />
               <Input
-                      key="email"
-                      name= "email"
-                      control={control}
-                      label={t('contact.form.email')}
-                      required={true}
-                    />
-               <Input
-                      key="subject"
-                      name= "subject"
-                      control={control}
-                      label={t('contact.form.subject')}
-                      required={true}
-                    />
-              
-            {/* 
-              <input
-                type="email"
-                placeholder={t('contact.form.email')}
-                className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-trid-orange/50"
-              /> */}
+                key="email"
+                name="email"
+                control={control}
+                label={t("contact.form.email")}
+                required={true}
+              />
+              <Input
+                key="subject"
+                name="subject"
+                control={control}
+                label={t("contact.form.subject")}
+                required={true}
+              />
             </div>
             <Input
-                      key="message"
-                      name="message"
-                      control={control}
-                      label={t("contact.form.message")}
-                      required={true}
-                      renderer={(onChange: any, value: string) => (
-                        <textarea
-                          value={value}
-                          className={`mb-12 flex h-40  rounded-lg border-solid p-4 outline-none outline-0 w-full trid__input leading-6 ${
-                            false ? "border !border-tertiary-mars" : ""
-                          } m-0`}
-                          onChange={onChange}
-                        />
-                      )}
-                    />
+              key="message"
+              name="message"
+              control={control}
+              label={t("contact.form.message")}
+              required={true}
+              renderer={(onChange: any, value: string) => (
+                <textarea
+                  value={value}
+                  className={`mb-12 flex h-40  rounded-lg border-solid p-4 outline-none outline-0 w-full trid__input leading-6 ${
+                    false ? "border !border-tertiary-mars" : ""
+                  } m-0`}
+                  onChange={onChange}
+                />
+              )}
+            />
             <button
               disabled={loader}
               type="submit"
               className={`w-full px-6 py-3 bg-trid-teal-light text-white rounded-lg hover:bg-trid-teal transition-colors ${
-                loader ? 'opacity-50 cursor-not-allowed' : ''
+                loader ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
               {loader ? (
@@ -211,7 +204,7 @@ export default function Contact({ language }: ContactProps) {
                   {language === "en" ? "Sending..." : "Envoi en cours..."}
                 </div>
               ) : (
-                t('contact.form.submit')
+                t("contact.form.submit")
               )}
             </button>
           </motion.form>

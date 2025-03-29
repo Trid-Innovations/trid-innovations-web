@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Plus, Edit, Trash2, LogOut, ArrowLeft } from 'lucide-react';
-import { Article, Language } from '../../types';
-import { collection, query, orderBy, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../../firebase';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
+import { motion } from "framer-motion";
+import { ArrowLeft, Edit, LogOut, Plus, Trash2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { db } from "../../firebase";
+import { Article } from "../../types";
 
 export default function Dashboard() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -13,15 +20,15 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const q = query(
-        collection(db, 'articles'),
-        orderBy('date', 'desc')
-      );
+      const q = query(collection(db, "articles"), orderBy("date", "desc"));
       const querySnapshot = await getDocs(q);
-      const fetchedArticles = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      } as Article));
+      const fetchedArticles = querySnapshot.docs.map(
+        (doc) =>
+          ({
+            id: doc.id,
+            ...doc.data(),
+          } as Article)
+      );
       setArticles(fetchedArticles);
       setLoading(false);
     };
@@ -30,17 +37,17 @@ export default function Dashboard() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    navigate('/trids');
+    localStorage.removeItem("isAuthenticated");
+    navigate("/trids");
   };
 
   const handleDeleteArticle = async (id: string) => {
-    if (window.confirm('Are you sure you want to delete this article?')) {
+    if (window.confirm("Are you sure you want to delete this article?")) {
       try {
-        await deleteDoc(doc(db, 'articles', id));
-        setArticles(articles.filter(article => article.id !== id));
+        await deleteDoc(doc(db, "articles", id));
+        setArticles(articles.filter((article) => article.id !== id));
       } catch (error) {
-        console.error('Error deleting article:', error);
+        console.error("Error deleting article:", error);
       }
     }
   };
@@ -54,7 +61,9 @@ export default function Dashboard() {
               <Link to="/" className="mr-4">
                 <ArrowLeft className="w-5 h-5 text-gray-600 hover:text-trid-teal" />
               </Link>
-              <h1 className="text-2xl font-bold text-trid-teal">Articles Dashboard</h1>
+              <h1 className="text-2xl font-bold text-trid-teal">
+                Articles Dashboard
+              </h1>
             </div>
             <div className="flex items-center">
               <button
@@ -93,12 +102,16 @@ export default function Dashboard() {
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-lg font-medium text-gray-900">{article.title}</h3>
+                      <h3 className="text-lg font-medium text-gray-900">
+                        {article.title}
+                      </h3>
                       <p className="text-sm text-gray-500">{article.summary}</p>
                       <div className="mt-2 flex items-center text-sm text-gray-500">
                         <span>{article.author}</span>
                         <span className="mx-2">•</span>
-                        <span>{new Date(article.date).toLocaleDateString()}</span>
+                        <span>
+                          {new Date(article.date).toLocaleDateString()}
+                        </span>
                         <span className="mx-2">•</span>
                         <span className="uppercase">{article.language}</span>
                       </div>
