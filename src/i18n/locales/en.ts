@@ -157,6 +157,7 @@ export default {
       about: "About Us",
       team: "Our Team",
       contact: "Contact",
+      articles: "Articles",
     },
     legal: {
       title: "Legal",

@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
+import { useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Language } from "../types";
+
+interface FooterProps {
+  language: Language;
+}
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/company/trid-innovations" },
@@ -10,16 +17,46 @@ const socialLinks = [
 
 const footerLinks = [
   { key: "services", items: ["technical", "integration", "custom"] },
-  { key: "company", items: ["about", "team", "contact"] },
-  { key: "legal", items: ["privacy", "terms", "cookies"] },
+  { key: "company", items: ["about", "articles", "contact"] },
 ];
 
-export default function Footer() {
-  const { t } = useTranslation();
+const isServiceLink = (section: string, item: string) => {
+  return section === "services";
+};
+
+export default function Footer({ language }: FooterProps) {
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const handleNavigation = useCallback(
+    (section: string) => {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.getElementById(section);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        const element = document.getElementById(section);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    },
+    [location.pathname, navigate]
+  );
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language, i18n]);
+
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -28,7 +65,7 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-4 gap-8"
+          className="grid md:grid-cols-3 gap-8"
         >
           {/* Company Info */}
           <div className="space-y-4">
@@ -63,12 +100,21 @@ export default function Footer() {
               <ul className="space-y-2">
                 {section.items.map((item) => (
                   <li key={item}>
-                    <a
-                      href={`#${item}`}
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
-                    >
-                      {t(`footer.${section.key}.${item}`)}
-                    </a>
+                    {isServiceLink(section.key, item) ? (
+                      <Link
+                        to={`/services/${item}`}
+                        className="text-gray-400 hover:text-white transition-colors text-sm"
+                      >
+                        {t(`footer.${section.key}.${item}`)}
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => handleNavigation(item)}
+                        className="text-gray-400 hover:text-white transition-colors text-sm"
+                      >
+                        {t(`footer.${section.key}.${item}`)}
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>
