@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
-import { Facebook, Linkedin, Mail, Twitter } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com/tridinnovations" },
-  { icon: Twitter, href: "https://twitter.com/tridinnovations" },
-  { icon: Linkedin, href: "https://linkedin.com/company/tridinnovations" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/trid-innovations" },
   { icon: Mail, href: "mailto:contact@tridinnovations.com" },
 ];
 
@@ -85,12 +83,12 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-12 pt-8 border-t border-gray-800"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} TRID INNOVATIONS.{" "}
               {t("footer.rights")}
             </p>
-            <div className="flex space-x-8">
+            {/* <div className="flex space-x-8">
               {["privacy", "terms", "cookies"].map((item) => (
                 <a
                   key={item}
@@ -100,7 +98,7 @@ export default function Footer() {
                   {t(`footer.legal.${item}`)}
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
         </motion.div>
       </div>
