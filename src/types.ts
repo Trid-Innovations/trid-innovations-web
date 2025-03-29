@@ -25,11 +25,10 @@ export interface Article {
   id: string;
   title: string;
   summary: string;
-  content: string;
-  image: string;
   author: string;
-  date: string;
-  language: Language;
+  date: number | string;
+  language: string;
+  content: string;
 }
 
-export type Language = 'fr' | 'en';
+export type Language = "fr" | "en";

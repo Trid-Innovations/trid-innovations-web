@@ -23,20 +23,26 @@ export default function Articles() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const q = query(
-        collection(db, "articles"),
-        orderBy("date", "desc"),
-        limit(3)
-      );
-      const querySnapshot = await getDocs(q);
-      const fetchedArticles = querySnapshot.docs.map(
-        (doc) =>
-          ({
+      try {
+        const q = query(
+          collection(db, "articles"),
+          orderBy("date", "desc"),
+          limit(3)
+        );
+        const querySnapshot = await getDocs(q);
+        const fetchedArticles = querySnapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            ...data,
             id: doc.id,
-            ...doc.data(),
-          } as Article)
-      );
-      setArticles(fetchedArticles);
+          } as Article;
+        });
+
+        console.log("Fetched articles with IDs:", fetchedArticles);
+        setArticles(fetchedArticles);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      }
     };
 
     fetchArticles();

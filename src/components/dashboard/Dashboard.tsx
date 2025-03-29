@@ -20,17 +20,24 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const q = query(collection(db, "articles"), orderBy("date", "desc"));
-      const querySnapshot = await getDocs(q);
-      const fetchedArticles = querySnapshot.docs.map(
-        (doc) =>
-          ({
+      try {
+        const q = query(collection(db, "articles"), orderBy("date", "desc"));
+        const querySnapshot = await getDocs(q);
+        const fetchedArticles = querySnapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            ...data,
             id: doc.id,
-            ...doc.data(),
-          } as Article)
-      );
-      setArticles(fetchedArticles);
-      setLoading(false);
+          } as Article;
+        });
+
+        console.log("Fetched articles with IDs:", fetchedArticles);
+        setArticles(fetchedArticles);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+        setLoading(false);
+      }
     };
 
     fetchArticles();
@@ -52,6 +59,7 @@ export default function Dashboard() {
     }
   };
 
+  console.log({ articles });
   return (
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow-sm">
