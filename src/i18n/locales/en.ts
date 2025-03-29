@@ -91,9 +91,9 @@ export default {
   },
   contact: {
     title: "Get in Touch",
-    email: "Email Us",
-    address: "Visit Us",
-    phone: "Call Us",
+    email: "Email",
+    address: "TRID Innovations Québec",
+    phone: "Phone",
     form: {
       name: "Your Name",
       email: "Your Email",
@@ -105,6 +105,11 @@ export default {
     toast: {
       success: "Email sent, thank you for contacting us",
       error: "An error occurred while sending the email.",
+    },
+    info: {
+      title: "TRID Innovations",
+      description:
+        "Have a question or need additional support? We'd love to hear from you. You can reach us by email or use the contact form.",
     },
   },
   articles: {

@@ -13,7 +13,7 @@ const contactInfo = [
     icon: MapPin,
     key: "address",
     value: "Québec, QC, Canada",
-    color: "bg-trid-purple/10 text-trid-purple",
+    color: "bg-trid-accent/10 text-trid-accent",
   },
   {
     icon: Phone,
@@ -31,7 +31,11 @@ export default function ContactInfo({ inView }: ContactInfoProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col justify-center space-y-12">
+    <div className="flex flex-col  space-y-12 bg-white rounded-lg h-full p-5">
+      <h2 className="text-2xl text-trid-teal font-semibold">
+        {t("contact.info.title")}
+      </h2>
+
       {contactInfo.map((info, index) => {
         const Icon = info.icon;
         return (
@@ -46,7 +50,7 @@ export default function ContactInfo({ inView }: ContactInfoProps) {
               <Icon className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-gray-800">
+              <h3 className="text-xs sm:text-base font-bold">
                 {t(`contact.${info.key}`)}
               </h3>
               <p className="text-gray-600">{info.value}</p>
@@ -54,6 +58,9 @@ export default function ContactInfo({ inView }: ContactInfoProps) {
           </motion.div>
         );
       })}
+      <p className="text-xs md:text-base text-justify my-10">
+        {t("contact.info.description")}
+      </p>
     </div>
   );
 }
