@@ -1,26 +1,20 @@
-import { Wrench, Link2, Brain, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { Language } from '../types';
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom';
-
-interface ServicesProps {
-  language: Language;
-}
+import { motion } from "framer-motion";
+import { ArrowRight, Brain, CheckCircle2, Link2, Wrench } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 
 const services = [
-  { icon: 'Wrench', key: 'technical' },
-  { icon: 'Link2', key: 'integration' },
-  { icon: 'Brain', key: 'custom' },
+  { icon: "Wrench", key: "technical" },
+  { icon: "Link2", key: "integration" },
+  { icon: "Brain", key: "custom" },
 ];
 
 const features = [
-  { title: '24/7 Support', icon: CheckCircle2 },
-  { title: 'Agile Methodology', icon: CheckCircle2 },
-  { title: 'Dedicated Team', icon: CheckCircle2 },
-  { title: 'Transparent Pricing', icon: CheckCircle2 },
+  { title: "24/7 Support", icon: CheckCircle2 },
+  { title: "Agile Methodology", icon: CheckCircle2 },
+  { title: "Dedicated Team", icon: CheckCircle2 },
+  { title: "Transparent Pricing", icon: CheckCircle2 },
 ];
 
 const IconComponent = {
@@ -29,21 +23,17 @@ const IconComponent = {
   Brain,
 };
 
-export default function Services({ language }: ServicesProps) {
-  const { t, i18n } = useTranslation();
+export default function Services() {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language, i18n]);
-
   return (
     <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -51,17 +41,18 @@ export default function Services({ language }: ServicesProps) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-trid-teal mb-4">
-            {t('services.title')}
+            {t("services.title")}
           </h2>
           <div className="w-24 h-1 bg-trid-lime mx-auto mb-8" />
           <p className="text-gray-600 max-w-2xl mx-auto">
-            {t('services.subtitle')}
+            {t("services.subtitle")}
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {services.map((service, index) => {
-            const Icon = IconComponent[service.icon as keyof typeof IconComponent];
+            const Icon =
+              IconComponent[service.icon as keyof typeof IconComponent];
             return (
               <motion.div
                 key={service.key}
@@ -77,14 +68,19 @@ export default function Services({ language }: ServicesProps) {
                   {t(`services.${service.key}.title`)}
                 </h3>
                 <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  {t(`services.${service.key}.description`, { returnObjects: true })[0]}
+                  {
+                    t(`services.${service.key}.description`, {
+                      returnObjects: true,
+                    })[0]
+                  }
                 </p>
                 <Link
                   to={`/services/${service.key}`}
                   whileHover={{ x: 5 }}
                   className="flex items-center text-sm sm:text-base text-trid-teal hover:text-trid-lime transition-colors mt-2"
                 >
-                  {t('services.learnMore')} <ArrowRight className="w-4 h-4 ml-2" />
+                  {t("services.learnMore")}{" "}
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </motion.div>
             );
@@ -98,9 +94,14 @@ export default function Services({ language }: ServicesProps) {
           className="mt-20 grid md:grid-cols-4 gap-8"
         >
           {features.map((feature, index) => (
-            <div key={index} className="flex items-center space-x-2 sm:space-x-3">
+            <div
+              key={index}
+              className="flex items-center space-x-2 sm:space-x-3"
+            >
               <feature.icon className="w-5 h-5 text-trid-lime" />
-              <span className="text-sm sm:text-base text-gray-700 font-medium">{feature.title}</span>
+              <span className="text-sm sm:text-base text-gray-700 font-medium">
+                {feature.title}
+              </span>
             </div>
           ))}
         </motion.div>

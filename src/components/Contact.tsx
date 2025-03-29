@@ -1,17 +1,12 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { toast, ToastContainer } from "react-toastify";
-import { Language } from "../types";
 import { trackUserAction } from "../utils/analytics";
 import Input from "./atoms/Input";
-
-interface ContactProps {
-  language: Language;
-}
 
 const contactInfo = [
   {
@@ -47,7 +42,7 @@ const initialState: ContactInput = {
   message: "",
 };
 
-export default function Contact({ language }: ContactProps) {
+export default function Contact() {
   const { t, i18n } = useTranslation();
   const [loader, setLoader] = useState<boolean>(false);
   const { control, handleSubmit, reset } = useForm<ContactInput>({
@@ -57,10 +52,6 @@ export default function Contact({ language }: ContactProps) {
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language, i18n]);
 
   const apply: SubmitHandler<ContactInput> = async (data) => {
     const toastId = new Date().getTime();
@@ -84,7 +75,7 @@ export default function Contact({ language }: ContactProps) {
       })
       .then((_data) => {
         toast["success"](
-          language === "en"
+          i18n.language === "en"
             ? "Email sent, thank you for contacting us"
             : "Email envoyé merci de nous avoir contacté",
           {
@@ -96,7 +87,7 @@ export default function Contact({ language }: ContactProps) {
       })
       .catch((error) => {
         toast["error"](
-          language === "en"
+          i18n.language === "en"
             ? "Error while sending email, please try again latter"
             : "Une erreur d'est produite veuillez reessayer plutard",
           {
@@ -201,7 +192,7 @@ export default function Contact({ language }: ContactProps) {
               {loader ? (
                 <div className="flex items-center justify-center">
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                  {language === "en" ? "Sending..." : "Envoi en cours..."}
+                  {i18n.language === "en" ? "Sending..." : "Envoi en cours..."}
                 </div>
               ) : (
                 t("contact.form.submit")

@@ -1,19 +1,23 @@
-import { motion } from 'framer-motion';
-import { Calendar, User, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { Article, Language } from '../types';
-import { useTranslation } from 'react-i18next';
+import { motion } from "framer-motion";
+import { ArrowRight, Calendar, User } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { Article } from "../types";
 
 interface ArticleCardProps {
   article: Article;
-  language: Language;
   index?: number;
   inView?: boolean;
 }
 
-export default function ArticleCard({ article, language, index = 0, inView = true }: ArticleCardProps) {
-  const { t } = useTranslation();
-console.log(article.id)
+export default function ArticleCard({
+  article,
+  index = 0,
+  inView = true,
+}: ArticleCardProps) {
+  const { t, i18n } = useTranslation();
+  const language = i18n.language;
+  console.log(article.id);
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -31,7 +35,11 @@ console.log(article.id)
       <div className="p-6">
         <div className="flex items-center text-sm text-gray-500 mb-4">
           <Calendar className="w-4 h-4 mr-2" />
-          <span>{new Date(article.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US')}</span>
+          <span>
+            {new Date(article.date).toLocaleDateString(
+              language === "fr" ? "fr-FR" : "en-US"
+            )}
+          </span>
           <span className="mx-2">•</span>
           <User className="w-4 h-4 mr-2" />
           <span>{article.author}</span>
@@ -39,14 +47,12 @@ console.log(article.id)
         <h3 className="text-xl font-semibold text-trid-teal mb-2 group-hover:text-trid-lime transition-colors">
           {article.title}
         </h3>
-        <p className="text-gray-600 mb-4">
-          {article.summary}
-        </p>
+        <p className="text-gray-600 mb-4">{article.summary}</p>
         <Link
           to={`/articles/${article.id}`}
           className="inline-flex items-center text-trid-teal hover:text-trid-lime transition-colors group"
         >
-          {t('articles.readMore')}
+          {t("articles.readMore")}
           <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

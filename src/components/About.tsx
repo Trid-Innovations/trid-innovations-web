@@ -9,14 +9,8 @@ import {
   Target,
   Users,
 } from "lucide-react";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import { Language } from "../types";
-
-interface AboutProps {
-  language: Language;
-}
 
 const stats = [
   {
@@ -63,16 +57,12 @@ const cards = [
   },
 ];
 
-export default function About({ language }: AboutProps) {
-  const { t, i18n } = useTranslation();
+export default function About() {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language, i18n]);
 
   return (
     <section

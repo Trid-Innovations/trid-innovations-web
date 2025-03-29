@@ -1,38 +1,27 @@
-import { Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
-import { Language } from '../types';
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-
-interface FooterProps {
-  language: Language;
-}
+import { motion } from "framer-motion";
+import { Facebook, Linkedin, Mail, Twitter } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useInView } from "react-intersection-observer";
 
 const socialLinks = [
-  { icon: Facebook, href: 'https://facebook.com/tridinnovations' },
-  { icon: Twitter, href: 'https://twitter.com/tridinnovations' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/tridinnovations' },
-  { icon: Mail, href: 'mailto:contact@tridinnovations.com' },
+  { icon: Facebook, href: "https://facebook.com/tridinnovations" },
+  { icon: Twitter, href: "https://twitter.com/tridinnovations" },
+  { icon: Linkedin, href: "https://linkedin.com/company/tridinnovations" },
+  { icon: Mail, href: "mailto:contact@tridinnovations.com" },
 ];
 
 const footerLinks = [
-  { key: 'services', items: ['technical', 'integration', 'custom'] },
-  { key: 'company', items: ['about', 'team', 'contact'] },
-  { key: 'legal', items: ['privacy', 'terms', 'cookies'] },
+  { key: "services", items: ["technical", "integration", "custom"] },
+  { key: "company", items: ["about", "team", "contact"] },
+  { key: "legal", items: ["privacy", "terms", "cookies"] },
 ];
 
-export default function Footer({ language }: FooterProps) {
-  const { t, i18n } = useTranslation();
+export default function Footer() {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language, i18n]);
-
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -46,9 +35,7 @@ export default function Footer({ language }: FooterProps) {
           {/* Company Info */}
           <div className="space-y-4">
             <span>TRID INNOVATIONS</span>
-            <p className="text-gray-400 text-sm">
-              {t('footer.description')}
-            </p>
+            <p className="text-gray-400 text-sm">{t("footer.description")}</p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
@@ -100,10 +87,11 @@ export default function Footer({ language }: FooterProps) {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} TRID INNOVATIONS. {t('footer.rights')}
+              © {new Date().getFullYear()} TRID INNOVATIONS.{" "}
+              {t("footer.rights")}
             </p>
             <div className="flex space-x-8">
-              {['privacy', 'terms', 'cookies'].map((item) => (
+              {["privacy", "terms", "cookies"].map((item) => (
                 <a
                   key={item}
                   href={`#${item}`}

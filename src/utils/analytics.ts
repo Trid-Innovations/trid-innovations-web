@@ -2,7 +2,8 @@ import ReactGA from "react-ga4";
 
 // Initialize GA4
 export const initGA = () => {
-  ReactGA.initialize("G-2FY0Y0QPY2");
+  const ga = import.meta.env.VITE_MEASUREMENT_ID;
+  ReactGA.initialize(ga);
 };
 
 // Page view tracking

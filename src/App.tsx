@@ -45,14 +45,14 @@ const HomePage = ({
   setLanguage: (lang: Language) => void;
 }) => (
   <>
-    <TopHeader language={language} />
+    <TopHeader />
     <Header language={language} setLanguage={setLanguage} />
-    <Hero language={language} />
-    <Services language={language} />
-    <About language={language} />
-    <Articles language={language} />
-    <Contact language={language} />
-    <Footer language={language} />
+    <Hero />
+    <Services />
+    <About />
+    <Articles />
+    <Contact />
+    <Footer />
   </>
 );
 
