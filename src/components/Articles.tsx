@@ -1,21 +1,21 @@
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
-import { db } from "../firebase";
+import { FirebaseService } from "../services/firebase.service";
 import { Article, Language } from "../types";
 import ArticleCard from "./ArticleCard";
 
 interface ArticlesProps {
-  language: Language;
+  language?: Language;
 }
 
-export default function Articles() {
+export default function Articles({ language }: ArticlesProps) {
   const { t } = useTranslation();
   const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -24,29 +24,21 @@ export default function Articles() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const q = query(
-          collection(db, "articles"),
-          orderBy("date", "desc"),
-          limit(3)
-        );
-        const querySnapshot = await getDocs(q);
-        const fetchedArticles = querySnapshot.docs.map((doc) => {
-          const data = doc.data();
-          return {
-            ...data,
-            id: doc.id,
-          } as Article;
+        const fetchedArticles = await FirebaseService.articles.getAll({
+          onlyActive: true,
+          limitCount: 3,
+          language: language,
         });
-
-        console.log("Fetched articles with IDs:", fetchedArticles);
         setArticles(fetchedArticles);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching articles:", error);
+        setLoading(false);
       }
     };
 
     fetchArticles();
-  }, []);
+  }, [language]);
 
   return (
     <section

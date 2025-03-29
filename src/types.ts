@@ -9,26 +9,31 @@ export interface Section {
   };
 }
 
-export interface Service {
-  icon: string;
-  fr: {
-    title: string;
-    description: string[];
-  };
-  en: {
-    title: string;
-    description: string[];
-  };
-}
+// export interface Service {
+//   icon: string;
+//   fr: {
+//     title: string;
+//     description: string[];
+//   };
+//   en: {
+//     title: string;
+//     description: string[];
+//   };
+// }
 
 export interface Article {
   id: string;
   title: string;
   summary: string;
   author: string;
-  date: number | string;
-  language: string;
   content: string;
+  date: string | number;
+  language: string;
+  archived?: boolean;
+  archivedAt?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  restoredAt?: string | null;
 }
 
 export type Language = "fr" | "en";

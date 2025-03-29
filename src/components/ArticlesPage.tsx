@@ -1,9 +1,8 @@
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { db } from "../firebase";
+import { FirebaseService } from "../services/firebase.service";
 import { Article, Language } from "../types";
 import ArticleCard from "./ArticleCard";
 import Footer from "./Footer";
@@ -22,17 +21,10 @@ export default function ArticlesPage({ language }: ArticlesPageProps) {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const q = query(collection(db, "articles"), orderBy("date", "desc"));
-        const querySnapshot = await getDocs(q);
-        const fetchedArticles = querySnapshot.docs.map((doc) => {
-          const data = doc.data();
-          return {
-            ...data,
-            id: doc.id,
-          } as Article;
+        const fetchedArticles = await FirebaseService.articles.getAll({
+          onlyActive: true,
+          language,
         });
-
-        console.log("Fetched articles with IDs:", fetchedArticles);
         setArticles(fetchedArticles);
         setLoading(false);
       } catch (error) {
@@ -45,12 +37,38 @@ export default function ArticlesPage({ language }: ArticlesPageProps) {
     i18n.changeLanguage(language);
   }, [language, i18n]);
 
-  const filteredArticles = articles.filter(
-    (article) =>
-      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.author.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Handle search with debounce
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(async () => {
+      if (searchTerm) {
+        try {
+          setLoading(true);
+          const searchResults = await FirebaseService.articles.search(
+            searchTerm,
+            {
+              onlyActive: true,
+              language,
+            }
+          );
+          setArticles(searchResults);
+        } catch (error) {
+          console.error("Error searching articles:", error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        // If search is cleared, reload all articles
+        const fetchedArticles = await FirebaseService.articles.getAll({
+          onlyActive: true,
+          language,
+        });
+        setArticles(fetchedArticles);
+        setLoading(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm, language]);
 
   return (
     <>
@@ -86,7 +104,7 @@ export default function ArticlesPage({ language }: ArticlesPageProps) {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredArticles.map((article, index) => (
+              {articles.map((article, index) => (
                 <ArticleCard key={index} article={article} index={index} />
               ))}
             </div>
