@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Lock } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Lock } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [email, setEmail] = useState("trids@admins.ino");
-  const [password, setPassword] = useState('admin123');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === 'trids@admins.ino' && password === 'admin123') {
-      localStorage.setItem('isAuthenticated', 'true');
-      navigate('/trids/dashboard');
+    if (email === "trids@admins.ino" && password === "admin123") {
+      localStorage.setItem("isAuthenticated", "true");
+      navigate("/trids/dashboard");
     } else {
-      setError('Invalid credentials');
+      setError("Invalid credentials");
     }
   };
 
