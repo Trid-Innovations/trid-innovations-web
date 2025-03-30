@@ -37,6 +37,7 @@ export default function CookieManager() {
     setPreferences(prefs);
     trackUserAction.cookiePreference(
       Object.entries(prefs)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .filter(([_, value]) => value)
         .map(([key]) => key)
         .join(",")
@@ -62,7 +63,7 @@ export default function CookieManager() {
     return (
       <button
         onClick={() => setShowModal(true)}
-        className="fixed bottom-4 left-4 z-50 p-2 bg-trid-teal text-white rounded-full shadow-lg hover:bg-trid-teal-dark transition-colors"
+        className="fixed bottom-4 left-4 z-50 p-2 text-white rounded-full shadow-lg transition-colors bg-trid-teal hover:bg-trid-teal-dark"
         aria-label="Cookie Settings"
       >
         <Cookie className="w-6 h-6" />
@@ -74,16 +75,16 @@ export default function CookieManager() {
     <>
       {/* Cookie Banner */}
       {showBanner && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-50 border-t border-gray-200 animate-slide-up">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="fixed right-0 bottom-0 left-0 z-50 bg-white border-t border-gray-200 shadow-lg animate-slide-up">
+          <div className="container px-4 py-6 mx-auto">
+            <div className="flex flex-col gap-4 justify-between items-start md:flex-row md:items-center">
               <div className="flex items-center space-x-4">
                 <Cookie className="w-8 h-8 text-trid-teal" />
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">
                     {t("cookies.title")}
                   </h3>
-                  <p className="text-gray-600 max-w-2xl">
+                  <p className="max-w-2xl text-gray-600">
                     {t("cookies.description")}
                   </p>
                 </div>
@@ -91,19 +92,19 @@ export default function CookieManager() {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={rejectNonEssential}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  className="px-4 py-2 text-gray-600 transition-colors hover:text-gray-900"
                 >
                   {t("cookies.rejectAll")}
                 </button>
                 <button
                   onClick={() => setShowModal(true)}
-                  className="px-4 py-2 border border-trid-teal text-trid-teal hover:bg-trid-teal hover:text-white transition-colors rounded-lg"
+                  className="px-4 py-2 rounded-lg border transition-colors border-trid-teal text-trid-teal hover:bg-trid-teal hover:text-white"
                 >
                   {t("cookies.customize")}
                 </button>
                 <button
                   onClick={acceptAll}
-                  className="px-4 py-2 bg-trid-teal text-white hover:bg-trid-teal-dark transition-colors rounded-lg"
+                  className="px-4 py-2 text-white rounded-lg transition-colors bg-trid-teal hover:bg-trid-teal-dark"
                 >
                   {t("cookies.acceptAll")}
                 </button>
@@ -115,10 +116,10 @@ export default function CookieManager() {
 
       {/* Cookie Settings Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div className="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black/50">
           <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
-              <div className="flex items-center justify-between">
+              <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-3">
                   <Settings className="w-6 h-6 text-trid-teal" />
                   <h2 className="text-2xl font-semibold text-gray-900">
@@ -127,7 +128,7 @@ export default function CookieManager() {
                 </div>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-gray-400 transition-colors hover:text-gray-600"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -149,7 +150,7 @@ export default function CookieManager() {
                       {t("cookies.necessary.title")}
                     </span>
                   </label>
-                  <p className="mt-2 text-gray-600 text-sm">
+                  <p className="mt-2 text-sm text-gray-600">
                     {t("cookies.necessary.description")}
                   </p>
                 </div>
@@ -174,7 +175,7 @@ export default function CookieManager() {
                       {t("cookies.analytics.title")}
                     </span>
                   </label>
-                  <p className="mt-2 text-gray-600 text-sm">
+                  <p className="mt-2 text-sm text-gray-600">
                     {t("cookies.analytics.description")}
                   </p>
                 </div>
@@ -199,23 +200,23 @@ export default function CookieManager() {
                       {t("cookies.marketing.title")}
                     </span>
                   </label>
-                  <p className="mt-2 text-gray-600 text-sm">
+                  <p className="mt-2 text-sm text-gray-600">
                     {t("cookies.marketing.description")}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="p-6 border-t border-gray-200 flex justify-end space-x-4">
+            <div className="flex justify-end p-6 space-x-4 border-t border-gray-200">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
+                className="px-4 py-2 text-gray-600 transition-colors hover:text-gray-900"
               >
                 {t("cookies.cancel")}
               </button>
               <button
                 onClick={() => savePreferences(preferences)}
-                className="px-4 py-2 bg-trid-teal text-white hover:bg-trid-teal-dark transition-colors rounded-lg"
+                className="px-4 py-2 text-white rounded-lg transition-colors bg-trid-teal hover:bg-trid-teal-dark"
               >
                 {t("cookies.save")}
               </button>

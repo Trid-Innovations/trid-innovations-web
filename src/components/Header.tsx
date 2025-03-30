@@ -1,7 +1,7 @@
 import { Globe, Home, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Language } from "../types";
 import { trackUserAction } from "../utils/analytics";
 
@@ -14,7 +14,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     i18n.changeLanguage(language);
@@ -27,28 +26,15 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       trackUserAction.service(item);
     }
 
-    if (location.pathname !== "/") {
-      navigate("/");
-      // Wait for navigation to complete before scrolling
-      setTimeout(() => {
-        const element = document.getElementById(item);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      const element = document.getElementById(item);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
+    // Use URL with hash fragment for navigation
+    navigate(`/#${item}`);
   };
 
   const menuItems = ["services", "about", "articles", "contact"];
 
   return (
-    <header className="fixed w-full bg-white/90 backdrop-blur-sm z-40 top-10">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <header className="fixed top-10 z-40 w-full backdrop-blur-sm bg-white/90">
+      <nav className="container flex justify-between items-center px-4 py-4 mx-auto">
         <div
           className="flex items-center cursor-pointer"
           onClick={() => navigate("/")}
@@ -57,28 +43,28 @@ export default function Header({ language, setLanguage }: HeaderProps) {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden items-center space-x-8 md:flex">
           <button
             onClick={() => navigate("/")}
-            className="text-trid-teal hover:text-trid-lime transition-colors flex items-center capitalize"
+            className="flex items-center capitalize transition-colors text-trid-teal hover:text-trid-lime"
           >
-            <Home className="w-5 h-5 mr-1" />
+            <Home className="mr-1 w-5 h-5" />
             {t("nav.home")}
           </button>
           {menuItems.map((item) => (
             <button
               key={item}
               onClick={() => handleNavigation(item)}
-              className="text-trid-teal hover:text-trid-lime transition-colors capitalize"
+              className="capitalize transition-colors text-trid-teal hover:text-trid-lime"
             >
               {t(`nav.${item}`)}
             </button>
           ))}
           <button
             onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
-            className="flex items-center text-trid-teal hover:text-trid-lime transition-colors"
+            className="flex items-center transition-colors text-trid-teal hover:text-trid-lime"
           >
-            <Globe className="w-5 h-5 mr-1" />
+            <Globe className="mr-1 w-5 h-5" />
             {language.toUpperCase()}
           </button>
         </div>
@@ -94,23 +80,23 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <div className="bg-white border-t md:hidden">
+          <div className="container flex flex-col px-4 py-4 mx-auto space-y-4">
             <button
               onClick={() => {
                 setIsMenuOpen(false);
                 navigate("/");
               }}
-              className="text-trid-teal hover:text-trid-lime transition-colors flex items-center capitalize"
+              className="flex items-center capitalize transition-colors text-trid-teal hover:text-trid-lime"
             >
-              <Home className="w-5 h-5 mr-1" />
+              <Home className="mr-1 w-5 h-5" />
               {t("nav.home")}
             </button>
             {menuItems.map((item) => (
               <button
                 key={item}
                 onClick={() => handleNavigation(item)}
-                className="text-trid-teal hover:text-trid-lime transition-colors capitalize"
+                className="capitalize transition-colors text-trid-teal hover:text-trid-lime"
               >
                 {t(`nav.${item}`)}
               </button>
@@ -120,9 +106,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 setLanguage(language === "fr" ? "en" : "fr");
                 setIsMenuOpen(false);
               }}
-              className="flex items-center text-trid-teal hover:text-trid-lime transition-colors"
+              className="flex items-center transition-colors text-trid-teal hover:text-trid-lime"
             >
-              <Globe className="w-5 h-5 mr-1" />
+              <Globe className="mr-1 w-5 h-5" />
               {language.toUpperCase()}
             </button>
           </div>

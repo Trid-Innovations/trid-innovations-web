@@ -1,14 +1,9 @@
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Language } from "../types";
-
-interface FooterProps {
-  language: Language;
-}
+import { Link, useNavigate } from "react-router-dom";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/company/trid-innovations" },
@@ -20,14 +15,16 @@ const footerLinks = [
   { key: "company", items: ["about", "articles", "contact"] },
 ];
 
-const isServiceLink = (section: string, item: string) => {
-  return section === "services";
+const isServiceLink = (section: string) => {
+  if (section === "services") {
+    return true;
+  }
+  return false;
 };
 
-export default function Footer({ language }: FooterProps) {
-  const { t, i18n } = useTranslation();
+export default function Footer() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
-  const location = useLocation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -35,42 +32,26 @@ export default function Footer({ language }: FooterProps) {
 
   const handleNavigation = useCallback(
     (section: string) => {
-      if (location.pathname !== "/") {
-        navigate("/");
-        setTimeout(() => {
-          const element = document.getElementById(section);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 100);
-      } else {
-        const element = document.getElementById(section);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }
+      // Use URL anchors for navigation
+      navigate(`/#${section}`);
     },
-    [location.pathname, navigate]
+    [navigate]
   );
 
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language, i18n]);
-
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
+    <footer className="py-12 text-white bg-gray-900">
+      <div className="container px-4 mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid gap-8 md:grid-cols-3"
         >
           {/* Company Info */}
           <div className="space-y-4">
             <span>TRID INNOVATIONS</span>
-            <p className="text-gray-400 text-sm">{t("footer.description")}</p>
+            <p className="text-sm text-gray-400">{t("footer.description")}</p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
@@ -80,7 +61,7 @@ export default function Footer({ language }: FooterProps) {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 transition-colors hover:text-white"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -94,23 +75,23 @@ export default function Footer({ language }: FooterProps) {
           {/* Navigation Links */}
           {footerLinks.map((section) => (
             <div key={section.key}>
-              <h3 className="text-lg font-semibold mb-4 text-trid-lime">
+              <h3 className="mb-4 text-lg font-semibold text-trid-lime">
                 {t(`footer.${section.key}.title`)}
               </h3>
               <ul className="space-y-2">
                 {section.items.map((item) => (
                   <li key={item}>
-                    {isServiceLink(section.key, item) ? (
+                    {isServiceLink(section.key) ? (
                       <Link
                         to={`/services/${item}`}
-                        className="text-gray-400 hover:text-white transition-colors text-sm"
+                        className="text-sm text-gray-400 transition-colors hover:text-white"
                       >
                         {t(`footer.${section.key}.${item}`)}
                       </Link>
                     ) : (
                       <button
                         onClick={() => handleNavigation(item)}
-                        className="text-gray-400 hover:text-white transition-colors text-sm"
+                        className="text-sm text-gray-400 transition-colors hover:text-white"
                       >
                         {t(`footer.${section.key}.${item}`)}
                       </button>
@@ -127,10 +108,10 @@ export default function Footer({ language }: FooterProps) {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 pt-8 border-t border-gray-800"
+          className="pt-8 mt-12 border-t border-gray-800"
         >
-          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
+          <div className="flex flex-col justify-center items-center space-y-4 md:flex-row md:space-y-0">
+            <p className="text-sm text-gray-400">
               © {new Date().getFullYear()} TRID INNOVATIONS.{" "}
               {t("footer.rights")}
             </p>
@@ -139,7 +120,7 @@ export default function Footer({ language }: FooterProps) {
                 <a
                   key={item}
                   href={`#${item}`}
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                  className="text-sm text-gray-400 transition-colors hover:text-white"
                 >
                   {t(`footer.legal.${item}`)}
                 </a>

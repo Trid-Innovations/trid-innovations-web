@@ -73,37 +73,37 @@ export default function ArticlesPage({ language }: ArticlesPageProps) {
   return (
     <>
       <Header language={language} setLanguage={() => {}} />
-      <div className="min-h-screen bg-gray-50 pt-24">
-        <div className="container mx-auto px-4 py-12">
+      <div className="pt-24 min-h-screen bg-gray-50">
+        <div className="container px-4 py-12 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h1 className="text-4xl font-bold text-trid-teal mb-4">
+            <h1 className="mb-4 text-4xl font-bold text-trid-teal">
               {t("articles.allArticles")}
             </h1>
-            <div className="max-w-xl mx-auto">
+            <div className="mx-auto max-w-xl">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 w-5 h-5 text-gray-400 transform -translate-y-1/2" />
                 <input
                   type="text"
                   placeholder={t("articles.searchPlaceholder")}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-trid-teal/50"
+                  className="py-3 pr-4 pl-10 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-trid-teal/50"
                 />
               </div>
             </div>
           </motion.div>
 
           {loading ? (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-trid-teal mx-auto"></div>
+            <div className="py-12 text-center">
+              <div className="mx-auto w-12 h-12 rounded-full border-b-2 animate-spin border-trid-teal"></div>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {articles.map((article, index) => (
                 <ArticleCard key={index} article={article} index={index} />
               ))}

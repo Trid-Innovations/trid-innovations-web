@@ -6,21 +6,17 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import About from "./components/About";
-import Articles from "./components/Articles";
 import ArticlesPage from "./components/ArticlesPage";
 import ArticleView from "./components/ArticleView";
 import Login from "./components/auth/Login";
-import Contact from "./components/Contact";
 import CookieManager from "./components/CookieManager";
 import ArticleEditor from "./components/dashboard/ArticleEditor.tsx";
 import Dashboard from "./components/dashboard/Dashboard";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
 import ServicePage from "./components/ServicePage";
-import Services from "./components/Services";
 import TopHeader from "./components/TopHeader";
+import Home from "./page/home";
 import { Language } from "./types";
 import { initGA, logPageView } from "./utils/analytics";
 
@@ -32,50 +28,43 @@ const RouteTracker = () => {
 
   useEffect(() => {
     logPageView(location.pathname + location.search);
+
+    // Handle hash fragment scrolling
+    if (location.hash) {
+      const id = location.hash.substring(1); // remove the # character
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (location.pathname === "/") {
+      // Scroll to top when on home page without hash
+      window.scrollTo(0, 0);
+    }
   }, [location]);
 
   return null;
 };
-
-const HomePage = ({
-  language,
-  setLanguage,
-}: {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-}) => (
-  <>
-    <TopHeader />
-    <Header language={language} setLanguage={setLanguage} />
-    <Hero />
-    <Services />
-    <About />
-    <Articles />
-    <Contact />
-    <Footer />
-  </>
-);
 
 function App() {
   const [language, setLanguage] = useState<Language>("fr");
 
   return (
     <BrowserRouter>
-      <CookieManager language={language} />
+      <CookieManager />
       <RouteTracker />
       <Routes>
         <Route
           path="/"
-          element={<HomePage language={language} setLanguage={setLanguage} />}
+          element={<Home language={language} setLanguage={setLanguage} />}
         />
         <Route
           path="/services/:serviceId"
           element={
             <>
-              <TopHeader language={language} />
+              <TopHeader />
               <Header language={language} setLanguage={setLanguage} />
-              <ServicePage language={language} />
-              <Footer language={language} />
+              <ServicePage />
+              <Footer />
             </>
           }
         />
@@ -83,7 +72,7 @@ function App() {
           path="/articles/:id"
           element={
             <>
-              <TopHeader language={language} />
+              <TopHeader />
               <ArticleView />
             </>
           }
@@ -93,7 +82,7 @@ function App() {
           path="/articles"
           element={
             <>
-              <TopHeader language={language} />
+              <TopHeader />
               <ArticlesPage language={language} />
             </>
           }
