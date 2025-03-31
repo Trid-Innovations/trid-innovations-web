@@ -7,35 +7,25 @@ import {
   Lightbulb,
   Rocket,
   Target,
-  Users,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 
 const stats = [
   {
-    value: "10+",
-    label: "Years Experience",
+    key: "experience",
     icon: Clock,
     color: "text-trid-teal",
   },
   {
-    value: "50+",
-    label: "Projects Completed",
+    key: "projects",
     icon: Award,
     color: "text-trid-lime",
   },
   {
-    value: "98%",
-    label: "Client Satisfaction",
+    key: "satisfaction",
     icon: CheckCircle2,
     color: "text-trid-purple",
-  },
-  {
-    value: "24/7",
-    label: "Support Available",
-    icon: Users,
-    color: "text-trid-orange",
   },
 ];
 
@@ -69,29 +59,29 @@ export default function About() {
       id="about"
       className="py-20 bg-gradient-to-br from-gray-50 to-white"
     >
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl font-bold text-trid-teal mb-4">
+          <h2 className="mb-4 text-4xl font-bold text-trid-teal">
             {t("about.title")}
           </h2>
-          <div className="w-24 h-1 bg-trid-lime mx-auto" />
+          <div className="mx-auto w-24 h-1 bg-trid-lime" />
         </motion.div>
 
         {/* Our Story Section */}
-        <div className="max-w-4xl mx-auto mb-20">
+        <div className="mx-auto mb-20 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden"
+            className="overflow-hidden relative p-8 bg-white rounded-2xl shadow-lg"
           >
-            <div className="flex items-center space-x-4 mb-6">
+            <div className="flex items-center mb-6 space-x-4">
               <div className="p-3 rounded-lg text-trid-teal bg-trid-teal/10">
                 <History className="w-8 h-8" />
               </div>
@@ -99,10 +89,10 @@ export default function About() {
                 {t("about.story.title")}
               </h3>
             </div>
-            <div className="prose prose-lg max-w-none space-y-4">
+            <div className="space-y-4 max-w-none prose prose-lg">
               {t("about.story.content", { returnObjects: true }).map(
                 (paragraph: string, index: number) => (
-                  <p key={index} className="text-gray-600 leading-relaxed">
+                  <p key={index} className="leading-relaxed text-gray-600">
                     {paragraph}
                   </p>
                 )
@@ -112,12 +102,12 @@ export default function About() {
         </div>
 
         {/* Stats Section */}
-        <div className="max-w-6xl mx-auto mb-20">
+        {/* <div className="mx-auto mb-20 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -125,7 +115,7 @@ export default function About() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-3 sm:space-x-4"
+                className="flex items-center p-4 space-x-3 bg-white rounded-xl shadow-lg transition-all duration-300 sm:p-6 hover:shadow-xl sm:space-x-4"
               >
                 <div
                   className={`p-2 sm:p-3 rounded-lg bg-opacity-10 ${stat.color} flex-shrink-0`}
@@ -136,31 +126,31 @@ export default function About() {
                   <div
                     className={`text-xl sm:text-2xl font-bold ${stat.color} mb-0.5 sm:mb-1`}
                   >
-                    {stat.value}
+                    {t(`about.stats.${stat.key}.value`)}
                   </div>
-                  <div className="text-gray-600 text-xs sm:text-sm truncate">
-                    {stat.label}
+                  <div className="text-xs text-gray-600 truncate sm:text-sm">
+                    {t(`about.stats.${stat.key}.label`)}
                   </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
-        </div>
+        </div> */}
 
         {/* Mission, Vision, Approach Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid gap-8 mx-auto max-w-6xl md:grid-cols-3">
           {cards.map((card, index) => (
             <motion.div
               key={card.title}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="p-6 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl"
             >
               <div className={`p-3 rounded-lg ${card.color} inline-block mb-4`}>
                 <card.icon className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">
                 {t(`about.${card.title}.title`)}
               </h3>
               <p className="text-gray-600">

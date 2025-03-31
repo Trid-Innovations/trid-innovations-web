@@ -67,6 +67,20 @@ export default {
       content:
         "Nous combinons expertise sectorielle et technologie de pointe pour fournir des solutions qui génèrent une réelle valeur commerciale. Notre méthodologie assure une communication transparente et des résultats mesurables.",
     },
+    stats: {
+      experience: {
+        value: "30+",
+        label: "Années d'expérience combinées",
+      },
+      projects: {
+        value: "10+",
+        label: "Projets réalisés dans TRID",
+      },
+      satisfaction: {
+        value: "98%",
+        label: "Satisfaction client",
+      },
+    },
   },
   team: {
     title: "Nos Valeurs",

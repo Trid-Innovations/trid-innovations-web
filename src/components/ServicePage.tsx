@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Brain, CheckCircle2, Link, Wrench } from "lucide-react";
+import { ArrowLeft, Brain, Link, Wrench } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { useNavigate, useParams } from "react-router-dom";
@@ -88,6 +88,8 @@ export default function ServicePage() {
               ))}
             </div>
 
+            {/* TODO: Uncomment this when we have features */}
+            {/* 
             <div className="grid gap-8 mt-12 md:grid-cols-2">
               {[1, 2, 3, 4].map((_, index) => (
                 <motion.div
@@ -109,7 +111,7 @@ export default function ServicePage() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </section>

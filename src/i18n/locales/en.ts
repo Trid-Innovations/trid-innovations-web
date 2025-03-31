@@ -68,6 +68,20 @@ export default {
       content:
         "We combine industry expertise with cutting-edge technology to deliver solutions that drive real business value. Our methodology ensures transparent communication and measurable results.",
     },
+    stats: {
+      experience: {
+        value: "30+",
+        label: "Combined Years of Experience",
+      },
+      projects: {
+        value: "30+",
+        label: "Projects Completed",
+      },
+      satisfaction: {
+        value: "98%",
+        label: "Client Satisfaction",
+      },
+    },
   },
   team: {
     title: "Our Team Values",
