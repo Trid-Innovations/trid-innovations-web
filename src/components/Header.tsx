@@ -48,7 +48,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             onClick={() => navigate("/")}
             className="flex items-center capitalize transition-colors text-trid-teal hover:text-trid-lime"
           >
-            <Home className="mr-1 w-5 h-5" />
             {t("nav.home")}
           </button>
           {menuItems.map((item) => (
