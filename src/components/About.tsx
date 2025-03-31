@@ -1,33 +1,25 @@
 import { motion } from "framer-motion";
-import {
-  Award,
-  CheckCircle2,
-  Clock,
-  History,
-  Lightbulb,
-  Rocket,
-  Target,
-} from "lucide-react";
+import { History, Lightbulb, Rocket, Target } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 
-const stats = [
-  {
-    key: "experience",
-    icon: Clock,
-    color: "text-trid-teal",
-  },
-  {
-    key: "projects",
-    icon: Award,
-    color: "text-trid-lime",
-  },
-  {
-    key: "satisfaction",
-    icon: CheckCircle2,
-    color: "text-trid-purple",
-  },
-];
+// const stats = [
+//   {
+//     key: "experience",
+//     icon: Clock,
+//     color: "text-trid-teal",
+//   },
+//   {
+//     key: "projects",
+//     icon: Award,
+//     color: "text-trid-lime",
+//   },
+//   {
+//     key: "satisfaction",
+//     icon: CheckCircle2,
+//     color: "text-trid-purple",
+//   },
+// ];
 
 const cards = [
   {
@@ -54,6 +46,7 @@ export default function About() {
     threshold: 0.1,
   });
 
+  const content = t("about.story.content", { returnObjects: true }) as string[];
   return (
     <section
       id="about"
@@ -90,13 +83,11 @@ export default function About() {
               </h3>
             </div>
             <div className="space-y-4 max-w-none prose prose-lg">
-              {t("about.story.content", { returnObjects: true }).map(
-                (paragraph: string, index: number) => (
-                  <p key={index} className="leading-relaxed text-gray-600">
-                    {paragraph}
-                  </p>
-                )
-              )}
+              {content.map((paragraph: string, index: number) => (
+                <p key={index} className="leading-relaxed text-gray-600">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </motion.div>
         </div>

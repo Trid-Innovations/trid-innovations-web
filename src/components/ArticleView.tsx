@@ -2,10 +2,11 @@ import { doc, getDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
-import { Article } from "../types";
+import { Article, Language } from "../types";
 import { trackUserAction } from "../utils/analytics";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -37,17 +38,17 @@ export default function ArticleView() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-trid-teal"></div>
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-12 h-12 rounded-full border-b-2 animate-spin border-trid-teal"></div>
       </div>
     );
   }
 
   if (!article) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          <h2 className="mb-4 text-2xl font-bold text-gray-800">
             Article not found
           </h2>
           <button
@@ -63,9 +64,40 @@ export default function ArticleView() {
 
   return (
     <>
-      <Header language={article.language} setLanguage={() => {}} />
-      <div className="min-h-screen bg-gray-50 pt-24">
-        <article className="max-w-4xl mx-auto px-4 py-12">
+      <Header language={article.language as Language} setLanguage={() => {}} />
+      <Helmet>
+        <title>{article.title} | TRID INNOVATIONS</title>
+        <meta name="description" content={article.summary} />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.summary} />
+        <meta property="og:image" content={article.image} />
+        <meta property="og:url" content={window.location.href} />
+        <meta
+          property="og:locale"
+          content={article.language === "fr" ? "fr_FR" : "en_US"}
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.summary} />
+        <meta name="twitter:image" content={article.image} />
+
+        {/* Language alternates */}
+        <link rel="canonical" href={window.location.href} />
+        {article && (
+          <link
+            rel="alternate"
+            href={`${window.location.origin}/articles/${article.id}`}
+            hrefLang={article.language}
+          />
+        )}
+      </Helmet>
+      <div className="pt-24 min-h-screen bg-gray-50">
+        <article className="px-4 py-12 mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,9 +105,9 @@ export default function ArticleView() {
           >
             <button
               onClick={() => navigate("/articles")}
-              className="flex items-center text-trid-teal hover:text-trid-teal-dark mb-8"
+              className="flex items-center mb-8 text-trid-teal hover:text-trid-teal-dark"
             >
-              <ArrowLeft className="w-5 h-5 mr-2" />
+              <ArrowLeft className="mr-2 w-5 h-5" />
               {t("articles.allArticles")}
             </button>
 
@@ -83,16 +115,16 @@ export default function ArticleView() {
               <img
                 src={article.image}
                 alt={article.title}
-                className="w-full h-full object-cover"
+                className="object-cover w-full h-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h1 className="text-4xl font-bold text-white mb-4">
+              <div className="absolute inset-0 bg-gradient-to-t to-transparent from-black/60" />
+              <div className="absolute right-0 bottom-0 left-0 p-8">
+                <h1 className="mb-4 text-4xl font-bold text-white">
                   {article.title}
                 </h1>
-                <div className="flex items-center text-white/80 space-x-4">
+                <div className="flex items-center space-x-4 text-white/80">
                   <div className="flex items-center">
-                    <Calendar className="w-4 h-4 mr-2" />
+                    <Calendar className="mr-2 w-4 h-4" />
                     <span>
                       {new Date(article.date).toLocaleDateString(
                         article.language === "fr" ? "fr-FR" : "en-US"
@@ -100,20 +132,20 @@ export default function ArticleView() {
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <User className="w-4 h-4 mr-2" />
+                    <User className="mr-2 w-4 h-4" />
                     <span>{article.author}</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-8">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-xl text-gray-600 mb-8 font-medium">
+            <div className="p-8 bg-white rounded-xl shadow-sm">
+              <div className="max-w-none prose prose-lg">
+                <p className="mb-8 text-xl font-medium text-gray-600">
                   {article.summary}
                 </p>
                 <div
-                  className="prose prose-lg prose-trid-teal max-w-none"
+                  className="max-w-none prose prose-lg prose-trid-teal"
                   dangerouslySetInnerHTML={{ __html: article.content }}
                 />
               </div>
@@ -121,7 +153,7 @@ export default function ArticleView() {
           </motion.div>
         </article>
       </div>
-      <Footer language={article.language} />
+      <Footer />
     </>
   );
 }

@@ -24,6 +24,10 @@ export default function Services() {
   });
   const navigate = useNavigate();
 
+  const description = (key: string) =>
+    t(`services.${key}.description`, {
+      returnObjects: true,
+    }) as string[];
   return (
     <section id="services" className="py-20 bg-white">
       <div className="container px-4 mx-auto">
@@ -63,16 +67,9 @@ export default function Services() {
                   {t(`services.${service.key}.title`)}
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
-                  {
-                    t(`services.${service.key}.description`, {
-                      returnObjects: true,
-                    })[0]
-                  }
+                  {description(service.key)[0]}
                 </p>
-                <div
-                  whileHover={{ x: 5 }}
-                  className="flex items-center mt-2 text-sm transition-colors sm:text-base text-trid-teal hover:text-trid-lime"
-                >
+                <div className="flex items-center mt-2 text-sm transition-colors sm:text-base text-trid-teal hover:text-trid-lime">
                   {t("services.learnMore")}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </div>

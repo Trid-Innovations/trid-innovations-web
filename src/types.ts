@@ -34,6 +34,7 @@ export interface Article {
   createdAt?: string | null;
   updatedAt?: string | null;
   restoredAt?: string | null;
+  image: string;
 }
 
 export type Language = "fr" | "en";
