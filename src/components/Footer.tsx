@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
-import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getLanguageAwarePath, getLanguageAwareHashPath } from "../utils/navigation";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/company/trid-innovations" },
@@ -11,32 +11,36 @@ const socialLinks = [
 ];
 
 const footerLinks = [
-  { key: "services", items: ["technical", "integration", "custom"] },
-  { key: "company", items: ["about", "articles", "contact"] },
+  {
+    key: "services",
+    items: ["technical", "integration", "custom"],
+  },
+  {
+    key: "company",
+    items: ["about", "articles", "contact"],
+  },
+  // {
+  //   key: "legal",
+  //   items: ["privacy", "terms", "cookies"],
+  // },
 ];
 
 const isServiceLink = (section: string) => {
-  if (section === "services") {
-    return true;
-  }
-  return false;
+  return section === "services";
 };
 
 export default function Footer() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { lang } = useParams<{ lang: string }>();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const handleNavigation = useCallback(
-    (section: string) => {
-      // Use URL anchors for navigation
-      navigate(`/#${section}`);
-    },
-    [navigate]
-  );
+  const handleNavigation = (section: string) => {
+    navigate(getLanguageAwareHashPath(section, lang as "fr" | "en"));
+  };
 
   return (
     <footer className="py-12 text-white bg-gray-900">
@@ -46,11 +50,11 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid gap-8 md:grid-cols-3"
+          className="grid gap-8 md:grid-cols-4"
         >
           {/* Company Info */}
           <div className="space-y-4">
-            <span>TRID INNOVATIONS</span>
+            <img src="/logo.png" alt="TRID INNOVATIONS" className="h-12 mb-4" />
             <p className="text-sm text-gray-400">{t("footer.description")}</p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
@@ -83,7 +87,7 @@ export default function Footer() {
                   <li key={item}>
                     {isServiceLink(section.key) ? (
                       <Link
-                        to={`/services/${item}`}
+                        to={getLanguageAwarePath(`services/${item}`, lang as "fr" | "en")}
                         className="text-sm text-gray-400 transition-colors hover:text-white"
                       >
                         {t(`footer.${section.key}.${item}`)}

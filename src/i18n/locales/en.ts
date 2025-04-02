@@ -1,4 +1,7 @@
 export default {
+  topHeader: {
+    contact: "Let's talk!",
+  },
   hero: {
     title: "Technology at the service of business. Not the other way around.",
     subtitle:
@@ -8,36 +11,27 @@ export default {
   services: {
     title: "What we do",
     subtitle:
-      "We provide comprehensive technology solutions tailored to your business needs, ensuring efficiency and growth.",
+      "We provide comprehensive technology services tailored to your business needs, ensuring efficiency and growth.",
     learnMore: "Learn More",
     technical: {
-      title: "Technical Support & Guidance",
+      title: "Tech Insurance",
       description: [
-        "Sometimes, your systems are already doing the job. You just need reliable professionals to support you — whether it's for maintenance or improvements — without trying to sell you the moon.",
-        "That's exactly what we promise.",
-        "Support, maintenance, upgrades: we keep things running smoothly, with no tech jargon.",
-        "And if we don't already know your tools, we'll invest the time to learn them — just to serve you better.",
-        "That's how our business model was built.",
+        "You don't need full-time IT staff, but you'd love to have an expert when it counts — choosing a new tool, solving an urgent issue, or launching a new project.",
+        "Our Tech Insurance service gives you access to trusted professionals on demand, without blowing your budget.",
       ],
     },
     integration: {
-      title: "Integration of Existing Solutions",
+      title: "System Integration",
       description: [
-        "We're not here to sell you custom software just for the sake of getting a bigger contract.",
-        "If integrating an existing tool is the best solution for your needs, that's what we'll recommend — and that's what we'll do.",
-        "We don't reinvent the wheel.",
-        "We make it roll.",
-        "Because technology should serve you, not the other way around.",
+        "Looking to automate tasks? Connect different systems? Or choose between several software options?",
+        "We help you analyze your needs, select the right solutions, and integrate them smoothly — so you can streamline operations without wasting time or money.",
       ],
     },
     custom: {
       title: "Custom Solution Development",
       description: [
-        "When a tailor-made solution makes more sense, we'll build it with you — and for you.",
-        "We focus our expertise on two key areas:",
-        "Business process modeling and automation",
-        "Business intelligence, so your decisions are driven by data",
-        "In both cases, we create simple, useful, and durable tools that are aligned with your real needs.",
+        "Custom development used to be slow and costly. But thanks to AI-assisted coding, we can now deliver custom-built solutions faster and more affordably than ever.",
+        "From process automation to dashboards and business intelligence tools, we build systems that truly fit your operations — and unlock the value hidden in your data.",
       ],
     },
   },
@@ -206,5 +200,9 @@ export default {
       description:
         "These cookies are used to track visitors across websites to display relevant advertisements.",
     },
+  },
+  service: {
+    notFound: "Service not found",
+    returnHome: "Return to home",
   },
 };

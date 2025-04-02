@@ -1,16 +1,18 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, Brain, Link, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useInView } from "react-intersection-observer";
 import { useNavigate, useParams } from "react-router-dom";
+import { getLanguageAwarePath } from "../utils/navigation";
+import { useInView } from "react-intersection-observer";
 
 const serviceIcons = {
-  technical: Wrench,
+  technical: Brain,
   integration: Link,
-  custom: Brain,
+  custom: Wrench,
 };
 
-const serviceBanners = {
+const serviceImages = {
   technical:
     "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2070&q=80",
   integration:
@@ -20,28 +22,65 @@ const serviceBanners = {
 };
 
 export default function ServicePage() {
-  const { serviceId } = useParams<{ serviceId: string }>();
-  const { t } = useTranslation();
+  const { serviceId, lang } = useParams<{ serviceId: string; lang: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(true);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  if (!serviceId || !Object.keys(serviceIcons).includes(serviceId)) {
-    return <div>Service not found</div>;
+  useEffect(() => {    
+    // Simulate loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [serviceId, lang]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-12 h-12 rounded-full border-b-2 animate-spin border-trid-teal"></div>
+      </div>
+    );
+  }
+
+  if (!serviceId || !(serviceId in serviceIcons)) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+        <p className="text-xl font-semibold text-gray-900 mb-4">
+          {t("service.notFound")}
+        </p>
+        <button
+          onClick={() => navigate(getLanguageAwarePath("", lang as "fr" | "en"))}
+          className="px-6 py-2 text-sm font-medium text-white bg-trid-teal rounded-md hover:bg-trid-lime transition-colors"
+        >
+          {t("service.returnHome")}
+        </button>
+      </div>
+    );
   }
 
   const Icon = serviceIcons[serviceId as keyof typeof serviceIcons];
+  const image = serviceImages[serviceId as keyof typeof serviceImages];
+
   const serviceDescriptions = t(`services.${serviceId}.description`, {
     returnObjects: true,
   }) as string[];
+
   return (
     <>
       <div className="relative h-[60vh] flex items-center">
         <div className="absolute inset-0">
           <img
-            src={serviceBanners[serviceId as keyof typeof serviceBanners]}
+            src={image}
             alt={t(`services.${serviceId}.title`)}
             className="object-cover w-full h-full"
           />
@@ -55,7 +94,7 @@ export default function ServicePage() {
             transition={{ duration: 0.6 }}
           >
             <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate(getLanguageAwarePath("", lang as "fr" | "en"))}
               className="flex items-center mb-6 transition-colors text-white/80 hover:text-white"
             >
               <ArrowLeft className="mr-2 w-5 h-5" />

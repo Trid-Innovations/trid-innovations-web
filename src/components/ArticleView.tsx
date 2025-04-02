@@ -8,11 +8,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
 import { Article, Language } from "../types";
 import { trackUserAction } from "../utils/analytics";
+import { getLanguageAwarePath } from "../utils/navigation";
 import Footer from "./Footer";
 import Header from "./Header";
 
 export default function ArticleView() {
-  const { id } = useParams();
+  const { id, lang } = useParams<{ id: string; lang: string }>();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [article, setArticle] = useState<Article | null>(null);
@@ -52,7 +53,7 @@ export default function ArticleView() {
             Article not found
           </h2>
           <button
-            onClick={() => navigate("/articles")}
+            onClick={() => navigate(getLanguageAwarePath("articles", lang as "fr" | "en"))}
             className="text-trid-teal hover:text-trid-teal-dark"
           >
             Return to articles
@@ -91,68 +92,53 @@ export default function ArticleView() {
         {article && (
           <link
             rel="alternate"
-            href={`${window.location.origin}/articles/${article.id}`}
+            href={`${window.location.origin}${getLanguageAwarePath(`articles/${article.id}`, article.language as "fr" | "en")}`}
             hrefLang={article.language}
           />
         )}
       </Helmet>
-      <div className="pt-24 min-h-screen bg-gray-50">
-        <article className="px-4 py-12 mx-auto max-w-4xl">
+
+      <main className="pt-24 min-h-screen bg-gray-50">
+        <div className="container px-4 py-12 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
           >
             <button
-              onClick={() => navigate("/articles")}
+              onClick={() => navigate(getLanguageAwarePath("articles", lang as "fr" | "en"))}
               className="flex items-center mb-8 text-trid-teal hover:text-trid-teal-dark"
             >
-              <ArrowLeft className="mr-2 w-5 h-5" />
-              {t("articles.allArticles")}
+              <ArrowLeft className="w-5 h-5 mr-2" />
+              {t("articles.backToArticles")}
             </button>
 
-            <div className="relative h-[400px] rounded-xl overflow-hidden mb-8">
-              <img
-                src={article.image}
-                alt={article.title}
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t to-transparent from-black/60" />
-              <div className="absolute right-0 bottom-0 left-0 p-8">
-                <h1 className="mb-4 text-4xl font-bold text-white">
-                  {article.title}
-                </h1>
-                <div className="flex items-center space-x-4 text-white/80">
-                  <div className="flex items-center">
-                    <Calendar className="mr-2 w-4 h-4" />
-                    <span>
-                      {new Date(article.date).toLocaleDateString(
-                        article.language === "fr" ? "fr-FR" : "en-US"
-                      )}
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <User className="mr-2 w-4 h-4" />
-                    <span>{article.author}</span>
-                  </div>
-                </div>
-              </div>
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-96 object-cover rounded-lg mb-8"
+            />
+
+            <h1 className="mb-4 text-4xl font-bold text-gray-900">
+              {article.title}
+            </h1>
+
+            <div className="flex items-center mb-8 text-gray-500">
+              <User className="w-5 h-5 mr-2" />
+              <span className="mr-4">{article.author}</span>
+              <Calendar className="w-5 h-5 mr-2" />
+              <span>
+                {new Date(article.date).toLocaleDateString()}
+              </span>
             </div>
 
-            <div className="p-8 bg-white rounded-xl shadow-sm">
-              <div className="max-w-none prose prose-lg">
-                <p className="mb-8 text-xl font-medium text-gray-600">
-                  {article.summary}
-                </p>
-                <div
-                  className="max-w-none prose prose-lg prose-trid-teal"
-                  dangerouslySetInnerHTML={{ __html: article.content }}
-                />
-              </div>
+            <div className="prose max-w-none">
+              {article.content}
             </div>
           </motion.div>
-        </article>
-      </div>
+        </div>
+      </main>
       <Footer />
     </>
   );

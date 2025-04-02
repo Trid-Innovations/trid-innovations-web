@@ -1,14 +1,17 @@
 import { Mail, MapPin, MessageSquare, Phone } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
+import { getLanguageAwarePath } from "../utils/navigation";
 
 export default function TopHeader() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
-  const location = useLocation();
+  const { lang } = useParams<{ lang: string }>();
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (location.pathname !== "/") {
-      navigate("/");
+      navigate(getLanguageAwarePath("", lang as "fr" | "en"));
       // Wait for navigation to complete before scrolling
       setTimeout(() => {
         const contactSection = document.getElementById("contact");
@@ -52,16 +55,15 @@ export default function TopHeader() {
               <span className="text-sm">Ville de Quebec, Quebec</span>
             </div>
           </div>
-          <a
-            href="#contact"
+          <button
             onClick={handleContactClick}
             className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 px-2 md:px-4 py-1 rounded-full transition-colors"
           >
             <MessageSquare className="w-4 h-4" />
             <span className="hidden md:inline text-sm font-medium">
-              Let's Talk
+              {t("topHeader.contact")}
             </span>
-          </a>
+          </button>
         </div>
       </div>
     </div>

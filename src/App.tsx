@@ -5,6 +5,7 @@ import {
   Routes,
   useLocation,
   useNavigate,
+  Navigate,
 } from "react-router-dom";
 import ArticlesPage from "./components/ArticlesPage";
 import ArticleView from "./components/ArticleView";
@@ -18,7 +19,8 @@ import ServicePage from "./components/ServicePage";
 import TopHeader from "./components/TopHeader";
 import Home from "./page/home";
 import { Language } from "./types";
-import { initGA, logPageView } from "./utils/analytics";
+import { initGA, logPageView} from "./utils/analytics";
+import { getInitialLanguage, setStoredLanguage } from "./utils/language.ts";
 
 // Initialize GA
 initGA();
@@ -36,7 +38,7 @@ const RouteTracker = () => {
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
-    } else if (location.pathname === "/") {
+    } else if (location.pathname === "/en" || location.pathname === "/fr" || location.pathname === "/") {
       // Scroll to top when on home page without hash
       window.scrollTo(0, 0);
     }
@@ -46,47 +48,48 @@ const RouteTracker = () => {
 };
 
 function App() {
-  const [language, setLanguage] = useState<Language>("fr");
+  const [language, setLanguage] = useState<Language>(getInitialLanguage(window.location.pathname));
+
+  const handleLanguageChange = (newLang: Language) => {
+    setLanguage(newLang);
+    setStoredLanguage(newLang);
+  };
 
   return (
     <BrowserRouter>
       <CookieManager />
       <RouteTracker />
       <Routes>
-        <Route
-          path="/"
-          element={<Home language={language} setLanguage={setLanguage} />}
-        />
-        <Route
-          path="/services/:serviceId"
-          element={
+        {/* Default route - redirects to /fr */}
+        <Route path="/" element={<Navigate to={`/${language}`} replace />} />
+        
+        {/* Language-specific routes */}
+        <Route path="/:lang">
+          <Route index element={<Home language={language} setLanguage={handleLanguageChange} />} />
+          <Route path="services/:serviceId" element={
             <>
               <TopHeader />
               <Header language={language} setLanguage={setLanguage} />
               <ServicePage />
               <Footer />
             </>
-          }
-        />
-        <Route
-          path="/articles/:id"
-          element={
+          } />
+          <Route path="articles/:id" element={
             <>
               <TopHeader />
               <ArticleView />
             </>
-          }
-        />
-        <Route path="/trids" element={<Login />} />
-        <Route
-          path="/articles"
-          element={
+          } />
+          <Route path="articles" element={
             <>
               <TopHeader />
               <ArticlesPage language={language} />
             </>
-          }
-        />
+          } />
+        </Route>
+
+        {/* Admin routes - no language prefix */}
+        <Route path="/trids" element={<Login />} />
         <Route
           path="/trids/dashboard"
           element={

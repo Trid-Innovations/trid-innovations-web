@@ -1,14 +1,18 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getLanguageAwarePath } from "../utils/navigation";
+
 export default function Hero() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { lang } = useParams<{ lang: string }>();
+
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (location.pathname !== "/") {
-      navigate("/");
+    if (location.pathname !== "/en" && location.pathname !== "/fr") {
+      navigate(getLanguageAwarePath("", lang as "fr" | "en"));
       // Wait for navigation to complete before scrolling
       setTimeout(() => {
         const contactSection = document.getElementById("contact");

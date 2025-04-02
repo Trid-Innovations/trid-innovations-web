@@ -1,4 +1,7 @@
 export default {
+  topHeader: {
+    contact: "Parlons-en !",
+  },
   hero: {
     title: "La technologie au service de l'entreprise. Pas l'inverse.",
     subtitle:
@@ -8,35 +11,27 @@ export default {
   services: {
     title: "Ce que nous faisons",
     subtitle:
-      "Nous fournissons des solutions technologiques complètes adaptées aux besoins de votre entreprise, garantissant efficacité et croissance.",
+      "Nous fournissons des services technologiques adaptés aux besoins de votre entreprise, garantissant efficacité et croissance.",
     learnMore: "En savoir plus",
     technical: {
-      title: "Soutien technique & accompagnement",
+      title: "Assurance technologique",
       description: [
-        "Parfois, vos systèmes fonctionnent déjà bien. Vous avez juste besoin de professionnels fiables pour vous épauler — en maintenance ou pour faire évoluer vos outils — sans qu'on cherche à vous vendre la lune.",
-        "C'est notre engagement.",
-        "Support, assistance, maintenance, amélioration : nous assurons le bon fonctionnement, sans jargon inutile.",
-        "Et si nous ne connaissons pas encore vos outils, nous investissons le temps qu'il faut pour les apprendre.",
-        "Notre modèle d'affaires est justement conçu pour ça.",
+        "Vous n'avez pas besoin d'une équipe technique à temps plein, mais vous aimeriez avoir un expert sous la main quand une décision doit être prise, un logiciel doit être choisi, ou un problème urgent surgit ?",
+        "Notre service d'assurance technologique vous donne accès à des professionnels fiables, sur demande, sans faire exploser votre budget.",
       ],
     },
     integration: {
-      title: "Intégration des solutions technologiques",
+      title: "Intégration de système",
       description: [
-        "Nous ne cherchons pas à vous vendre du développement sur mesure si ce n'est pas ce qu'il vous faut.",
-        "S'il existe déjà une solution performante à intégrer à votre environnement, nous le dirons, et nous le ferons.",
-        "Notre priorité : que votre technologie fonctionne pour vous, pas l'inverse.",
-        "On ne réinvente pas la roue. On la fait tourner.",
+        "Vous cherchez à automatiser certaines tâches ? À connecter vos logiciels métiers ? Ou à choisir une solution adaptée parmi plusieurs options ?",
+        "Nous vous aidons à analyser vos besoins, sélectionner les bons outils, et les intégrer efficacement pour que vos processus deviennent plus fluides, sans gaspillage de temps ni d'argent.",
       ],
     },
     custom: {
       title: "Développement de solutions sur mesure",
       description: [
-        "Quand une solution personnalisée est la meilleure option, nous la construisons avec vous.",
-        "Notre spécialité :",
-        "La modélisation et l'automatisation des processus métier",
-        "L'intelligence d'affaires, pour que vos décisions s'appuient sur des données concrètes",
-        "Dans les deux cas, nous développons des outils simples, utiles et durables, alignés avec vos besoins réels.",
+        "Avant, développer un logiciel personnalisé prenait du temps et coûtait cher. Aujourd'hui, grâce aux progrès en IA, nous sommes capables de vous livrer des solutions sur mesure plus rapidement et à moindre coût.",
+        "Nous concevons avec vous des outils adaptés à votre réalité : automatisation, tableaux de bord, intelligence d'affaires... tout ce qu'il faut pour que vos données deviennent de vrais leviers de décision.",
       ],
     },
   },
@@ -205,5 +200,9 @@ export default {
       description:
         "Ces cookies sont utilisés pour suivre les visiteurs sur les sites web afin d'afficher des publicités pertinentes.",
     },
+  },
+  service: {
+    notFound: "Service non trouvé",
+    returnHome: "Retour à l'accueil",
   },
 };
