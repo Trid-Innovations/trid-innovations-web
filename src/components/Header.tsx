@@ -44,7 +44,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
     navigate(`/${newLang}${pathWithoutLang}`);
   };
 
-  const menuItems = ["services", "about", "articles", "contact"];
+  const menuItems = ["services", "about", "contact"];
 
   return (
     <header className="fixed top-10 z-40 w-full backdrop-blur-sm bg-white/90">

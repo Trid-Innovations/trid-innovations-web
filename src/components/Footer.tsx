@@ -17,7 +17,7 @@ const footerLinks = [
   },
   {
     key: "company",
-    items: ["about", "articles", "contact"],
+    items: ["about",  "contact"],
   },
   // {
   //   key: "legal",
