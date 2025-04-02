@@ -21,20 +21,30 @@ export interface Section {
 //   };
 // }
 
+export type Language = "fr" | "en";
+
+export interface LanguageProps {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+}
+
+export interface TranslatedContent {
+  fr?: string;
+  en?: string;
+}
+
 export interface Article {
   id: string;
-  title: string;
-  summary: string;
+  title: TranslatedContent;
+  summary: TranslatedContent;
+  content: TranslatedContent;
   author: string;
-  content: string;
-  date: string | number;
-  language: string;
+  date: string;
+  image: string;
+  language?: Language;
   archived?: boolean;
   archivedAt?: string | null;
   createdAt?: string | null;
   updatedAt?: string | null;
   restoredAt?: string | null;
-  image: string;
 }
-
-export type Language = "fr" | "en";

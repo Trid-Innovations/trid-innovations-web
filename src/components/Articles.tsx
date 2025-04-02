@@ -22,6 +22,7 @@ export default function Articles({ language }: ArticlesProps) {
     threshold: 0.1,
   });
   const { lang } = useParams<{ lang: string }>();
+  const currentLang = (lang as Language) || "fr";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -32,16 +33,31 @@ export default function Articles({ language }: ArticlesProps) {
           limitCount: 3,
           language: language,
         });
-        setArticles(fetchedArticles);
+        
+        // Filter articles to ensure they have content in the current language
+        const validArticles = fetchedArticles.filter(article => {
+          const hasTitle = article.title[currentLang] || article.title.fr;
+          const hasSummary = article.summary[currentLang] || article.summary.fr;
+          const hasContent = article.content[currentLang] || article.content.fr;
+          return hasTitle && hasSummary && hasContent;
+        });
+
+        setArticles(validArticles);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching articles:", error);
+        setArticles([]);
         setLoading(false);
       }
     };
 
     fetchArticles();
-  }, [language]);
+  }, [language, currentLang]);
+
+  // Don't render anything if no valid articles are found
+  if (!loading && articles.length === 0) {
+    return null;
+  }
 
   return (
     <section
@@ -76,7 +92,7 @@ export default function Articles({ language }: ArticlesProps) {
 
         <div className="mt-12 text-center">
           <Link
-            to={getLanguageAwarePath("articles", lang as "fr" | "en")}
+            to={getLanguageAwarePath("articles", currentLang)}
             className="inline-flex items-center px-6 py-3 text-white transition-colors bg-trid-teal rounded-lg hover:bg-trid-teal-dark"
           >
             <BookOpen className="w-5 h-5 mr-2" />

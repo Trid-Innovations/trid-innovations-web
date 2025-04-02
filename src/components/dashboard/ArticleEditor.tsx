@@ -6,24 +6,28 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../firebase";
-import { Article, Language } from "../../types";
+import { Article, Language, TranslatedContent } from "../../types";
 import { getTinyApi } from "../../utils";
+
+const DEFAULT_TRANSLATED_CONTENT: TranslatedContent = {
+  fr: "",
+  en: "",
+};
 
 export default function ArticleEditor() {
   const { id } = useParams();
   const tinyApi = getTinyApi();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [activeLanguage, setActiveLanguage] = useState<Language>("fr");
   const [formData, setFormData] = useState<Article>({
     id: "",
-    title: "Test",
-    summary: "This is a test article",
-    content: "This is a test article",
-    image:
-      "https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=3308&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: { ...DEFAULT_TRANSLATED_CONTENT },
+    summary: { ...DEFAULT_TRANSLATED_CONTENT },
+    content: { ...DEFAULT_TRANSLATED_CONTENT },
+    image: "https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=3308&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     author: "Erco",
     date: new Date().toISOString().split("T")[0],
-    language: "fr",
   });
 
   useEffect(() => {
@@ -32,7 +36,14 @@ export default function ArticleEditor() {
         const docRef = doc(db, "articles", id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setFormData({ ...docSnap.data(), id: docSnap.id } as Article);
+          const data = docSnap.data();
+          setFormData({
+            ...data,
+            id: docSnap.id,
+            title: data.title || { ...DEFAULT_TRANSLATED_CONTENT },
+            summary: data.summary || { ...DEFAULT_TRANSLATED_CONTENT },
+            content: data.content || { ...DEFAULT_TRANSLATED_CONTENT },
+          } as Article);
         }
       }
     };
@@ -43,6 +54,20 @@ export default function ArticleEditor() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      // Validate that at least one language has content
+      if (!formData.title.fr && !formData.title.en) {
+        alert(t('articles.editor.errors.titleRequired'));
+        return;
+      }
+      if (!formData.summary.fr && !formData.summary.en) {
+        alert(t('articles.editor.errors.summaryRequired'));
+        return;
+      }
+      if (!formData.content.fr && !formData.content.en) {
+        alert(t('articles.editor.errors.contentRequired'));
+        return;
+      }
+
       if (id) {
         await setDoc(doc(db, "articles", id), formData);
       } else {
@@ -54,20 +79,59 @@ export default function ArticleEditor() {
     }
   };
 
+  const updateTranslatedField = (
+    field: keyof Pick<Article, "title" | "summary" | "content">,
+    value: string
+  ) => {
+    setFormData({
+      ...formData,
+      [field]: {
+        ...formData[field],
+        [activeLanguage]: value,
+      },
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow-sm">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="flex items-center h-16">
-            <button
-              onClick={() => navigate("/trids/dashboard")}
-              className="mr-4 text-gray-600 hover:text-trid-teal"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-            <h1 className="text-2xl font-bold text-trid-teal">
-              {id ? t('articles.editor.editArticle') : t('articles.editor.newArticle')}
-            </h1>
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <button
+                onClick={() => navigate("/trids/dashboard")}
+                className="mr-4 text-gray-600 hover:text-trid-teal"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+              <h1 className="text-2xl font-bold text-trid-teal">
+                {id ? t('articles.editor.editArticle') : t('articles.editor.newArticle')}
+              </h1>
+            </div>
+            <div className="flex items-center space-x-4">
+              <button
+                type="button"
+                onClick={() => setActiveLanguage("fr")}
+                className={`px-3 py-1 rounded-md ${
+                  activeLanguage === "fr"
+                    ? "bg-trid-teal text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                FR
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveLanguage("en")}
+                className={`px-3 py-1 rounded-md ${
+                  activeLanguage === "en"
+                    ? "bg-trid-teal text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -88,12 +152,10 @@ export default function ArticleEditor() {
               </label>
               <input
                 type="text"
-                value={formData.title}
-                onChange={(e) =>
-                  setFormData({ ...formData, title: e.target.value })
-                }
+                value={formData.title[activeLanguage] || ""}
+                onChange={(e) => updateTranslatedField("title", e.target.value)}
                 className="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-trid-teal focus:ring-trid-teal sm:text-sm"
-                required
+                placeholder={`${t('articles.editor.title')} (${activeLanguage.toUpperCase()})`}
               />
             </div>
 
@@ -103,12 +165,10 @@ export default function ArticleEditor() {
               </label>
               <input
                 type="text"
-                value={formData.summary}
-                onChange={(e) =>
-                  setFormData({ ...formData, summary: e.target.value })
-                }
+                value={formData.summary[activeLanguage] || ""}
+                onChange={(e) => updateTranslatedField("summary", e.target.value)}
                 className="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-trid-teal focus:ring-trid-teal sm:text-sm"
-                required
+                placeholder={`${t('articles.editor.summary')} (${activeLanguage.toUpperCase()})`}
               />
             </div>
 
@@ -171,10 +231,8 @@ export default function ArticleEditor() {
                     input.click();
                   },
                 }}
-                value={formData.content}
-                onEditorChange={(content) =>
-                  setFormData({ ...formData, content })
-                }
+                value={formData.content[activeLanguage] || ""}
+                onEditorChange={(content) => updateTranslatedField("content", content)}
               />
             </div>
 
@@ -222,25 +280,6 @@ export default function ArticleEditor() {
                   className="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-trid-teal focus:ring-trid-teal sm:text-sm"
                   required
                 />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  {t('articles.editor.language')}
-                </label>
-                <select
-                  value={formData.language}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      language: e.target.value as Language,
-                    })
-                  }
-                  className="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-trid-teal focus:ring-trid-teal sm:text-sm"
-                >
-                  <option value="fr">{t('articles.editor.french')}</option>
-                  <option value="en">{t('articles.editor.english')}</option>
-                </select>
               </div>
             </div>
 

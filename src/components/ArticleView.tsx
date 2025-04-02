@@ -18,6 +18,7 @@ export default function ArticleView() {
   const { t, i18n } = useTranslation();
   const [article, setArticle] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
+  const currentLang = (lang as Language) || "fr";
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -27,15 +28,17 @@ export default function ArticleView() {
         if (docSnap.exists()) {
           const articleData = { ...docSnap.data(), id: docSnap.id } as Article;
           setArticle(articleData);
-          trackUserAction.article(articleData.id, articleData.title);
-          i18n.changeLanguage(articleData.language);
+          // Use the current language for tracking
+          const titleForTracking = articleData.title[currentLang] || articleData.title.fr || "";
+          trackUserAction.article(articleData.id, titleForTracking);
+          i18n.changeLanguage(currentLang);
         }
         setLoading(false);
       }
     };
 
     fetchArticle();
-  }, [id, i18n]);
+  }, [id, i18n, currentLang]);
 
   if (loading) {
     return (
@@ -50,52 +53,65 @@ export default function ArticleView() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <h2 className="mb-4 text-2xl font-bold text-gray-800">
-            Article not found
+            {t("articles.notFound")}
           </h2>
           <button
-            onClick={() => navigate(getLanguageAwarePath("articles", lang as "fr" | "en"))}
+            onClick={() => navigate(getLanguageAwarePath("articles", currentLang))}
             className="text-trid-teal hover:text-trid-teal-dark"
           >
-            Return to articles
+            {t("articles.backToArticles")}
           </button>
         </div>
       </div>
     );
   }
 
+  // Get the content in the current language, fallback to French if not available
+  const title = article.title[currentLang] || article.title.fr || "";
+  const summary = article.summary[currentLang] || article.summary.fr || "";
+  const content = article.content[currentLang] || article.content.fr || "";
+
   return (
     <>
-      <Header language={article.language as Language} setLanguage={() => {}} />
+      <Header language={currentLang} setLanguage={() => {}} />
       <Helmet>
-        <title>{article.title} | TRID INNOVATIONS</title>
-        <meta name="description" content={article.summary} />
+        <title>{title} | TRID INNOVATIONS</title>
+        <meta name="description" content={summary} />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.summary} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={summary} />
         <meta property="og:image" content={article.image} />
         <meta property="og:url" content={window.location.href} />
         <meta
           property="og:locale"
-          content={article.language === "fr" ? "fr_FR" : "en_US"}
+          content={currentLang === "fr" ? "fr_FR" : "en_US"}
         />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.summary} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={summary} />
         <meta name="twitter:image" content={article.image} />
 
         {/* Language alternates */}
         <link rel="canonical" href={window.location.href} />
-        {article && (
-          <link
-            rel="alternate"
-            href={`${window.location.origin}${getLanguageAwarePath(`articles/${article.id}`, article.language as "fr" | "en")}`}
-            hrefLang={article.language}
-          />
-        )}
+        <link
+          rel="alternate"
+          href={`${window.location.origin}${getLanguageAwarePath(`articles/${article.id}`, "fr")}`}
+          hrefLang="fr"
+        />
+        <link
+          rel="alternate"
+          href={`${window.location.origin}${getLanguageAwarePath(`articles/${article.id}`, "en")}`}
+          hrefLang="en"
+        />
+        <link
+          rel="alternate"
+          href={`${window.location.origin}${getLanguageAwarePath(`articles/${article.id}`, currentLang)}`}
+          hrefLang="x-default"
+        />
       </Helmet>
 
       <main className="pt-24 min-h-screen bg-gray-50">
@@ -107,7 +123,7 @@ export default function ArticleView() {
             className="max-w-4xl mx-auto"
           >
             <button
-              onClick={() => navigate(getLanguageAwarePath("articles", lang as "fr" | "en"))}
+              onClick={() => navigate(getLanguageAwarePath("articles", currentLang))}
               className="flex items-center mb-8 text-trid-teal hover:text-trid-teal-dark"
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
@@ -116,12 +132,12 @@ export default function ArticleView() {
 
             <img
               src={article.image}
-              alt={article.title}
+              alt={title}
               className="w-full h-96 object-cover rounded-lg mb-8"
             />
 
             <h1 className="mb-4 text-4xl font-bold text-gray-900">
-              {article.title}
+              {title}
             </h1>
 
             <div className="flex items-center mb-8 text-gray-500">
@@ -134,7 +150,7 @@ export default function ArticleView() {
             </div>
 
             <div className="prose max-w-none">
-              {article.content}
+              {content}
             </div>
           </motion.div>
         </div>
