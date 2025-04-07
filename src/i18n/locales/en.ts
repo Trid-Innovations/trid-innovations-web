@@ -278,7 +278,6 @@ export default {
           hours: "30h / month included",
           sla: "SLA within 24h (Weekends/holidays excluded)",
           features: [
-            "Strategic technical guidance",
             "Technical support",
             "Cybersecurity monitoring"
           ]
@@ -289,9 +288,9 @@ export default {
           hours: "60h / month included",
           sla: "SLA within 12h (Weekends/holidays excluded)",
           features: [
-            "Strategic technical guidance",
             "Technical support",
             "Cybersecurity monitoring",
+            "Strategic technical guidance",
             "Maintenance of existing systems",
             "Integration of new systems",
           ]
@@ -302,11 +301,11 @@ export default {
           hours: "160h / month included",
           sla: "SLA within 4h (Weekends/holidays included)",
           features: [
-            "Strategic technical guidance",
             "Technical support",
+            "Cybersecurity monitoring",
+            "Strategic technical guidance",
             "Maintenance of existing systems",
             "Integration of new systems",
-            "Cybersecurity monitoring",
             "Custom software development",
             "Fractional technical leadership",
           ]

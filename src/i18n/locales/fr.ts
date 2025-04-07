@@ -264,7 +264,6 @@ export default {
           hours: "30h / mois incluses",
           sla: "SLA dans les 24h (Weekends/jours fériés exclus)",
           features: [
-            "Orientation technique stratégique",
             "Support technique",
             "Surveillance de la cybersécurité"
           ]
@@ -275,9 +274,9 @@ export default {
           hours: "60h / mois incluses",
           sla: "SLA dans les 12h (Weekends/jours fériés exclus)",
           features: [
-            "Orientation technique stratégique",
             "Support technique",
             "Surveillance de la cybersécurité",
+            "Orientation technique stratégique",
             "Maintanance des systèmes existants",
             "Intégration des nouveaux systèmes",
           ]
@@ -288,11 +287,11 @@ export default {
           hours: "160h / mois incluses",
           sla: "SLA dans les 4h (Weekends/jours fériés inclus)",
           features: [
-            "Orientation technique stratégique",
             "Support technique",
+            "Surveillance de la cybersécurité",
+            "Orientation technique stratégique",
             "Maintanance des systèmes existants",
             "Intégration des nouveaux systèmes",
-            "Surveillance de la cybersécurité",
             "Développement de logiciels sur mesure",
             "Leadership technique fractionné",
           ]
