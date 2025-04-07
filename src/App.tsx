@@ -22,6 +22,8 @@ import Home from "./page/home";
 import { Language } from "./types";
 import { initGA, logPageView} from "./utils/analytics";
 import { getInitialLanguage, setStoredLanguage } from "./utils/language.ts";
+import SystemIntegrationPage from "./components/SystemIntegrationPage.tsx";
+import CustomDevelopmentPage from "./components/CustomDevelopmentPage.tsx";
 
 // Initialize GA
 initGA();
@@ -75,11 +77,19 @@ function App() {
               <Footer />
             </>
           } />
-          <Route path="services/:serviceId" element={
+          <Route path="services/automation-system-integration" element={
             <>
               <TopHeader />
               <Header language={language} setLanguage={setLanguage} />
-              <ServicePage />
+              <SystemIntegrationPage />
+              <Footer />
+            </>
+          } />
+          <Route path="services/custom-software-development" element={
+            <>
+              <TopHeader />
+              <Header language={language} setLanguage={setLanguage} />
+              <CustomDevelopmentPage />
               <Footer />
             </>
           } />

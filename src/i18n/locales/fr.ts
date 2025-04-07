@@ -20,14 +20,14 @@ export default {
         "Notre service d'assurance technologique vous donne accès à des professionnels fiables, sur demande, sans faire exploser votre budget.",
       ],
     },
-    integration: {
+    'automation-system-integration': {
       title: "Intégration de système",
       description: [
         "Vous cherchez à automatiser certaines tâches ? À connecter vos logiciels métiers ? Ou à choisir une solution adaptée parmi plusieurs options ?",
         "Nous vous aidons à analyser vos besoins, sélectionner les bons outils, et les intégrer efficacement pour que vos processus deviennent plus fluides, sans gaspillage de temps ni d'argent.",
       ],
     },
-    custom: {
+    'custom-software-development': {
       title: "Développement de solutions sur mesure",
       description: [
         "Avant, développer un logiciel personnalisé prenait du temps et coûtait cher. Aujourd'hui, grâce aux progrès en IA, nous sommes capables de vous livrer des solutions sur mesure plus rapidement et à moindre coût.",
@@ -320,6 +320,117 @@ export default {
         title: "Couverture",
         description: "Vous êtes couvert. Que ce soit pour du support, des conseils ou un coup de main — nous sommes là pour vous"
       }
+    }
+  },
+  systemIntegration: {
+    hero: {
+      title: "Intégration des systèmes & automatisation des processus",
+      subtitle: "Des solutions utiles. Rapides. Alignées sur vos résultats.",
+      cta: "Contactez-nous"
+    },
+    promise: {
+      title: "La promesse Trid : pas de complexité inutile, que de l'impact.",
+      description: "Chez Trid Innovations, nous savons que connecter vos outils, automatiser vos tâches et améliorer vos processus ne devrait ni prendre des mois, ni coûter une fortune — ni aboutir à une solution que personne n'utilise."
+    },
+    different: {
+      title: "Ce que nous faisons autrement",
+      items: [
+        {
+          title: "Plus de valeur. En moins de temps.",
+          description: "Grâce à notre maîtrise des outils d'IA générative, nous avons construit un modèle d'intervention ultra-efficace. Nous livrons rapidement des automatisations fonctionnelles, des intégrations solides et des tableaux de bord pertinents. Et surtout : nous vous faisons bénéficier directement du gain de productivité que l'IA nous permet d'obtenir."
+        },
+        {
+          title: "Alignés sur vos résultats, pas juste sur les specs.",
+          description: "Chez nous, l'utilité de la solution est aussi importante que sa livraison technique. Nous nous mettons réellement à votre place pour nous assurer que ce qu'on construit vous sert, concrètement."
+        }
+      ],
+      note: "Pour que ce ne soit pas juste un slogan, nous avons fait un choix fort : 25 % de nos honoraires sont conditionnés à l'atteinte de vos objectifs business, selon des KPIs définis ensemble au démarrage du projet."
+    },
+    expertise: {
+      title: "🧩 Notre expertise",
+      items: [
+        "L'intégration de systèmes existants (ERP, CRM, outils internes)",
+        "L'automatisation des processus métiers (workflows, tâches répétitives, synchronisations entre apps)",
+        "La mise en place d'agents IA simples pour améliorer l'expérience client ou les opérations internes",
+        "Le déploiement de solutions de business intelligence (tableaux de bord, visualisation de données)",
+        "L'exploitation des outils de la plateforme Odoo (CRM, gestion des stocks, RH, etc.)"
+      ],
+      note: "💡 Pas de problème. Nous formons notre équipe à vos outils à nos frais. Et nous nous engageons à ce que vous ne payiez que lorsque la solution fonctionne réellement."
+    },
+    whyChoose: {
+      title: "🤝 Pourquoi nos clients nous choisissent ?",
+      items: [
+        "Pour notre réactivité et notre capacité à livrer vite",
+        "Pour notre modèle de rémunération basé sur la réussite",
+        "Pour notre approche pragmatique et transparente",
+        "Parce que nous construisons des outils utiles, pas des gadgets"
+      ]
+    },
+    cta: {
+      title: "📩 Prêt à automatiser ce qui peut l'être ?",
+      description: "Parlez-nous de vos processus. On vous aide à les simplifier.",
+      button: "Contactez-nous"
+    }
+  },
+  customDevelopment: {
+    hero: {
+      title: "Développement sur mesure",
+      subtitle: "Des solutions utiles. Livrées vite. Et alignées sur vos objectifs.",
+      cta: "Contactez-nous"
+    },
+    promise: {
+      title: "🎯 Créer du sur-mesure, c'est bien. Créer ce qui compte vraiment, c'est mieux.",
+      description: "Chez Trid Innovations, nous aidons les entreprises à concevoir des solutions logicielles sur mesure qui répondent à leurs besoins réels — pas à un cahier des charges figé ou à des ambitions techniques hors de portée."
+    },
+    different: {
+      title: "🔥 Ce que nous faisons différemment",
+      items: [
+        {
+          title: "Plus de valeur. En moins de temps.",
+          description: "Nous avons bâti toute notre entreprise autour d'un principe : tirer parti de l'intelligence artificielle pour livrer plus vite et mieux. Grâce aux outils d'IA générative (LLMs, copilots, assistants de code), nous accélérons nos cycles de développement et réduisons vos coûts — tout en maintenant un haut niveau de qualité. Nous ne gardons pas cette valeur pour nous : nous la partageons avec vous."
+        },
+        {
+          title: "Alignés sur vos résultats, pas juste sur la livraison.",
+          description: "Chez Trid, le sur-mesure n'a de valeur que s'il résout un vrai problème. C'est pourquoi nous nous engageons contractuellement à ce que nos projets aient un impact concret. 25 % de nos honoraires sont conditionnés à l'atteinte de vos KPIs d'affaires. Pas juste la livraison technique, mais le succès business."
+        },
+        {
+          title: "Un modèle inspiré du sport.",
+          description: "Vous appréciez un développeur ou un expert de notre équipe ? Vous pouvez l'intégrer à votre organisation. Comme dans les ligues professionnelles, nous proposons un transfert structuré, avec des frais transparents et, bien sûr, l'accord du membre de l'équipe concerné. Nous ne retenons personne de force : nous bâtissons des relations de confiance."
+        }
+      ]
+    },
+    expertise: {
+      title: "🧱 Ce que nous construisons",
+      subtitle: "Nous nous concentrons sur les solutions back-office — celles qui permettent à votre entreprise de bien fonctionner, au quotidien.",
+      items: [
+        "Portails internes",
+        "Outils de gestion d'opérations",
+        "Applications pour la logistique, les ventes, la facturation, le support client",
+        "Automatisations complexes adaptées à vos flux réels",
+        "Intégration sur mesure avec vos outils existants"
+      ],
+      ai: {
+        title: "🤖 AI Engineering",
+        description: "Nous vous aidons à intégrer des modèles de langage avancés (LLMs) à vos processus internes. Chatbots internes, assistants contextuels, extraction de données… Nous traduisons la puissance de l'IA en outils concrets et utilisables."
+      },
+      approach: {
+        title: "🔁 Une approche pragmatique et itérative",
+        description: "Nous ne croyons pas aux projets figés sur 12 mois. Nous avançons par cycles courts, avec des livraisons continues de valeur. Chaque sprint a un objectif clair. Chaque livraison est testée. Et vous pouvez ajuster vos priorités à chaque étape."
+      }
+    },
+    whyChoose: {
+      title: "🤝 Pourquoi choisir Trid pour votre projet sur mesure ?",
+      items: [
+        "Pour notre rapidité de développement, grâce à l'IA",
+        "Pour notre modèle basé sur vos résultats réels",
+        "Pour notre approche humaine et flexible",
+        "Pour notre capacité à construire des outils simples, puissants et adaptés à vos opérations"
+      ]
+    },
+    cta: {
+      title: "📩 Un projet à valider ? Une idée à prototyper ?",
+      description: "Discutons-en. Nous serons honnêtes avec vous — même si la meilleure solution n'est pas de faire du sur-mesure.",
+      button: "Prenez rendez-vous ou contactez-nous"
     }
   }
 };

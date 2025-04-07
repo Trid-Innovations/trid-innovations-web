@@ -13,7 +13,7 @@ const socialLinks = [
 const footerLinks = [
   {
     key: "services",
-    items: ["technical", "integration", "custom"],
+    items: ["technical-insurance", "automation-system-integration", "custom-software-development"],
   },
   {
     key: "company",

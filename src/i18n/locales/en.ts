@@ -13,21 +13,21 @@ export default {
     subtitle:
       "We provide comprehensive technology services tailored to your business needs, ensuring efficiency and growth.",
     learnMore: "Learn More",
-    technical: {
+    'technical-insurance': {
       title: "Tech Insurance",
       description: [
         "You don't need full-time IT staff, but you'd love to have an expert when it counts — choosing a new tool, solving an urgent issue, or launching a new project.",
         "Our Tech Insurance service gives you access to trusted professionals on demand, without blowing your budget.",
       ],
     },
-    integration: {
+    'automation-system-integration': {
       title: "System Integration",
       description: [
         "Looking to automate tasks? Connect different systems? Or choose between several software options?",
         "We help you analyze your needs, select the right solutions, and integrate them smoothly — so you can streamline operations without wasting time or money.",
       ],
     },
-    custom: {
+    'custom-software-development': {
       title: "Custom Solution Development",
       description: [
         "Custom development used to be slow and costly. But thanks to AI-assisted coding, we can now deliver custom-built solutions faster and more affordably than ever.",
@@ -341,4 +341,115 @@ export default {
       button: "Get Started Now"
     }
   },
+  systemIntegration: {
+    hero: {
+      title: "System Integration & Process Automation",
+      subtitle: "Useful solutions. Fast. Aligned with your results.",
+      cta: "Contact Us"
+    },
+    promise: {
+      title: "The Trid Promise: no unnecessary complexity, just impact.",
+      description: "At Trid Innovations, we know that connecting your tools, automating your tasks, and improving your processes shouldn't take months, cost a fortune — or result in a solution that no one uses."
+    },
+    different: {
+      title: "What we do differently",
+      items: [
+        {
+          title: "More value. In less time.",
+          description: "Thanks to our mastery of generative AI tools, we've built an ultra-efficient intervention model. We quickly deliver functional automations, solid integrations, and relevant dashboards. And most importantly: we pass on the productivity gains that AI enables us to achieve directly to you."
+        },
+        {
+          title: "Aligned with your results, not just specs.",
+          description: "For us, the usefulness of the solution is as important as its technical delivery. We truly put ourselves in your shoes to ensure that what we build serves you, concretely."
+        }
+      ],
+      note: "📝 To make this more than just a slogan, we've made a strong choice: 25% of our fees are conditional on achieving your business objectives, based on KPIs defined together at the start of the project."
+    },
+    expertise: {
+      title: "🧩 Our expertise",
+      items: [
+        "Integration of existing systems (ERP, CRM, internal tools)",
+        "Business process automation (workflows, repetitive tasks, app synchronizations)",
+        "Implementation of simple AI agents to improve customer experience or internal operations",
+        "Deployment of business intelligence solutions (dashboards, data visualization)",
+        "Utilization of Odoo platform tools (CRM, inventory management, HR, etc.)"
+      ],
+      note: "💡 No problem. We train our team on your tools at our expense. And we commit that you only pay when the solution actually works."
+    },
+    whyChoose: {
+      title: "🤝 Why our clients choose us?",
+      items: [
+        "For our responsiveness and ability to deliver quickly",
+        "For our success-based compensation model",
+        "For our pragmatic and transparent approach",
+        "Because we build useful tools, not gadgets"
+      ]
+    },
+    cta: {
+      title: "📩 Ready to automate what can be automated?",
+      description: "Tell us about your processes. We'll help you simplify them.",
+      button: "Contact Us"
+    }
+  },
+  customDevelopment: {
+    hero: {
+      title: "Custom Development",
+      subtitle: "Useful solutions. Delivered fast. Aligned with your goals.",
+      cta: "Contact Us"
+    },
+    promise: {
+      title: "🎯 Custom development is good. Creating what really matters is better.",
+      description: "At Trid Innovations, we help businesses design custom software solutions that meet their real needs — not a rigid specification or unattainable technical ambitions."
+    },
+    different: {
+      title: "🔥 What we do differently",
+      items: [
+        {
+          title: "More value. In less time.",
+          description: "We've built our entire company around one principle: leveraging artificial intelligence to deliver faster and better. Thanks to generative AI tools (LLMs, copilots, code assistants), we accelerate our development cycles and reduce your costs — while maintaining a high level of quality. We don't keep this value to ourselves: we share it with you."
+        },
+        {
+          title: "Aligned with your results, not just delivery.",
+          description: "At Trid, custom development only has value if it solves a real problem. That's why we contractually commit to ensuring our projects have a concrete impact. 25% of our fees are tied to achieving your business KPIs. Not just technical delivery, but business success."
+        },
+        {
+          title: "A model inspired by sports.",
+          description: "You appreciate a developer or expert from our team? You can integrate them into your organization. Like in professional leagues, we offer a structured transfer, with transparent fees and, of course, the agreement of the team member involved. We don't force anyone to stay: we build relationships of trust."
+        }
+      ]
+    },
+    expertise: {
+      title: "🧱 What we build",
+      subtitle: "We focus on back-office solutions — those that help your business run smoothly, day to day.",
+      items: [
+        "Internal portals",
+        "Operations management tools",
+        "Applications for logistics, sales, billing, customer support",
+        "Complex automations adapted to your actual workflows",
+        "Custom integration with your existing tools"
+      ],
+      ai: {
+        title: "🤖 AI Engineering",
+        description: "We help you integrate advanced language models (LLMs) into your internal processes. Internal chatbots, contextual assistants, data extraction... We translate the power of AI into concrete, usable tools."
+      },
+      approach: {
+        title: "🔁 A pragmatic and iterative approach",
+        description: "We don't believe in 12-month fixed projects. We move forward in short cycles, with continuous value delivery. Each sprint has a clear objective. Each delivery is tested. And you can adjust your priorities at each stage."
+      }
+    },
+    whyChoose: {
+      title: "🤝 Why choose Trid for your custom project?",
+      items: [
+        "For our development speed, thanks to AI",
+        "For our model based on your actual results",
+        "For our human and flexible approach",
+        "For our ability to build simple, powerful tools adapted to your operations"
+      ]
+    },
+    cta: {
+      title: "📩 Have a project to validate? An idea to prototype?",
+      description: "Let's discuss it. We'll be honest with you — even if the best solution isn't custom development.",
+      button: "Schedule a meeting or contact us"
+    }
+  }
 };
