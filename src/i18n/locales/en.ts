@@ -205,4 +205,141 @@ export default {
     notFound: "Service not found",
     returnHome: "Return to home",
   },
+  technicalInsurance: {
+    hero: {
+      title: "Technical Insurance Solutions",
+      subtitle: "Protect your business with comprehensive technical insurance coverage",
+      cta: "Get a Quote"
+    },
+    whatIs: {
+      title: "What is Technical Insurance?",
+      description: "Think of it like car insurance, health insurance, or home insurance — but for your technology needs.\n\nIn simple terms: you pay a fixed monthly fee, and in return, you get access to our team of professionals, ready to help you with:\n\n• Solving technical problems\n• Keeping your systems running\n• Reinforcing internal projects\n• Integrating new tools\n• Handling urgent IT issues\n\nAll with no surprise costs, and a guaranteed response time (SLA)."
+    },
+    skillset: {
+      title: "What's covered under Technical Insurance?",
+      subtitle: "Depending on your plan, you'll have access to these roles:",
+      roles: [
+        {
+          title: "Fractional CTO",
+          description: "Strategic technical leadership and guidance"
+        },
+        {
+          title: "Project Manager",
+          description: "Expert project planning and execution"
+        },
+        {
+          title: "Full Stack, Frontend or Backend Developer",
+          description: "Custom software development and implementation"
+        },
+        {
+          title: "DevOps / System Administrator",
+          description: "Infrastructure management and automation"
+        },
+        {
+          title: "QA Analyst",
+          description: "Quality assurance and testing expertise"
+        },
+        {
+          title: "Data Engineer or Analyst",
+          description: "Data processing and analysis solutions"
+        },
+        {
+          title: "Database Administrator (DBA)",
+          description: "Database management and optimization"
+        }
+      ]
+    },
+    coverage: {
+      title: "What's Covered?",
+      equipment: {
+        title: "Equipment Protection",
+        description: "Coverage for breakdown, damage, and maintenance of technical equipment"
+      },
+      liability: {
+        title: "Liability Coverage",
+        description: "Protection against third-party claims and legal expenses"
+      },
+      business: {
+        title: "Business Interruption",
+        description: "Coverage for lost income during equipment downtime"
+      },
+      cyber: {
+        title: "Cyber Protection",
+        description: "Coverage for data breaches and cyber incidents"
+      }
+    },
+    plans: {
+      title: "Our Monthly Plans",
+      note: "* If you exceed the monthly average, you can pay for the extra at $100/hour.",
+      tiers: [
+        {
+          name: "Silver",
+          price: "$2,500 CAD",
+          hours: "30h / month",
+          sla: "SLA within 24h (Weekends/holidays excluded)",
+          features: [
+            "Strategic technical guidance",
+            "Technical support",
+            "Cybersecurity monitoring"
+          ]
+        },
+        {
+          name: "Bronze",
+          price: "$4,500 CAD",
+          hours: "60h / month",
+          sla: "SLA within 12h (Weekends/holidays excluded)",
+          features: [
+            "Strategic technical guidance",
+            "Technical support",
+            "Cybersecurity monitoring",
+            "Maintenance of existing systems",
+            "Integration of new systems",
+          ]
+        },
+        {
+          name: "Gold",
+          price: "$8,000 CAD",
+          hours: "160h / month",
+          sla: "SLA within 4h (Weekends/holidays included)",
+          features: [
+            "Strategic technical guidance",
+            "Technical support",
+            "Maintenance of existing systems",
+            "Integration of new systems",
+            "Cybersecurity monitoring",
+            "Custom software development",
+            "Fractional technical leadership",
+          ]
+        }
+      ]
+    },
+    howItWorks: {
+      title: "How does it work?",
+      step1: {
+        title: "NDA",
+        description: "We sign an NDA to protect your systems and data"
+      },
+      step2: {
+        title: "Discovery",
+        description: "We schedule a discovery call to understand your tools, processes, and needs"
+      },
+      step3: {
+        title: "Contract",
+        description: "We sign a technical insurance contract outlining scope, roles, and service levels"
+      },
+      step4: {
+        title: "Training",
+        description: "We train our team on your tools (at our cost) to ensure at least two people can handle each area"
+      },
+      step5: {
+        title: "Coverage",
+        description: "You're covered. Whether it's support, advice, or a boost — we've got you"
+      }
+    },
+    cta: {
+      title: "Ready to talk?",
+      description: "At Trid Innovations, we believe technology should serve your business not the other way around. Book a discovery call with us today to learn more about how we can help you achieve this.",
+      button: "Get Started Now"
+    }
+  },
 };

@@ -2,31 +2,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import { getLanguageAwarePath } from "../utils/navigation";
+import { handleContactClick } from "../utils/contact";
 
 export default function Hero() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams<{ lang: string }>();
-
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (location.pathname !== "/en" && location.pathname !== "/fr") {
-      navigate(getLanguageAwarePath("", lang as "fr" | "en"));
-      // Wait for navigation to complete before scrolling
-      setTimeout(() => {
-        const contactSection = document.getElementById("contact");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
 
   return (
     <section className="relative h-[85vh] md:h-[70vh] flex items-center bg-gradient-to-br from-trid-teal via-trid-teal-light to-trid-lime pt-36 overflow-hidden">
@@ -55,7 +36,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             href="#contact"
-            onClick={handleContactClick}
+            onClick={(e) => handleContactClick(e, navigate, lang)}
             className="inline-flex items-center px-6 py-3 text-white rounded-lg bg-gradient-to-r from-trid-teal to-trid-lime-light hover:from-trid-teal-dark hover:to-trid-lime transition-all duration-300 cursor-pointer relative"
           >
             {t("hero.cta")}

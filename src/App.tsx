@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ServicePage from "./components/ServicePage";
 import TopHeader from "./components/TopHeader";
+import TechnicalInsurancePage from "./components/TechnicalInsurancePage";
 import Home from "./page/home";
 import { Language } from "./types";
 import { initGA, logPageView} from "./utils/analytics";
@@ -66,6 +67,14 @@ function App() {
         {/* Language-specific routes */}
         <Route path="/:lang">
           <Route index element={<Home language={language} setLanguage={handleLanguageChange} />} />
+          <Route path="services/technical-insurance" element={
+            <>
+              <TopHeader />
+              <Header language={language} setLanguage={setLanguage} />
+              <TechnicalInsurancePage />
+              <Footer />
+            </>
+          } />
           <Route path="services/:serviceId" element={
             <>
               <TopHeader />
@@ -74,6 +83,7 @@ function App() {
               <Footer />
             </>
           } />
+          
           <Route path="articles/:id" element={
             <>
               <TopHeader />

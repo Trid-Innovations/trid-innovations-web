@@ -13,7 +13,7 @@ export default {
     subtitle:
       "Nous fournissons des services technologiques adaptés aux besoins de votre entreprise, garantissant efficacité et croissance.",
     learnMore: "En savoir plus",
-    technical: {
+    'technical-insurance': {
       title: "Assurance technologique",
       description: [
         "Vous n'avez pas besoin d'une équipe technique à temps plein, mais vous aimeriez avoir un expert sous la main quand une décision doit être prise, un logiciel doit être choisi, ou un problème urgent surgit ?",
@@ -205,4 +205,122 @@ export default {
     notFound: "Service non trouvé",
     returnHome: "Retour à l'accueil",
   },
+  technicalInsurance: {
+    hero: {
+      title: "La technologie sans les tracas",
+      subtitle: "Notre service d'assurance technique vous donne accès à des experts IT, à la demande, sans embauches compliquées ni coûts imprévus",
+      cta: "Découvrez nos forfaits"
+    },
+    whatIs: {
+      title: "C'est quoi, une assurance technique ?",
+      description: "C'est comme une assurance auto, une assurance santé ou une assurance habitation — mais pour vos besoins technologiques.\n\nEn termes simples : vous payez un forfait mensuel fixe, et en échange, vous avez accès à notre équipe de professionnels, prête à vous aider pour :\n\n• Résoudre vos problèmes techniques\n• Maintenir vos systèmes en fonctionnement\n• Renforcer vos projets internes\n• Intégrer de nouveaux outils\n• Gérer les urgences informatiques\n\nLe tout sans coûts surprises, et avec un temps de réponse garanti (SLA)."
+    },
+    skillset: {
+      title: "Qu'est-ce qui est couvert par l'assurance technique ?",
+      subtitle: "Selon vos besoins, vous pourrez en tout temps avoir accès à ces rôles :",
+      roles: [
+        {
+          title: "CTO à temps partiel",
+          description: "Leadership et orientation technique stratégique"
+        },
+        {
+          title: "Chef de projet",
+          description: "Planification et exécution experte des projets"
+        },
+        {
+          title: "Développeur Full Stack, Frontend ou Backend",
+          description: "Développement et implémentation de logiciels sur mesure"
+        },
+        {
+          title: "DevOps / Administrateur système",
+          description: "Gestion de l'infrastructure et automatisation"
+        },
+        {
+          title: "Analyste QA",
+          description: "Expertise en assurance qualité et tests"
+        },
+        {
+          title: "Ingénieur ou Analyste de données",
+          description: "Solutions de traitement et d'analyse de données"
+        },
+        {
+          title: "Administrateur de base de données (DBA)",
+          description: "Gestion et optimisation des bases de données"
+        }
+      ]
+    },
+    cta: {
+      title: "Prêt à discuter ?",
+      description: "Chez Trid Innovations, nous croyons que la technologie doit servir votre entreprise et non l'inverse. Réservez un appel de découverte avec nous dès aujourd'hui pour en savoir plus sur la façon dont nous pouvons vous aider à y parvenir.",
+      button: "Commencer Maintenant"
+    },
+    plans: {
+      title: "Nos Forfaits Mensuels",
+      note: "* Si vous dépassez le nombre d'heures incluses, vous pouvez payer le surplus à 100$/heure.",
+      tiers: [
+        {
+          name: "Argent",
+          price: "2 500 $ CAD",
+          hours: "30h / mois",
+          sla: "SLA dans les 24h (Weekends/jours fériés exclus)",
+          features: [
+            "Orientation technique stratégique",
+            "Support technique",
+            "Surveillance de la cybersécurité"
+          ]
+        },
+        {
+          name: "Bronze",
+          price: "4 500 $ CAD",
+          hours: "60h / mois",
+          sla: "SLA dans les 12h (Weekends/jours fériés exclus)",
+          features: [
+            "Orientation technique stratégique",
+            "Support technique",
+            "Surveillance de la cybersécurité",
+            "Maintanance des systèmes existants",
+            "Intégration des nouveaux systèmes",
+          ]
+        },
+        {
+          name: "Or",
+          price: "8 000 $ CAD",
+          hours: "160h / mois",
+          sla: "SLA dans les 4h (Weekends/jours fériés inclus)",
+          features: [
+            "Orientation technique stratégique",
+            "Support technique",
+            "Maintanance des systèmes existants",
+            "Intégration des nouveaux systèmes",
+            "Surveillance de la cybersécurité",
+            "Développement de logiciels sur mesure",
+            "Leadership technique fractionné",
+          ]
+        }
+      ]
+    },
+    howItWorks: {
+      title: "Comment ça fonctionne ?",
+      step1: {
+        title: "NDA",
+        description: "Nous signons un NDA pour protéger vos systèmes et vos données"
+      },
+      step2: {
+        title: "Découverte",
+        description: "Nous planifions un appel de découverte pour comprendre vos outils, processus et besoins"
+      },
+      step3: {
+        title: "Contrat",
+        description: "Nous signons un contrat d'assurance technique définissant la portée, les rôles et les niveaux de service"
+      },
+      step4: {
+        title: "Formation",
+        description: "Nous formons notre équipe sur vos outils (à nos frais) pour garantir qu'au moins deux personnes peuvent gérer chaque domaine"
+      },
+      step5: {
+        title: "Couverture",
+        description: "Vous êtes couvert. Que ce soit pour du support, des conseils ou un coup de main — nous sommes là pour vous"
+      }
+    }
+  }
 };

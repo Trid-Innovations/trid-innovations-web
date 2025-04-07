@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getLanguageAwarePath } from "../utils/navigation";
 
 const services = [
-  { icon: "Brain", key: "technical" },
+  { icon: "Brain", key: "technical-insurance" },
   { icon: "Link2", key: "integration" },
   { icon: "Wrench", key: "custom" },
 ];
