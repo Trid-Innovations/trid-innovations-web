@@ -261,7 +261,7 @@ export default {
         {
           name: "Argent",
           price: "2 500 $ CAD",
-          hours: "30h / mois",
+          hours: "30h / mois incluses",
           sla: "SLA dans les 24h (Weekends/jours fériés exclus)",
           features: [
             "Orientation technique stratégique",
@@ -272,7 +272,7 @@ export default {
         {
           name: "Bronze",
           price: "4 500 $ CAD",
-          hours: "60h / mois",
+          hours: "60h / mois incluses",
           sla: "SLA dans les 12h (Weekends/jours fériés exclus)",
           features: [
             "Orientation technique stratégique",
@@ -285,7 +285,7 @@ export default {
         {
           name: "Or",
           price: "8 000 $ CAD",
-          hours: "160h / mois",
+          hours: "160h / mois incluses",
           sla: "SLA dans les 4h (Weekends/jours fériés inclus)",
           features: [
             "Orientation technique stratégique",

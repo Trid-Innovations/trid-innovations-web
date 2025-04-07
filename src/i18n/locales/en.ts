@@ -275,7 +275,7 @@ export default {
         {
           name: "Silver",
           price: "$2,500 CAD",
-          hours: "30h / month",
+          hours: "30h / month included",
           sla: "SLA within 24h (Weekends/holidays excluded)",
           features: [
             "Strategic technical guidance",
@@ -286,7 +286,7 @@ export default {
         {
           name: "Bronze",
           price: "$4,500 CAD",
-          hours: "60h / month",
+          hours: "60h / month included",
           sla: "SLA within 12h (Weekends/holidays excluded)",
           features: [
             "Strategic technical guidance",
@@ -299,7 +299,7 @@ export default {
         {
           name: "Gold",
           price: "$8,000 CAD",
-          hours: "160h / month",
+          hours: "160h / month included",
           sla: "SLA within 4h (Weekends/holidays included)",
           features: [
             "Strategic technical guidance",
