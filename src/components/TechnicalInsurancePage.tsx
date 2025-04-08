@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
@@ -14,10 +14,6 @@ interface Tier {
   features: string[];
 }
 
-interface Plans {
-  tiers: Tier[];
-}
-
 const TechnicalInsurancePage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -27,7 +23,9 @@ const TechnicalInsurancePage: React.FC = () => {
     threshold: 0.1,
   });
 
-  console.log((t('technicalInsurance.plans.tiers', { returnObjects: true }) as unknown as Plans));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [lang]);
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-white">
@@ -48,7 +46,7 @@ const TechnicalInsurancePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-6 mt-6">
               <Shield className="mr-4 w-12 h-12" />
               <h1 className="text-5xl font-bold">
                 {t('technicalInsurance.hero.title')}

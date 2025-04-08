@@ -292,7 +292,6 @@ export default {
             "Orientation technique stratégique",
             "Maintanance des systèmes existants",
             "Intégration des nouveaux systèmes",
-            "Développement de logiciels sur mesure",
             "Leadership technique fractionné",
           ]
         }
@@ -347,7 +346,7 @@ export default {
       note: "Pour que ce ne soit pas juste un slogan, nous avons fait un choix fort : 25 % de nos honoraires sont conditionnés à l'atteinte de vos objectifs business, selon des KPIs définis ensemble au démarrage du projet."
     },
     expertise: {
-      title: "🧩 Notre expertise",
+      title: "Notre expertise",
       items: [
         "L'intégration de systèmes existants (ERP, CRM, outils internes)",
         "L'automatisation des processus métiers (workflows, tâches répétitives, synchronisations entre apps)",
@@ -355,10 +354,10 @@ export default {
         "Le déploiement de solutions de business intelligence (tableaux de bord, visualisation de données)",
         "L'exploitation des outils de la plateforme Odoo (CRM, gestion des stocks, RH, etc.)"
       ],
-      note: "💡 Pas de problème. Nous formons notre équipe à vos outils à nos frais. Et nous nous engageons à ce que vous ne payiez que lorsque la solution fonctionne réellement."
+      note: "💡 Nous formons notre équipe à vos outils à nos frais. Et nous nous engageons à ce que vous ne payiez que lorsque la solution fonctionne réellement."
     },
     whyChoose: {
-      title: "🤝 Pourquoi nos clients nous choisissent ?",
+      title: "Pourquoi nos clients nous choisissent ?",
       items: [
         "Pour notre réactivité et notre capacité à livrer vite",
         "Pour notre modèle de rémunération basé sur la réussite",
@@ -367,7 +366,7 @@ export default {
       ]
     },
     cta: {
-      title: "📩 Prêt à automatiser ce qui peut l'être ?",
+      title: "Prêt à automatiser ce qui peut l'être ?",
       description: "Parlez-nous de vos processus. On vous aide à les simplifier.",
       button: "Contactez-nous"
     }
@@ -379,11 +378,11 @@ export default {
       cta: "Contactez-nous"
     },
     promise: {
-      title: "🎯 Créer du sur-mesure, c'est bien. Créer ce qui compte vraiment, c'est mieux.",
+      title: "Créer du sur-mesure, c'est bien. Créer ce qui compte vraiment, c'est mieux.",
       description: "Chez Trid Innovations, nous aidons les entreprises à concevoir des solutions logicielles sur mesure qui répondent à leurs besoins réels — pas à un cahier des charges figé ou à des ambitions techniques hors de portée."
     },
     different: {
-      title: "🔥 Ce que nous faisons différemment",
+      title: "Ce que nous faisons différemment",
       items: [
         {
           title: "Plus de valeur. En moins de temps.",
@@ -400,7 +399,7 @@ export default {
       ]
     },
     expertise: {
-      title: "🧱 Ce que nous construisons",
+      title: "Ce que nous construisons",
       subtitle: "Nous nous concentrons sur les solutions back-office — celles qui permettent à votre entreprise de bien fonctionner, au quotidien.",
       items: [
         "Portails internes",
@@ -419,7 +418,7 @@ export default {
       }
     },
     whyChoose: {
-      title: "🤝 Pourquoi choisir Trid pour votre projet sur mesure ?",
+      title: "Pourquoi choisir Trid pour votre projet sur mesure ?",
       items: [
         "Pour notre rapidité de développement, grâce à l'IA",
         "Pour notre modèle basé sur vos résultats réels",
@@ -428,7 +427,7 @@ export default {
       ]
     },
     cta: {
-      title: "📩 Un projet à valider ? Une idée à prototyper ?",
+      title: "Un projet à valider ? Une idée à prototyper ?",
       description: "Discutons-en. Nous serons honnêtes avec vous — même si la meilleure solution n'est pas de faire du sur-mesure.",
       button: "Prenez rendez-vous ou contactez-nous"
     }
