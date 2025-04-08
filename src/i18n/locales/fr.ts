@@ -3,35 +3,35 @@ export default {
     contact: "Parlons-en !",
   },
   hero: {
-    title: "La technologie au service de l'entreprise. Pas l'inverse.",
+    title: "Humain + IA. Unis pour vous offrir des services technologiques plus intelligents.",
     subtitle:
-      "Nous accompagnons les entreprises que l'industrie technologique a souvent négligées : celles pour qui la technologie n'est pas une finalité, mais un levier d'efficacité au service de leurs opérations.",
+      "Nous combinons des agents IA avec l’expertise humaine pour rendre des services technologiques de haute qualité accessibles, même aux entreprises non-tech avec des budgets limités.",
     cta: "Parlons de votre projet",
   },
   services: {
     title: "Ce que nous faisons",
     subtitle:
-      "Nous fournissons des services technologiques adaptés aux besoins de votre entreprise, garantissant efficacité et croissance.",
+      "Nous combinons la rapidité et la puissance des agents IA avec la finesse et le discernement d’experts humains pour offrir des services technologiques utiles, rapides et adaptés à votre réalité.",
     learnMore: "En savoir plus",
     'technical-insurance': {
       title: "Assurance technologique",
       description: [
-        "Vous n'avez pas besoin d'une équipe technique à temps plein, mais vous aimeriez avoir un expert sous la main quand une décision doit être prise, un logiciel doit être choisi, ou un problème urgent surgit ?",
-        "Notre service d'assurance technologique vous donne accès à des professionnels fiables, sur demande, sans faire exploser votre budget.",
+        "Accédez à des experts tech,  humains et IA, à la demande.",
+        "Que ce soit pour un problème urgent, un nouvel outil ou un projet interne, notre Assurance Technique vous offre un soutien fiable, sans les coûts d’une équipe à temps plein.",
       ],
     },
     'automation-system-integration': {
       title: "Intégration de système",
       description: [
-        "Vous cherchez à automatiser certaines tâches ? À connecter vos logiciels métiers ? Ou à choisir une solution adaptée parmi plusieurs options ?",
-        "Nous vous aidons à analyser vos besoins, sélectionner les bons outils, et les intégrer efficacement pour que vos processus deviennent plus fluides, sans gaspillage de temps ni d'argent.",
+        "Automatisez vos tâches, connectez vos systèmes et intégrez les bons outils grâce à notre équipe Humain + IA.",
+        "On vous aide à optimiser vos opérations sans perte de temps ni dépassement de budget.",
       ],
     },
     'custom-software-development': {
       title: "Développement de solutions sur mesure",
       description: [
-        "Avant, développer un logiciel personnalisé prenait du temps et coûtait cher. Aujourd'hui, grâce aux progrès en IA, nous sommes capables de vous livrer des solutions sur mesure plus rapidement et à moindre coût.",
-        "Nous concevons avec vous des outils adaptés à votre réalité : automatisation, tableaux de bord, intelligence d'affaires... tout ce qu'il faut pour que vos données deviennent de vrais leviers de décision.",
+        "Grâce au développement assisté par IA, nous créons des logiciels sur mesure plus vite et à moindre coût.",
+        "De l’automatisation aux tableaux de bord, notre équipe Humain + IA livre des outils adaptés à vos opérations et à vos données.",
       ],
     },
   },
@@ -50,7 +50,7 @@ export default {
     mission: {
       title: "Notre mission",
       content:
-        "Offrir des solutions technologiques utiles et accessibles aux entreprises non-tech, pour améliorer leurs opérations, automatiser ce qui peut l'être, et valoriser leurs données dans une logique de croissance durable.",
+        "Rendre les services technologiques de qualité accessibles aux entreprises non-tech, grâce à la puissance de l’IA et l’expertise humaine.",
     },
     vision: {
       title: "Notre vision",
@@ -60,7 +60,7 @@ export default {
     approach: {
       title: "Notre Approche",
       content:
-        "Nous combinons expertise sectorielle et technologie de pointe pour fournir des solutions qui génèrent une réelle valeur commerciale. Notre méthodologie assure une communication transparente et des résultats mesurables.",
+        "Humain + IA. On allie rapidité de l’IA et expertise humaine pour livrer mieux, plus vite et on n’est payé pleinement que si vos résultats sont au rendez-vous.",
     },
     stats: {
       experience: {
@@ -156,9 +156,9 @@ export default {
       "Nous offrons des solutions technologiques utiles et accessibles aux entreprises non-tech, les aidant à améliorer leurs opérations et à valoriser leurs données pour une croissance durable.",
     services: {
       title: "Services",
-      technical: "Support Technique",
-      integration: "Solutions d'Intégration",
-      custom: "Développement Sur Mesure",
+      'technical-insurance': "Support Technique",
+      'automation-system-integration': "Solutions d'Intégration",
+      'custom-software-development': "Développement Sur Mesure",
     },
     company: {
       title: "Entreprise",

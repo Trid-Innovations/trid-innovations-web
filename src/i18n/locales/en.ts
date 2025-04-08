@@ -3,35 +3,35 @@ export default {
     contact: "Let's talk!",
   },
   hero: {
-    title: "Technology at the service of business. Not the other way around.",
+    title: "Human + AI. United to deliver smarter tech services.",
     subtitle:
-      "We support the companies the tech industry has often overlooked — the ones for whom technology is not an end in itself, but a lever for making their operations more efficient.",
+      "We combine AI agents with expert human insight to make high-quality technology services accessible — even to non-tech companies with tight budgets.",
     cta: "Let's talk about your project",
   },
   services: {
     title: "What we do",
     subtitle:
-      "We provide comprehensive technology services tailored to your business needs, ensuring efficiency and growth.",
+      "We combine the speed and scalability of AI agents with the insight and care of human experts to deliver practical, high-impact technology services that help your business move faster, work smarter, and grow with confidence.",
     learnMore: "Learn More",
     'technical-insurance': {
       title: "Tech Insurance",
       description: [
-        "You don't need full-time IT staff, but you'd love to have an expert when it counts — choosing a new tool, solving an urgent issue, or launching a new project.",
-        "Our Tech Insurance service gives you access to trusted professionals on demand, without blowing your budget.",
+        "Get on-demand access to tech experts — human and AI — when it matters most.",
+        "From urgent issues to new tools or internal projects, our Technical Insurance gives you reliable support without the cost of a full-time team.",
       ],
     },
     'automation-system-integration': {
       title: "System Integration",
       description: [
-        "Looking to automate tasks? Connect different systems? Or choose between several software options?",
-        "We help you analyze your needs, select the right solutions, and integrate them smoothly — so you can streamline operations without wasting time or money.",
+        "Automate tasks, connect systems, and integrate the right tools — with guidance from our Human + AI team.",
+        "We help you streamline operations, reduce manual work, and make smarter tech choices without wasting time or budget.",
       ],
     },
     'custom-software-development': {
       title: "Custom Solution Development",
       description: [
-        "Custom development used to be slow and costly. But thanks to AI-assisted coding, we can now deliver custom-built solutions faster and more affordably than ever.",
-        "From process automation to dashboards and business intelligence tools, we build systems that truly fit your operations — and unlock the value hidden in your data.",
+        "We use AI-assisted development to build custom software faster and more affordably.",
+        "From internal tools to dashboards and automation, our Human + AI team delivers tailored systems that fit your operations and turn data into real business value.",
       ],
     },
   },
@@ -50,7 +50,7 @@ export default {
     mission: {
       title: "Our Mission",
       content:
-        "To deliver useful and accessible tech solutions to non-tech businesses — helping them improve their operations, automate what can be automated, and leverage their data for long-term, sustainable growth.",
+        "We make high-quality tech services accessible to non-tech companies, leveraging AI and human expertise to deliver practical solutions that align with your business goals.",
     },
     vision: {
       title: "Our Vision",
@@ -60,7 +60,7 @@ export default {
     approach: {
       title: "Our Approach",
       content:
-        "We combine industry expertise with cutting-edge technology to deliver solutions that drive real business value. Our methodology ensures transparent communication and measurable results.",
+        "Human + AI, working together. We combine AI’s speed and human expertise to deliver smarter, more efficient solutions, only charging fully when your results meet expectations.",
     },
     stats: {
       experience: {
@@ -156,9 +156,9 @@ export default {
       "We deliver useful and accessible tech solutions to non-tech businesses, helping them improve their operations and leverage their data for sustainable growth.",
     services: {
       title: "Services",
-      technical: "Technical Support",
-      integration: "Integration Solutions",
-      custom: "Custom Development",
+      'technical-insurance': "Technical Support",
+      'automation-system-integration': "Integration Solutions",
+      'custom-software-development': "Custom Development",
     },
     company: {
       title: "Company",
