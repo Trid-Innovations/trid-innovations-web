@@ -209,7 +209,7 @@ export default {
     hero: {
       title: "Technical Insurance Solutions",
       subtitle: "Protect your business with comprehensive technical insurance coverage",
-      cta: "Get a Quote"
+      cta: "Explore our plans"
     },
     whatIs: {
       title: "What is Technical Insurance?",
@@ -306,7 +306,6 @@ export default {
             "Strategic technical guidance",
             "Maintenance of existing systems",
             "Integration of new systems",
-            "Custom software development",
             "Fractional technical leadership",
           ]
         }
@@ -363,10 +362,10 @@ export default {
           description: "For us, the usefulness of the solution is as important as its technical delivery. We truly put ourselves in your shoes to ensure that what we build serves you, concretely."
         }
       ],
-      note: "📝 To make this more than just a slogan, we've made a strong choice: 25% of our fees are conditional on achieving your business objectives, based on KPIs defined together at the start of the project."
+      note: "To make this more than just a slogan, we've made a strong choice: 25% of our fees are conditional on achieving your business objectives, based on KPIs defined together at the start of the project."
     },
     expertise: {
-      title: "🧩 Our expertise",
+      title: "Our expertise",
       items: [
         "Integration of existing systems (ERP, CRM, internal tools)",
         "Business process automation (workflows, repetitive tasks, app synchronizations)",
@@ -374,10 +373,10 @@ export default {
         "Deployment of business intelligence solutions (dashboards, data visualization)",
         "Utilization of Odoo platform tools (CRM, inventory management, HR, etc.)"
       ],
-      note: "💡 No problem. We train our team on your tools at our expense. And we commit that you only pay when the solution actually works."
+      note: "💡 We train our team on your tools at our expense. And we commit that you only pay when the solution actually works."
     },
     whyChoose: {
-      title: "🤝 Why our clients choose us?",
+      title: "Why our clients choose us?",
       items: [
         "For our responsiveness and ability to deliver quickly",
         "For our success-based compensation model",
@@ -386,7 +385,7 @@ export default {
       ]
     },
     cta: {
-      title: "📩 Ready to automate what can be automated?",
+      title: "Ready to automate what can be automated?",
       description: "Tell us about your processes. We'll help you simplify them.",
       button: "Contact Us"
     }
@@ -398,11 +397,11 @@ export default {
       cta: "Contact Us"
     },
     promise: {
-      title: "🎯 Custom development is good. Creating what really matters is better.",
+      title: "Custom development is good. Creating what really matters is better.",
       description: "At Trid Innovations, we help businesses design custom software solutions that meet their real needs — not a rigid specification or unattainable technical ambitions."
     },
     different: {
-      title: "🔥 What we do differently",
+      title: "What we do differently",
       items: [
         {
           title: "More value. In less time.",
@@ -419,7 +418,7 @@ export default {
       ]
     },
     expertise: {
-      title: "🧱 What we build",
+      title: "What we build",
       subtitle: "We focus on back-office solutions — those that help your business run smoothly, day to day.",
       items: [
         "Internal portals",
@@ -438,7 +437,7 @@ export default {
       }
     },
     whyChoose: {
-      title: "🤝 Why choose Trid for your custom project?",
+      title: "Why choose Trid for your custom project?",
       items: [
         "For our development speed, thanks to AI",
         "For our model based on your actual results",
@@ -447,7 +446,7 @@ export default {
       ]
     },
     cta: {
-      title: "📩 Have a project to validate? An idea to prototype?",
+      title: "Have a project to validate? An idea to prototype?",
       description: "Let's discuss it. We'll be honest with you — even if the best solution isn't custom development.",
       button: "Schedule a meeting or contact us"
     }

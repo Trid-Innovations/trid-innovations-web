@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
-import { ArrowRight, CheckCircle2, Cpu, Zap, Code, Database, Server, BarChart2, UserCog } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { handleContactClick } from '../utils/contact';
 
@@ -32,6 +32,10 @@ const SystemIntegrationPage: React.FC = () => {
     threshold: 0.1,
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [lang]);
+
   const systemIntegration = t('systemIntegration', { returnObjects: true }) as SystemIntegration;
 
   return (
@@ -40,7 +44,7 @@ const SystemIntegrationPage: React.FC = () => {
       <section className="relative h-[60vh] flex items-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2070&q=80"
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2070&q=80"
             alt="System Integration"
             className="object-cover w-full h-full"
           />
@@ -53,7 +57,7 @@ const SystemIntegrationPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="mb-6 text-5xl font-bold">
+            <h1 className="mt-6 mb-6 text-5xl font-bold">
               {t('systemIntegration.hero.title')}
             </h1>
             <p className="mb-8 text-xl">
