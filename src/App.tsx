@@ -68,7 +68,6 @@ function App() {
       <CookieManager />
       <RouteTracker />
       <Routes>
-        {/* Default route - redirects to /fr */}
         <Route path="/" element={<Navigate to={`/${language}`} replace />} />
 
         {/* Language-specific routes */}

@@ -37,7 +37,7 @@ const Input = ({
           </label>
           <Fragment>
             {renderer ? (
-              renderer(onChange, value)
+              renderer(onChange, value, error)
             ) : (
               <input
                 className={`px-4 py-3 rounded-lg border ${

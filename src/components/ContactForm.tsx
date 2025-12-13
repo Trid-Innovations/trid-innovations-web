@@ -51,7 +51,7 @@ export default function ContactForm({ inView }: ContactFormProps) {
         trackUserAction.contact("form");
         return text ? JSON.parse(text) : {};
       })
-      .then((_data) => {
+      .then(() => {
         toast["success"](t("contact.toast.success"), {
           toastId,
         });
@@ -83,6 +83,16 @@ export default function ContactForm({ inView }: ContactFormProps) {
           control={control}
           label={t("contact.form.name")}
           required={true}
+          rules={{
+            required:
+              t("contact.validation.name.required") || "Name is required",
+            minLength: {
+              value: 2,
+              message:
+                t("contact.validation.name.minLength") ||
+                "Name must be at least 2 characters",
+            },
+          }}
         />
         <Input
           key="email"
@@ -90,6 +100,16 @@ export default function ContactForm({ inView }: ContactFormProps) {
           control={control}
           label={t("contact.form.email")}
           required={true}
+          rules={{
+            required:
+              t("contact.validation.email.required") || "Email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message:
+                t("contact.validation.email.invalid") ||
+                "Please enter a valid email address",
+            },
+          }}
         />
         <Input
           key="subject"
@@ -97,6 +117,16 @@ export default function ContactForm({ inView }: ContactFormProps) {
           control={control}
           label={t("contact.form.subject")}
           required={true}
+          rules={{
+            required:
+              t("contact.validation.subject.required") || "Subject is required",
+            minLength: {
+              value: 3,
+              message:
+                t("contact.validation.subject.minLength") ||
+                "Subject must be at least 3 characters",
+            },
+          }}
         />
       </div>
       <Input
@@ -105,12 +135,26 @@ export default function ContactForm({ inView }: ContactFormProps) {
         control={control}
         label={t("contact.form.message")}
         required={true}
-        renderer={(onChange: any, value: string) => (
+        rules={{
+          required:
+            t("contact.validation.message.required") || "Message is required",
+          minLength: {
+            value: 10,
+            message:
+              t("contact.validation.message.minLength") ||
+              "Message must be at least 10 characters",
+          },
+        }}
+        renderer={(
+          onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void,
+          value: string,
+          error?: { message?: string }
+        ) => (
           <textarea
             value={value}
-            className={`border-trid-gray-light border-2 mb-12 flex h-40 rounded-lg border-solid p-4 outline-none outline-0 w-full trid__input leading-6 ${
-              false ? "border !border-tertiary-mars" : ""
-            } m-0 bg-trid-gray-light`}
+            className={`border-2 mb-12 flex h-40 rounded-lg border-solid p-4 outline-none outline-0 w-full trid__input leading-6 ${
+              error ? "border-red-500" : "border-trid-gray-light"
+            } m-0 bg-trid-gray-light focus:outline-none focus:ring-2 focus:ring-trid-teal/50`}
             onChange={onChange}
           />
         )}
@@ -119,12 +163,11 @@ export default function ContactForm({ inView }: ContactFormProps) {
         disabled={loader}
         type="submit"
         className={`w-full px-6 py-3 bg-trid-teal-light text-white rounded-lg hover:bg-trid-teal transition-colors ${
-          loader ? "opacity-50 cursor-not-allowed" : ""
-        }`}
+          loader ? "opacity-50 cursor-not-allowed" : ""}`}
       >
         {loader ? (
-          <div className="flex items-center justify-center">
-            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+          <div className="flex justify-center items-center">
+            <div className="mr-2 w-5 h-5 rounded-full border-2 border-white animate-spin border-t-transparent"></div>
             {t("contact.form.sending")}
           </div>
         ) : (
