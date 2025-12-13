@@ -114,6 +114,24 @@ export default {
       success: "Email sent, thank you for contacting us",
       error: "An error occurred while sending the email.",
     },
+    validation: {
+      name: {
+        required: "Name is required",
+        minLength: "Name must be at least 2 characters",
+      },
+      email: {
+        required: "Email is required",
+        invalid: "Please enter a valid email address",
+      },
+      subject: {
+        required: "Subject is required",
+        minLength: "Subject must be at least 3 characters",
+      },
+      message: {
+        required: "Message is required",
+        minLength: "Message must be at least 10 characters",
+      },
+    },
     info: {
       title: "TRID Innovations",
       description:

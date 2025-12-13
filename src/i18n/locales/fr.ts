@@ -114,6 +114,24 @@ export default {
       success: "Email envoyé, merci pour votre contact.",
       error: "Une erreur est survenue lors de l'envoi de l'email.",
     },
+    validation: {
+      name: {
+        required: "Le nom est requis",
+        minLength: "Le nom doit contenir au moins 2 caractères",
+      },
+      email: {
+        required: "L'email est requis",
+        invalid: "Veuillez entrer une adresse email valide",
+      },
+      subject: {
+        required: "Le sujet est requis",
+        minLength: "Le sujet doit contenir au moins 3 caractères",
+      },
+      message: {
+        required: "Le message est requis",
+        minLength: "Le message doit contenir au moins 10 caractères",
+      },
+    },
     info: {
       title: "TRID Innovations",
       description:
